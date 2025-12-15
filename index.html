@@ -3,168 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hind dans les étoiles ❤️</title>
+    <title>Dose quotidienne d'amour pour Hind 😂❤️</title>
     <style>
         body {
             margin: 0;
             height: 100vh;
-            background: #000;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-family: 'Georgia', serif;
-        }
-        canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        #love-message {
-            position: relative;
-            z-index: 10;
+            background: linear-gradient(to bottom, #ffe6f2, #ff69b4);
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            color: #ff1493;
             text-align: center;
-            max-width: 90%;
-            font-size: 28px;
-            line-height: 1.9;
-            opacity: 0;
-            animation: fadeInText 6s forwards 4s;
-        }
-        @keyframes fadeInText {
-            to { opacity: 1; }
+            overflow: hidden;
+            position: relative;
         }
         h1 {
             font-size: 50px;
-            color: #ff69b4;
-            text-shadow: 0 0 20px #ff1493;
+            margin-top: 40px;
+            text-shadow: 3px 3px #fff;
         }
-        audio {
-            display: none;
+        #message-du-jour {
+            font-size: 36px;
+            max-width: 90%;
+            margin: 50px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 0 30px #ff69b4;
         }
+        #confetti-btn {
+            font-size: 30px;
+            padding: 20px 40px;
+            background: #ff1493;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 30px;
+        }
+        .heart {
+            position: absolute;
+            font-size: 50px;
+            animation: bounce linear infinite;
+            pointer-events: none;
+        }
+        @keyframes bounce {
+            0% { transform: translateY(-100vh) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+        #old-messages {
+            margin: 50px;
+            font-size: 24px;
+        }
+        audio { display: none; }
     </style>
 </head>
 <body>
 
-    <canvas id="stars"></canvas>
-
-    <!-- Musique piano rêveuse et romantique -->
-    <audio id="romantic-music" loop autoplay>
+    <audio id="music" loop autoplay>
         <source src="https://cdn.pixabay.com/download/audio/2022/03/28/audio_0c3e0c5d5c.mp3?filename=piano-moment-9837.mp3" type="audio/mpeg">
     </audio>
 
-    <div id="love-message">
-        <h1>B + H dans les étoiles ❤️</h1>
-        <p>Hind, ma chérie, regarde le ciel que j’ai créé rien que pour toi.</p>
-        <p>Chaque étoile est un battement de mon cœur, chaque constellation un "je t’aime". Tu es ma galaxie entière, ma lumière dans l’infini.</p>
-        <p>Je t’aime d’un amour plus vaste que l’univers, plus profond que le cosmos. Tu es ma étoile polaire, celle qui guide tous mes rêves.</p>
-        <p>Avec toi, je veux explorer chaque recoin de l’éternité, main dans la main, cœur contre cœur.</p>
-        <p>Laisse cette musique et ces étoiles te dire tout ce que les mots ne suffisent pas à exprimer.</p>
-        <p>Je t’aime à l’infini et au-delà,<br>B + H pour toujours ❤️</p>
+    <h1>Jour 1 – 15 décembre 2025</h1>
+
+    <div id="message-du-jour">
+        Hind ma chérie,<br><br>
+        Raison du jour pourquoi je t’aime :<br><br>
+        Parce que même si tu ronfles comme un tracteur la nuit, je dors mieux dans ton bruit que dans le silence sans toi 😂❤️<br><br>
+        (Et demain, une nouvelle raison encore plus débile, promis !)
     </div>
 
+    <button id="confetti-btn">Clique pour une explosion d'amour ! 💥</button>
+
+    <div id="old-messages">
+        <!-- Tu ajoutes les anciens messages ici au fil des jours -->
+        <!-- Exemple : <p>Jour précédent : blablabla</p> -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script>
-        const canvas = document.getElementById('stars');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const music = document.getElementById('romantic-music');
+        const music = document.getElementById('music');
         music.volume = 0.4;
-        music.play();
 
-        let stars = [];
-        const messages = [
-            "Je t'aime Hind ❤️", "Mon étoile brillante", "B + H éternels", "Tu illumines ma nuit",
-            "Ma princesse cosmique", "Amour infini", "Hind mon univers", "À toi dans les étoiles",
-            "Ton sourire = supernova", "Mon cœur orbite autour de toi", "Hind ma galaxie", "Je t'adore follement",
-            "Notre amour plus grand que tout", "Tu es ma lumière", "Hind mon étoile polaire", "Pour toujours ensemble ❤️"
-        ];
+        // Coeurs qui rebondissent partout
+        setInterval(() => {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = Math.random() > 0.5 ? '❤️' : '😂';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 8000);
+        }, 800);
 
-        // Créer les étoiles/cœurs de base
-        function createStar() {
-            return {
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                size: Math.random() * 3 + 1,
-                speed: Math.random() * 0.5 + 0.1,
-                opacity: Math.random() * 0.8 + 0.2,
-                twinkle: Math.random() * 0.02
-            };
-        }
-
-        for (let i = 0; i < 300; i++) stars.push(createStar());
-
-        // Étoiles filantes avec messages
-        function shootingStar() {
-            const star = {
-                x: Math.random() * canvas.width,
-                y: 0,
-                size: 40,
-                speedX: Math.random() * 4 - 2,
-                speedY: Math.random() * 6 + 4,
-                opacity: 1,
-                message: messages[Math.floor(Math.random() * messages.length)]
-            };
-            stars.push(star);
-        }
-
-        setInterval(shootingStar, 4000);
-
-        // Former lentement B + H
-        let formationProgress = 0;
-
-        function drawBH() {
-            ctx.font = 'bold 100px Georgia';
-            ctx.fillStyle = '#ff69b4';
-            ctx.globalAlpha = formationProgress;
-            ctx.fillText('B + H', canvas.width / 2 - 150, canvas.height / 2 + 30);
-            ctx.globalAlpha = 1;
-        }
-
-        function animate() {
-            ctx.fillStyle = 'rgba(0,0,0,0.1)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            if (formationProgress < 1) formationProgress += 0.002;
-
-            stars.forEach((star, i) => {
-                // Twinkle
-                star.opacity += star.twinkle;
-                if (star.opacity > 1 || star.opacity < 0.3) star.twinkle *= -1;
-
-                ctx.globalAlpha = star.opacity;
-
-                // Dessiner cœur ou étoile
-                if (star.message) {
-                    // Étoile filante avec texte
-                    ctx.font = '30px Georgia';
-                    ctx.fillStyle = '#ff1493';
-                    ctx.fillText('❤️ ' + star.message, star.x, star.y);
-                    star.x += star.speedX;
-                    star.y += star.speedY;
-                    star.opacity -= 0.02;
-                    if (star.opacity <= 0) stars.splice(i, 1);
-                } else {
-                    // Étoiles statiques en forme de cœur
-                    ctx.font = star.size * 10 + 'px Arial';
-                    ctx.fillText('❤️', star.x, star.y);
-                    star.y += star.speed;
-                    if (star.y > canvas.height) star.y = 0;
-                }
+        // Confettis au clic
+        document.getElementById('confetti-btn').addEventListener('click', () => {
+            confetti({
+                particleCount: 200,
+                spread: 100,
+                origin: { y: 0.6 },
+                colors: ['#ff69b4', '#ff1493', '#fff']
             });
-
-            drawBH();
-            requestAnimationFrame(animate);
-        }
-
-        animate();
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
         });
     </script>
 </body>
