@@ -3,62 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hind, je t'aime pour toujours ❤️</title>
+    <title>Hind dans les étoiles ❤️</title>
     <style>
         body {
             margin: 0;
             height: 100vh;
-            background: linear-gradient(to bottom, #fff0f5, #ffe6f2);
+            background: #000;
+            overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
+            color: white;
             font-family: 'Georgia', serif;
-            color: #d63384;
-            position: relative;
+        }
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
         #love-message {
-            max-width: 90%;
+            position: relative;
+            z-index: 10;
             text-align: center;
+            max-width: 90%;
             font-size: 28px;
             line-height: 1.9;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 20px;
-            box-shadow: 0 0 30px rgba(255, 105, 180, 0.3);
             opacity: 0;
-            animation: fadeIn 4s forwards;
-            z-index: 10;
+            animation: fadeInText 6s forwards 4s;
         }
-        @keyframes fadeIn {
+        @keyframes fadeInText {
             to { opacity: 1; }
         }
         h1 {
-            font-size: 48px;
-            color: #ff1493;
-            margin-bottom: 30px;
-        }
-        .falling-heart {
-            position: absolute;
-            font-size: 38px;
+            font-size: 50px;
             color: #ff69b4;
-            pointer-events: none;
-            white-space: nowrap;
-            opacity: 0.9;
-            animation: fall linear infinite;
-            z-index: 5;
-        }
-        @keyframes fall {
-            0% { 
-                transform: translateY(-100vh) rotate(0deg) scale(1);
-                opacity: 0;
-            }
-            10% { opacity: 0.9; }
-            90% { opacity: 0.9; }
-            100% { 
-                transform: translateY(100vh) rotate(360deg) scale(0.8);
-                opacity: 0;
-            }
+            text-shadow: 0 0 20px #ff1493;
         }
         audio {
             display: none;
@@ -67,74 +48,124 @@
 </head>
 <body>
 
-    <!-- Musique romantique piano douce qui boucle -->
+    <canvas id="stars"></canvas>
+
+    <!-- Musique piano rêveuse et romantique -->
     <audio id="romantic-music" loop autoplay>
         <source src="https://cdn.pixabay.com/download/audio/2022/03/28/audio_0c3e0c5d5c.mp3?filename=piano-moment-9837.mp3" type="audio/mpeg">
-        Ton navigateur ne supporte pas l'audio.
     </audio>
 
     <div id="love-message">
-        <h1>Hind, mon amour éternel ❤️</h1>
-        <p>Hind, ma chérie, depuis que tu es dans ma vie, chaque jour est une bénédiction. Tu es la douceur de mes matins, la chaleur de mes nuits, la lumière qui guide tous mes pas.</p>
-        <p>Ton sourire fait fondre mon cœur, ta voix est la plus belle mélodie, ton regard est mon refuge. Tu es intelligente, forte, belle à l’intérieur comme à l’extérieur.</p>
-        <p>Je t’aime d’un amour profond, sincère et infini. Je veux te rendre heureuse chaque jour, te soutenir, te chérir, te serrer dans mes bras pour toujours.</p>
-        <p>Tu es ma princesse, ma reine, mon âme sœur. Avec toi, je veux vieillir en t’aimant encore plus chaque année.</p>
-        <p>Laisse cette musique et cette pluie de cœurs t’envelopper… ils portent tous les mots que je ressens pour toi.</p>
-        <p>Je t’aime plus que tout au monde.<br>Pour l’éternité,<br>B + H ❤️</p>
+        <h1>B + H dans les étoiles ❤️</h1>
+        <p>Hind, ma chérie, regarde le ciel que j’ai créé rien que pour toi.</p>
+        <p>Chaque étoile est un battement de mon cœur, chaque constellation un "je t’aime". Tu es ma galaxie entière, ma lumière dans l’infini.</p>
+        <p>Je t’aime d’un amour plus vaste que l’univers, plus profond que le cosmos. Tu es ma étoile polaire, celle qui guide tous mes rêves.</p>
+        <p>Avec toi, je veux explorer chaque recoin de l’éternité, main dans la main, cœur contre cœur.</p>
+        <p>Laisse cette musique et ces étoiles te dire tout ce que les mots ne suffisent pas à exprimer.</p>
+        <p>Je t’aime à l’infini et au-delà,<br>B + H pour toujours ❤️</p>
     </div>
 
     <script>
+        const canvas = document.getElementById('stars');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
         const music = document.getElementById('romantic-music');
-        music.volume = 0.5;
+        music.volume = 0.4;
         music.play();
 
-        const loveMessages = [
-            "Je t'aime Hind ❤️", "Mon trésor précieux", "Ton sourire illumine ma vie", "À toi pour toujours",
-            "Ma princesse adorée", "Mon cœur bat pour toi", "Hind ma moitié parfaite", "Je rêve de nous chaque nuit",
-            "Tu es tout pour moi", "Merci d'exister", "B + H éternellement", "Tu es ma lumière",
-            "Ton regard me fait fondre", "Fou amoureux de toi", "Ma douce Hind", "Tu es mon soleil",
-            "Je te chérirai toujours", "Mon amour grandit chaque jour", "Tu es unique au monde", "Je pense à toi sans cesse",
-            "Hind mon ange gardien", "Tu rends ma vie belle", "Je t'adore ma chérie", "Nos âmes sont liées",
-            "Tu es mon bonheur absolu", "Je vis pour toi", "Ton rire est ma joie", "Hind ma reine",
-            "Je t'aime infiniment", "Tout mon cœur t'appartient", "À toi pour la vie", "Mon rêve devenu réalité",
-            "Heureux grâce à toi", "Lumière de mon existence", "Je t'aime plus chaque jour", "Tu es ma muse",
-            "Amour éternel et pur", "Je te protègerai toujours", "Hind mon étoile brillante", "Tu es ma paix",
-            "Plus que tout au monde", "Notre histoire est magique", "Mon paradis sur terre", "Ma douceur Hind",
-            "À toi corps et âme", "Tu illumines mes jours", "Amour infini ❤️", "Hind, je t'aime follement",
-            "Tu es ma raison de vivre", "Chaque battement pour toi", "Mon âme sœur trouvée", "Tendresse infinie",
-            "Tu es parfaite à mes yeux", "Mon cœur est à toi", "Pour toujours ensemble", "Je t'aime à la folie",
-            "Hind, mon tout", "B + H gravé dans les étoiles ❤️"
+        let stars = [];
+        const messages = [
+            "Je t'aime Hind ❤️", "Mon étoile brillante", "B + H éternels", "Tu illumines ma nuit",
+            "Ma princesse cosmique", "Amour infini", "Hind mon univers", "À toi dans les étoiles",
+            "Ton sourire = supernova", "Mon cœur orbite autour de toi", "Hind ma galaxie", "Je t'adore follement",
+            "Notre amour plus grand que tout", "Tu es ma lumière", "Hind mon étoile polaire", "Pour toujours ensemble ❤️"
         ];
 
-        let intensity = 800; // Début lent
-
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('falling-heart');
-
-            if (Math.random() > 0.3) {
-                heart.innerHTML = '❤️ ' + loveMessages[Math.floor(Math.random() * loveMessages.length)];
-            } else {
-                heart.innerHTML = '💕';
-                heart.style.fontSize = '50px';
-            }
-
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = (Math.random() * 8 + 6) + 's';
-
-            // Variation de vitesse selon l'intensité
-            document.body.appendChild(heart);
-
-            setTimeout(() => { heart.remove(); }, 20000);
+        // Créer les étoiles/cœurs de base
+        function createStar() {
+            return {
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                size: Math.random() * 3 + 1,
+                speed: Math.random() * 0.5 + 0.1,
+                opacity: Math.random() * 0.8 + 0.2,
+                twinkle: Math.random() * 0.02
+            };
         }
 
-        // Pluie qui s'intensifie progressivement
-        setInterval(createHeart, intensity);
+        for (let i = 0; i < 300; i++) stars.push(createStar());
 
-        // Augmente la densité toutes les 15 secondes
-        setInterval(() => {
-            intensity = Math.max(100, intensity - 100);
-        }, 15000);
+        // Étoiles filantes avec messages
+        function shootingStar() {
+            const star = {
+                x: Math.random() * canvas.width,
+                y: 0,
+                size: 40,
+                speedX: Math.random() * 4 - 2,
+                speedY: Math.random() * 6 + 4,
+                opacity: 1,
+                message: messages[Math.floor(Math.random() * messages.length)]
+            };
+            stars.push(star);
+        }
+
+        setInterval(shootingStar, 4000);
+
+        // Former lentement B + H
+        let formationProgress = 0;
+
+        function drawBH() {
+            ctx.font = 'bold 100px Georgia';
+            ctx.fillStyle = '#ff69b4';
+            ctx.globalAlpha = formationProgress;
+            ctx.fillText('B + H', canvas.width / 2 - 150, canvas.height / 2 + 30);
+            ctx.globalAlpha = 1;
+        }
+
+        function animate() {
+            ctx.fillStyle = 'rgba(0,0,0,0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            if (formationProgress < 1) formationProgress += 0.002;
+
+            stars.forEach((star, i) => {
+                // Twinkle
+                star.opacity += star.twinkle;
+                if (star.opacity > 1 || star.opacity < 0.3) star.twinkle *= -1;
+
+                ctx.globalAlpha = star.opacity;
+
+                // Dessiner cœur ou étoile
+                if (star.message) {
+                    // Étoile filante avec texte
+                    ctx.font = '30px Georgia';
+                    ctx.fillStyle = '#ff1493';
+                    ctx.fillText('❤️ ' + star.message, star.x, star.y);
+                    star.x += star.speedX;
+                    star.y += star.speedY;
+                    star.opacity -= 0.02;
+                    if (star.opacity <= 0) stars.splice(i, 1);
+                } else {
+                    // Étoiles statiques en forme de cœur
+                    ctx.font = star.size * 10 + 'px Arial';
+                    ctx.fillText('❤️', star.x, star.y);
+                    star.y += star.speed;
+                    if (star.y > canvas.height) star.y = 0;
+                }
+            });
+
+            drawBH();
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
     </script>
 </body>
 </html>
