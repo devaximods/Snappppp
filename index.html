@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dose quotidienne d'amour pour Hind 😂❤️</title>
+    <title>Dose explosive d'amour pour Hind 😂💥</title>
     <style>
         body {
             margin: 0;
@@ -15,94 +15,174 @@
             overflow: hidden;
             position: relative;
         }
-        h1 {
-            font-size: 50px;
-            margin-top: 40px;
-            text-shadow: 3px 3px #fff;
+        #game-area {
+            position: relative;
+            width: 100%;
+            height: 70vh;
         }
-        #message-du-jour {
+        .heart-target, .balloon {
+            position: absolute;
+            font-size: 60px;
+            cursor: pointer;
+            user-select: none;
+        }
+        #daily-message {
             font-size: 36px;
-            max-width: 90%;
-            margin: 50px auto;
             padding: 30px;
             background: white;
             border-radius: 30px;
-            box-shadow: 0 0 30px #ff69b4;
+            margin: 20px auto;
+            max-width: 90%;
+            box-shadow: 0 0 30px #ff1493;
+            display: none;
         }
-        #confetti-btn {
-            font-size: 30px;
-            padding: 20px 40px;
+        #start-btn {
+            font-size: 40px;
+            padding: 20px 50px;
             background: #ff1493;
             color: white;
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            margin: 30px;
-        }
-        .heart {
-            position: absolute;
-            font-size: 50px;
-            animation: bounce linear infinite;
-            pointer-events: none;
-        }
-        @keyframes bounce {
-            0% { transform: translateY(-100vh) rotate(0deg); }
-            100% { transform: translateY(100vh) rotate(360deg); }
-        }
-        #old-messages {
-            margin: 50px;
-            font-size: 24px;
+            margin-top: 200px;
         }
         audio { display: none; }
     </style>
 </head>
 <body>
 
-    <audio id="music" loop autoplay>
-        <source src="https://cdn.pixabay.com/download/audio/2022/03/28/audio_0c3e0c5d5c.mp3?filename=piano-moment-9837.mp3" type="audio/mpeg">
-    </audio>
-
     <h1>Jour 1 – 15 décembre 2025</h1>
+    <button id="start-btn">Clique pour lancer le mini-jeu débile du jour 😂💥</button>
 
-    <div id="message-du-jour">
+    <div id="game-area"></div>
+
+    <div id="daily-message">
         Hind ma chérie,<br><br>
         Raison du jour pourquoi je t’aime :<br><br>
-        Parce que même si tu ronfles comme un tracteur la nuit, je dors mieux dans ton bruit que dans le silence sans toi 😂❤️<br><br>
-        (Et demain, une nouvelle raison encore plus débile, promis !)
+        Parce que même quand tu pètes sous la couette et que tu fais genre "c’était pas moi", je trouve ça trop mignon et je respire ton parfum d’amour quand même 😂❤️<br><br>
+        (Demain un nouveau jeu encore plus con, promis juré !)
     </div>
 
-    <button id="confetti-btn">Clique pour une explosion d'amour ! 💥</button>
-
-    <div id="old-messages">
-        <!-- Tu ajoutes les anciens messages ici au fil des jours -->
-        <!-- Exemple : <p>Jour précédent : blablabla</p> -->
-    </div>
+    <audio id="pop-sound" src="https://www.soundjay.com/buttons/sounds/button-09.mp3"></audio>
+    <audio id="win-sound" src="https://www.soundjay.com/human/sounds/applause-01.mp3"></audio>
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script>
-        const music = document.getElementById('music');
-        music.volume = 0.4;
+        const startBtn = document.getElementById('start-btn');
+        const gameArea = document.getElementById('game-area');
+        const dailyMessage = document.getElementById('daily-message');
+        const popSound = document.getElementById('pop-sound');
+        const winSound = document.getElementById('win-sound');
 
-        // Coeurs qui rebondissent partout
-        setInterval(() => {
-            const heart = document.createElement('div');
-            heart.classList.add('heart');
-            heart.innerHTML = Math.random() > 0.5 ? '❤️' : '😂';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
-            document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 8000);
-        }, 800);
+        // CHANGE ÇA CHAQUE JOUR
+        const gameType = 1; // 1 = Explose les ronfleurs, 2 = Ballons, 3 = Shooter
+        let score = 0;
+        const targetCount = 10;
 
-        // Confettis au clic
-        document.getElementById('confetti-btn').addEventListener('click', () => {
-            confetti({
-                particleCount: 200,
-                spread: 100,
-                origin: { y: 0.6 },
-                colors: ['#ff69b4', '#ff1493', '#fff']
-            });
+        startBtn.addEventListener('click', () => {
+            startBtn.style.display = 'none';
+            if (gameType === 1) playGame1();
+            if (gameType === 2) playGame2();
+            if (gameType === 3) playGame3();
         });
+
+        function playGame1() { // Explose les cœurs qui ronflent
+            let popped = 0;
+            const interval = setInterval(() => {
+                if (popped >= targetCount) {
+                    clearInterval(interval);
+                    endGame();
+                    return;
+                }
+                const heart = document.createElement('div');
+                heart.classList.add('heart-target');
+                heart.innerHTML = '💤❤️';
+                heart.style.left = Math.random() * 90 + 'vw';
+                heart.style.top = Math.random() * 80 + 'vh';
+                heart.addEventListener('click', () => {
+                    heart.innerHTML = '💥';
+                    popSound.play();
+                    popped++;
+                    score++;
+                    setTimeout(() => heart.remove(), 500);
+                });
+                gameArea.appendChild(heart);
+
+                setTimeout(() => { if (heart.parentNode) heart.remove(); }, 5000);
+            }, 1000);
+        }
+
+        function playGame2() { // Ballons qui grossissent
+            let popped = 0;
+            const interval = setInterval(() => {
+                if (popped >= targetCount) {
+                    clearInterval(interval);
+                    endGame();
+                    return;
+                }
+                const balloon = document.createElement('div');
+                balloon.classList.add('balloon');
+                balloon.innerHTML = '🎈';
+                balloon.style.fontSize = '40px';
+                balloon.style.left = Math.random() * 90 + 'vw';
+                balloon.style.bottom = '-100px';
+                gameArea.appendChild(balloon);
+
+                let size = 40;
+                const grow = setInterval(() => {
+                    size += 10;
+                    balloon.style.fontSize = size + 'px';
+                    if (size > 120) {
+                        balloon.innerHTML = '💥';
+                        clearInterval(grow);
+                        setTimeout(() => balloon.remove(), 500);
+                    }
+                }, 500);
+
+                balloon.addEventListener('click', () => {
+                    balloon.innerHTML = '💥';
+                    popSound.play();
+                    clearInterval(grow);
+                    popped++;
+                    score++;
+                    setTimeout(() => balloon.remove(), 500);
+                });
+            }, 1500);
+        }
+
+        function playGame3() { // Mini shooter (clique sur les ennemis)
+            // Tu peux ajouter des emojis chiants : ⏰ 🥦 😭 etc.
+            let killed = 0;
+            const enemies = ['⏰', '🥦', '😭', '📚', '💔'];
+            const interval = setInterval(() => {
+                if (killed >= targetCount) {
+                    clearInterval(interval);
+                    endGame();
+                    return;
+                }
+                const enemy = document.createElement('div');
+                enemy.classList.add('heart-target');
+                enemy.innerHTML = enemies[Math.floor(Math.random() * enemies.length)];
+                enemy.style.left = Math.random() * 90 + 'vw';
+                enemy.style.top = Math.random() * 80 + 'vh';
+                enemy.addEventListener('click', () => {
+                    enemy.innerHTML = '💥❤️';
+                    popSound.play();
+                    killed++;
+                    score++;
+                    setTimeout(() => enemy.remove(), 500);
+                });
+                gameArea.appendChild(enemy);
+                setTimeout(() => { if (enemy.parentNode) enemy.remove(); }, 4000);
+            }, 1200);
+        }
+
+        function endGame() {
+            winSound.play();
+            confetti({ particleCount: 300, spread: 100 });
+            dailyMessage.style.display = 'block';
+            gameArea.innerHTML = `<h2>Score : ${score}/${targetCount} 😂<br>Tu as gagné mon amour éternel !</h2>`;
+        }
     </script>
 </body>
 </html>
