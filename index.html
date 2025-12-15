@@ -3,69 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hind, mon amour éternel ❤️</title>
+    <title>Hind, je t'aime pour toujours ❤️</title>
     <style>
         body {
             margin: 0;
             height: 100vh;
-            background: #000000;
+            background: linear-gradient(to bottom, #fff0f5, #ffe6f2);
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            transition: background 3s ease;
-        }
-        #big-heart-container {
-            width: 80vw;
-            max-width: 700px;
-            padding: 50px;
-            background: radial-gradient(circle, #ff69b4, #ff1493);
-            border-radius: 50%;
-            box-shadow: 0 0 80px #ff69b4;
-            cursor: pointer;
-            animation: heartbeat 2s infinite ease-in-out;
-            user-select: none;
-            text-align: center;
-            color: white;
             font-family: 'Georgia', serif;
-            font-size: 26px;
+            color: #d63384;
+            position: relative;
+        }
+        #love-message {
+            max-width: 90%;
+            text-align: center;
+            font-size: 28px;
             line-height: 1.9;
-            opacity: 1;
-            transition: all 1.5s ease;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.3);
+            opacity: 0;
+            animation: fadeIn 4s forwards;
+            z-index: 10;
         }
-        @keyframes heartbeat {
-            0% { transform: scale(1); }
-            20% { transform: scale(1.05); }
-            40% { transform: scale(1); }
-            60% { transform: scale(1.08); }
-            80% { transform: scale(1); }
-            100% { transform: scale(1); }
+        @keyframes fadeIn {
+            to { opacity: 1; }
         }
-        #love-text {
-            max-height: 60vh;
-            overflow-y: auto;
+        h1 {
+            font-size: 48px;
+            color: #ff1493;
+            margin-bottom: 30px;
         }
-        .exploded {
-            background: linear-gradient(to bottom, #ffe6f2, #ffb6c1) !important;
-        }
-        .floating-heart {
+        .falling-heart {
             position: absolute;
             font-size: 38px;
             color: #ff69b4;
             pointer-events: none;
             white-space: nowrap;
-            animation: fall linear infinite;
             opacity: 0.9;
+            animation: fall linear infinite;
+            z-index: 5;
         }
         @keyframes fall {
-            0% { transform: translateY(-100vh) rotate(0deg); opacity: 0; }
+            0% { 
+                transform: translateY(-100vh) rotate(0deg) scale(1);
+                opacity: 0;
+            }
             10% { opacity: 0.9; }
             90% { opacity: 0.9; }
-            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
-        }
-        h1 {
-            font-size: 40px;
-            margin-bottom: 30px;
+            100% { 
+                transform: translateY(100vh) rotate(360deg) scale(0.8);
+                opacity: 0;
+            }
         }
         audio {
             display: none;
@@ -74,66 +67,52 @@
 </head>
 <body>
 
-    <!-- Musique romantique douce qui boucle automatiquement -->
-    <audio id="romantic-music" loop autoplay volume="0.4">
-        <source src="https://www.bensound.com/royalty-free-music/track/love/mp3" type="audio/mpeg">
-        Ton navigateur ne supporte pas l'audio. 😢
+    <!-- Musique romantique piano douce qui boucle -->
+    <audio id="romantic-music" loop autoplay>
+        <source src="https://cdn.pixabay.com/download/audio/2022/03/28/audio_0c3e0c5d5c.mp3?filename=piano-moment-9837.mp3" type="audio/mpeg">
+        Ton navigateur ne supporte pas l'audio.
     </audio>
 
-    <div id="big-heart-container">
-        <div id="love-text">
-            <h1>Hind, ma Chérie éternelle ❤️</h1>
-            <p>Hind, depuis le premier regard, mon cœur n’appartient plus qu’à toi. Tu es la douceur qui apaise mes jours, la lumière qui guide mes nuits.</p>
-            <p>Ton sourire est mon trésor le plus précieux, ta voix la mélodie que je veux entendre pour toujours. Tu es belle, intelligente, forte, gentille… tout ce que j’ai toujours rêvé.</p>
-            <p>Je t’aime d’un amour pur et infini. Je veux te rendre heureuse chaque jour, te soutenir dans tes rêves, te serrer dans mes bras quand le monde est dur.</p>
-            <p>Tu es ma princesse, ma reine, mon âme sœur. Avec toi, je veux construire une vie pleine de tendresse, de rires et de moments magiques.</p>
-            <p>Clique sur ce cœur qui bat pour toi… laisse la musique et l’amour t’envelopper.</p>
-            <p>Je t’aime plus que les mots, plus que tout.<br>Pour l’éternité,<br>B + H ❤️</p>
-        </div>
+    <div id="love-message">
+        <h1>Hind, mon amour éternel ❤️</h1>
+        <p>Hind, ma chérie, depuis que tu es dans ma vie, chaque jour est une bénédiction. Tu es la douceur de mes matins, la chaleur de mes nuits, la lumière qui guide tous mes pas.</p>
+        <p>Ton sourire fait fondre mon cœur, ta voix est la plus belle mélodie, ton regard est mon refuge. Tu es intelligente, forte, belle à l’intérieur comme à l’extérieur.</p>
+        <p>Je t’aime d’un amour profond, sincère et infini. Je veux te rendre heureuse chaque jour, te soutenir, te chérir, te serrer dans mes bras pour toujours.</p>
+        <p>Tu es ma princesse, ma reine, mon âme sœur. Avec toi, je veux vieillir en t’aimant encore plus chaque année.</p>
+        <p>Laisse cette musique et cette pluie de cœurs t’envelopper… ils portent tous les mots que je ressens pour toi.</p>
+        <p>Je t’aime plus que tout au monde.<br>Pour l’éternité,<br>B + H ❤️</p>
     </div>
 
     <script>
-        const container = document.getElementById('big-heart-container');
-        const body = document.body;
         const music = document.getElementById('romantic-music');
-
-        // La musique démarre automatiquement (et boucle)
+        music.volume = 0.5;
         music.play();
 
         const loveMessages = [
-            "Je t'aime Hind ❤️", "Mon trésor éternel", "Ton sourire me fait vivre", "À toi pour toujours",
-            "Ma princesse adorée", "Mon cœur bat pour toi", "Hind ma moitié", "Je rêve de nous",
-            "Tu es parfaite", "Merci d'être dans ma vie", "B + H infiniment", "Tu es ma lumière",
-            "Ton regard m'enchante", "Fou de toi", "Ma douce Hind", "Tu es mon soleil",
-            "Je te chérirai toujours", "Mon amour grandit chaque jour", "Tu es unique", "Je pense à toi toujours",
-            "Hind mon ange", "Tu rends tout beau", "Je t'adore ma chérie", "Nos âmes sont liées",
-            "Mon bonheur c'est toi", "Je vis pour toi", "Ton rire ma joie", "Hind ma reine",
-            "Je t'aime à l'infini", "Tout à toi", "Mon cœur t'appartient", "Pour la vie ensemble",
-            "Mon rêve devenu vrai", "Heureux grâce à toi", "Lumière de ma vie", "Je t'aime plus chaque jour",
-            "Tu es ma muse", "Amour éternel", "Je te protège toujours", "Hind mon étoile",
-            "Tu es ma paix", "Plus que tout au monde", "Notre histoire est magique", "Mon paradis",
-            "Ma douceur Hind", "À toi corps et âme", "Tu illumines mon monde", "Amour infini ❤️"
+            "Je t'aime Hind ❤️", "Mon trésor précieux", "Ton sourire illumine ma vie", "À toi pour toujours",
+            "Ma princesse adorée", "Mon cœur bat pour toi", "Hind ma moitié parfaite", "Je rêve de nous chaque nuit",
+            "Tu es tout pour moi", "Merci d'exister", "B + H éternellement", "Tu es ma lumière",
+            "Ton regard me fait fondre", "Fou amoureux de toi", "Ma douce Hind", "Tu es mon soleil",
+            "Je te chérirai toujours", "Mon amour grandit chaque jour", "Tu es unique au monde", "Je pense à toi sans cesse",
+            "Hind mon ange gardien", "Tu rends ma vie belle", "Je t'adore ma chérie", "Nos âmes sont liées",
+            "Tu es mon bonheur absolu", "Je vis pour toi", "Ton rire est ma joie", "Hind ma reine",
+            "Je t'aime infiniment", "Tout mon cœur t'appartient", "À toi pour la vie", "Mon rêve devenu réalité",
+            "Heureux grâce à toi", "Lumière de mon existence", "Je t'aime plus chaque jour", "Tu es ma muse",
+            "Amour éternel et pur", "Je te protègerai toujours", "Hind mon étoile brillante", "Tu es ma paix",
+            "Plus que tout au monde", "Notre histoire est magique", "Mon paradis sur terre", "Ma douceur Hind",
+            "À toi corps et âme", "Tu illumines mes jours", "Amour infini ❤️", "Hind, je t'aime follement",
+            "Tu es ma raison de vivre", "Chaque battement pour toi", "Mon âme sœur trouvée", "Tendresse infinie",
+            "Tu es parfaite à mes yeux", "Mon cœur est à toi", "Pour toujours ensemble", "Je t'aime à la folie",
+            "Hind, mon tout", "B + H gravé dans les étoiles ❤️"
         ];
 
-        container.addEventListener('click', () => {
-            container.style.transform = 'scale(2.5)';
-            container.style.opacity = '0';
-            container.style.boxShadow = '0 0 300px #ff1493';
+        let intensity = 800; // Début lent
 
-            setTimeout(() => {
-                container.style.display = 'none';
-                body.classList.add('exploded');
-
-                // Pluie infinie de cœurs avec messages
-                setInterval(createFloatingHeart, 300);
-            }, 1200);
-        });
-
-        function createFloatingHeart() {
+        function createHeart() {
             const heart = document.createElement('div');
-            heart.classList.add('floating-heart');
+            heart.classList.add('falling-heart');
 
-            if (Math.random() > 0.35) {
+            if (Math.random() > 0.3) {
                 heart.innerHTML = '❤️ ' + loveMessages[Math.floor(Math.random() * loveMessages.length)];
             } else {
                 heart.innerHTML = '💕';
@@ -141,11 +120,21 @@
             }
 
             heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = (Math.random() * 6 + 6) + 's';
-            body.appendChild(heart);
+            heart.style.animationDuration = (Math.random() * 8 + 6) + 's';
 
-            setTimeout(() => { heart.remove(); }, 16000);
+            // Variation de vitesse selon l'intensité
+            document.body.appendChild(heart);
+
+            setTimeout(() => { heart.remove(); }, 20000);
         }
+
+        // Pluie qui s'intensifie progressivement
+        setInterval(createHeart, intensity);
+
+        // Augmente la densité toutes les 15 secondes
+        setInterval(() => {
+            intensity = Math.max(100, intensity - 100);
+        }, 15000);
     </script>
 </body>
 </html>
