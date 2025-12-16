@@ -3,119 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cœur cosmique pour Indou ❤️</title>
+    <title>Cœurs flottants pour Hindou ❤️</title>
+    <!-- css-doodle library volée -->
+    <script src="https://unpkg.com/css-doodle@0.34.0/css-doodle.min.js"></script>
     <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            background: #000;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        html, body { 
+            margin: 0; 
+            height: 100vh; 
+            overflow: hidden; 
+            background: #000; /* Fond noir cosmique pour intensité */
         }
-        .container {
-            position: relative;
-            width: 80vw;
-            max-width: 800px;
-            animation: float 8s infinite ease-in-out;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-40px) rotate(5deg); }
-        }
-        .big-heart {
-            width: 100%;
-            height: 0;
-            padding-bottom: 100%;
-            position: relative;
-            background: radial-gradient(circle at 30% 30%, #ff3366, #cc0033);
-            border-radius: 50%;
-            box-shadow: 0 0 120px #ff0033, 0 0 200px #ff3366;
-            animation: pulseGlow 3s infinite alternate, slowRotate 30s infinite linear;
-        }
-        .big-heart::before, .big-heart::after {
-            content: '';
+        .message {
             position: absolute;
-            width: 50%;
-            height: 80%;
-            background: inherit;
-            border-radius: 50%;
-            top: 10%;
-        }
-        .big-heart::before {
-            left: 25%;
-            transform: rotate(-45deg);
-        }
-        .big-heart::after {
-            right: 25%;
-            transform: rotate(45deg);
-        }
-        @keyframes pulseGlow {
-            0% { box-shadow: 0 0 100px #ff0033, 0 0 180px #ff3366; transform: scale(1); }
-            100% { box-shadow: 0 0 150px #ff3366, 0 0 250px #ff6699; transform: scale(1.03); }
-        }
-        @keyframes slowRotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        .small-heart {
-            position: absolute;
-            top: -10%;
+            top: 50%;
             left: 50%;
-            transform: translateX(-50%);
-            font-size: 80px;
-            animation: smallPulse 2s infinite;
+            transform: translate(-50%, -50%);
+            font-size: 32px;
+            font-family: 'Georgia', serif;
+            text-align: center;
+            color: white;
+            opacity: 0;
+            animation: fadeIn 5s forwards 3s;
+            z-index: 10;
+            max-width: 90%;
+            text-shadow: 0 0 20px red;
         }
-        @keyframes smallPulse {
-            0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.8; }
-            50% { transform: translateX(-50%) scale(1.2); opacity: 1; }
-        }
-        .floor {
-            position: absolute;
-            bottom: 5vh;
-            width: 90%;
-            height: 2px;
-            background: rgba(255,255,255,0.15);
-            left: 5%;
-        }
-        .stars {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-        }
-        .star {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            animation: twinkle 4s infinite alternate;
-        }
-        @keyframes twinkle {
-            0% { opacity: 0.4; }
-            100% { opacity: 1; }
+        @keyframes fadeIn {
+            to { opacity: 1; }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="big-heart"></div>
-    <div class="small-heart">❤️</div>
+<div class="message">
+    Le jour où ce cœur s'éteindra,<br>
+    mon amour pour toi, Hindou,<br>
+    brillera encore plus fort<br>
+    dans l'éternité.<br><br>
+    ❤️
 </div>
 
-<div class="floor"></div>
+<css-doodle>
+    <style>
+        --color: #ff3366, #ff6699, #cc0033, #ff0033; /* Rouge passion pour ton amour sanglant */
 
-<div class="stars">
-    <!-- 40 étoiles random pour le cosmos -->
-    <div class="star" style="top:5%; left:10%; width:4px; height:4px; animation-delay:0s;"></div>
-    <div class="star" style="top:15%; left:80%; width:3px; height:3px; animation-delay:1s;"></div>
-    <div class="star" style="top:30%; left:20%; width:5px; height:5px; animation-delay:2s;"></div>
-    <div class="star" style="top:50%; left:90%; width:2px; height:2px; animation-delay:0.5s;"></div>
-    <div class="star" style="top:70%; left:40%; width:4px; height:4px; animation-delay:3s;"></div>
-    <!-- Copie-colle plus pour remplir le ciel -->
-</div>
+        @grid: 40x1 / 100vw 100vh / #000; /* Plus de cœurs, fond noir */
+
+        :container {
+            perspective: 40vmin; /* Plus de profondeur 3D */
+            --deg: @p(-360deg, 360deg); /* Rotation folle */
+        }
+
+        :after, :before {
+            content: '';
+            background: @p(--color); 
+            @place: @r(100%) @r(100%);
+            @size: @r(10px, 30px); /* Cœurs plus gros */
+            @shape: heart;
+            box-shadow: 0 0 20px @p(--color); /* Glow intense */
+        }
+
+        @place: center;
+        @size: 25vmin; /* Cœur central géant */
+
+        box-shadow: @m3(0 0 80px @p(--color)); /* Glow de malade */
+        background: @m200(
+            radial-gradient(@p(--color) 40%, transparent 0) 
+            @r(-30%, 130%) @r(-30%, 130%) / 2px 2px
+            no-repeat
+        );
+
+        will-change: transform, opacity;
+        animation: scale-up 10s linear infinite; /* Plus lent pour hypnotiser */
+        animation-delay: calc(-10s / @I * @i);
+
+        @keyframes scale-up {
+            0%, 95.01%, 100% {
+                transform: translateZ(0) rotate(0);
+                opacity: 0;
+            }
+            5% { 
+                opacity: 1; 
+            }
+            95% {
+                transform: 
+                    translateZ(50vmin) rotateZ(var(--deg)) scale(1.5); /* Plus loin, plus gros */
+            }
+        }
+    </style>
+</css-doodle>
 
 </body>
 </html>
