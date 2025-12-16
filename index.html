@@ -3,33 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Le text amoureux pour Hind ❤️</title>
+    <title>Mon soleil, c'est toi Hind ❤️</title>
     <style>
         body {
             margin: 0;
             height: 100vh;
-            background: #000;
+            background: white;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             font-family: 'Georgia', serif;
-            color: white;
-        }
-        .title {
-            font-size: 40px;
-            margin-bottom: 50px;
-            opacity: 0;
-            animation: fadeIn 3s forwards 1s;
+            color: black;
         }
         .message {
             text-align: center;
             font-size: 28px;
             line-height: 1.8;
             max-width: 80%;
+            margin-bottom: 50px;
             opacity: 0;
-            animation: fadeIn 4s forwards 4s;
+            animation: fadeIn 4s forwards 1s;
         }
         @keyframes fadeIn {
             to { opacity: 1; }
@@ -38,138 +33,158 @@
             position: relative;
             width: 100%;
             height: 50vh;
+            background: white;
         }
         .road {
             position: absolute;
-            bottom: 100px;
+            bottom: 150px;
             width: 100%;
-            height: 6px;
-            background: white;
-            opacity: 0.3;
+            height: 4px;
+            background: black;
         }
         .character {
             position: absolute;
-            bottom: 100px;
+            bottom: 150px;
             left: -100px;
-            width: 100px;
-            animation: walk 30s linear infinite;
+            width: 80px;
+            animation: walkToSun 25s linear forwards;
         }
-        @keyframes walk {
+        @keyframes walkToSun {
             0% { left: -150px; }
-            100% { left: calc(100vw + 150px); }
+            100% { left: 60%; }
+        }
+        .stickman {
+            width: 60px;
+            height: 100px;
+            position: relative;
         }
         .head {
-            width: 50px;
-            height: 50px;
-            background: white;
-            border-radius: 50%;
-            position: relative;
-            margin: 0 auto 10px;
-        }
-        .eyes {
-            position: absolute;
-            width: 8px;
-            height: 8px;
+            width: 30px;
+            height: 30px;
             background: black;
             border-radius: 50%;
-            top: 20px;
-        }
-        .eye-left { left: 12px; }
-        .eye-right { right: 12px; }
-        .smile {
             position: absolute;
-            width: 20px;
-            height: 10px;
-            border-bottom: 4px solid black;
-            border-radius: 50%;
-            bottom: 12px;
-            left: 50%;
-            transform: translateX(-50%);
+            top: 0;
+            left: 15px;
         }
         .body {
-            width: 40px;
-            height: 60px;
-            background: white;
-            border-radius: 20px;
-            margin: 0 auto;
+            width: 4px;
+            height: 50px;
+            background: black;
+            position: absolute;
+            top: 30px;
+            left: 28px;
         }
         .arms {
+            width: 40px;
+            height: 4px;
+            background: black;
             position: absolute;
-            width: 20px;
-            height: 50px;
-            background: white;
-            border-radius: 10px;
-            top: 60px;
-            animation: swing 2s infinite alternate;
+            top: 50px;
+            left: 10px;
+            animation: swing 1s infinite alternate;
         }
-        .arm-left { left: 10px; }
-        .arm-right { right: 10px; animation-delay: 1s; }
         @keyframes swing {
-            0% { transform: rotate(-30deg); }
-            100% { transform: rotate(30deg); }
+            0% { transform: rotate(-20deg); }
+            100% { transform: rotate(20deg); }
         }
-        .lamp {
-            position: absolute;
-            width: 30px;
+        .legs {
+            width: 4px;
             height: 40px;
-            background: #ffd700;
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            bottom: -30px;
-            right: -30px;
-            box-shadow: 0 0 30px #ffd700;
-            animation: flicker 3s infinite;
-        }
-        @keyframes flicker {
-            0%, 100% { opacity: 0.8; box-shadow: 0 0 40px #ffd700; }
-            50% { opacity: 1; box-shadow: 0 0 60px #ffaa00; }
-        }
-        .light-beam {
+            background: black;
             position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(255,215,0,0.4) 0%, transparent 60%);
-            bottom: -150px;
-            right: -150px;
+            top: 80px;
+        }
+        .leg-left { left: 20px; animation: walkLeg 1s infinite alternate; }
+        .leg-right { left: 36px; animation: walkLeg 1s infinite alternate-reverse; }
+        @keyframes walkLeg {
+            0% { transform: rotate(-20deg); }
+            100% { transform: rotate(20deg); }
+        }
+        .sun {
+            position: absolute;
+            top: 50px;
+            right: 10%;
+            width: 100px;
+            height: 100px;
+            opacity: 0;
+            animation: appearSun 10s forwards 5s;
+        }
+        @keyframes appearSun {
+            to { opacity: 1; transform: scale(1.2); }
+        }
+        .sun-face {
+            width: 100px;
+            height: 100px;
+            background: yellow;
             border-radius: 50%;
-            animation: flicker 3s infinite;
+            position: relative;
+            box-shadow: 0 0 40px orange;
         }
-        .look-up {
-            animation: lookUp 8s infinite;
+        .sun-smile {
+            width: 50px;
+            height: 20px;
+            border-bottom: 8px solid orange;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 20px;
+            left: 25px;
         }
-        @keyframes lookUp {
-            20%, 30% { transform: translateY(-20px); }
+        .sun-rays {
+            position: absolute;
+            width: 100%;
+            height: 100%;
         }
+        .ray {
+            position: absolute;
+            width: 10px;
+            height: 50px;
+            background: orange;
+            top: -20px;
+            left: 45px;
+            transform-origin: bottom center;
+        }
+        .ray:nth-child(1) { transform: rotate(0deg); }
+        .ray:nth-child(2) { transform: rotate(45deg); }
+        .ray:nth-child(3) { transform: rotate(90deg); }
+        .ray:nth-child(4) { transform: rotate(135deg); }
+        .ray:nth-child(5) { transform: rotate(180deg); }
+        .ray:nth-child(6) { transform: rotate(225deg); }
+        .ray:nth-child(7) { transform: rotate(270deg); }
+        .ray:nth-child(8) { transform: rotate(315deg); }
     </style>
 </head>
 <body>
 
-<div class="title">Le text amoureux</div>
-
 <div class="message">
-    Je marche dans le noir,<br>
-    une petite lampe à la main,<br>
-    cherchant le bonheur partout...<br><br>
-    Mais sans toi, Hind,<br>
-    la lumière n’est jamais assez forte.<br><br>
-    Tu es ma vraie lumière.<br>
-    Reviens illuminer ma route, ma chérie.<br><br>
-    Je t’aime infiniment. ❤️
+    J'ai marché longtemps dans le noir,<br>
+    cherchant le bonheur...<br><br>
+    Et puis je t'ai trouvée, Hind.<br><br>
+    Tu es mon soleil qui sourit,<br>
+    qui réchauffe tout,<br>
+    qui illumine ma vie entière.<br><br>
+    Merci d'être là, ma chérie.<br>
+    Je t’aime pour toujours. ❤️
 </div>
 
 <div class="scene">
     <div class="road"></div>
-    <div class="character look-up">
-        <div class="head">
-            <div class="eyes eye-left"></div>
-            <div class="eyes eye-right"></div>
-            <div class="smile"></div>
+    <div class="character">
+        <div class="stickman">
+            <div class="head"></div>
+            <div class="body"></div>
+            <div class="arms"></div>
+            <div class="legs leg-left"></div>
+            <div class="legs leg-right"></div>
         </div>
-        <div class="body">
-            <div class="arms arm-left"></div>
-            <div class="arms arm-right">
-                <div class="lamp"></div>
-                <div class="light-beam"></div>
-            </div>
+    </div>
+    <div class="sun">
+        <div class="sun-face">
+            <div class="sun-smile"></div>
+        </div>
+        <div class="sun-rays">
+            <div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div>
+            <div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div>
         </div>
     </div>
 </div>
