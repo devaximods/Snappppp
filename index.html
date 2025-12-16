@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon soleil, c'est toi Hind ❤️</title>
+    <title>Hind, mon soleil ❤️</title>
     <style>
         body {
             margin: 0;
@@ -11,173 +11,132 @@
             background: white;
             overflow: hidden;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Georgia', serif;
-            color: black;
-        }
-        .message {
-            text-align: center;
-            font-size: 28px;
-            line-height: 1.8;
-            max-width: 80%;
-            margin-bottom: 50px;
-            opacity: 0;
-            animation: fadeIn 4s forwards 1s;
-        }
-        @keyframes fadeIn {
-            to { opacity: 1; }
+            align-items: flex-end;
+            justify-content: flex-start;
         }
         .scene {
             position: relative;
-            width: 100%;
-            height: 50vh;
-            background: white;
+            width: 100vw;
+            height: 100vh;
         }
         .road {
             position: absolute;
-            bottom: 150px;
+            bottom: 20vh;
             width: 100%;
             height: 4px;
             background: black;
         }
-        .character {
-            position: absolute;
-            bottom: 150px;
-            left: -100px;
-            width: 80px;
-            animation: walkToSun 25s linear forwards;
-        }
-        @keyframes walkToSun {
-            0% { left: -150px; }
-            100% { left: 60%; }
-        }
         .stickman {
-            width: 60px;
-            height: 100px;
-            position: relative;
+            position: absolute;
+            bottom: 20vh;
+            left: -10vw;
+            width: 80px;
+            animation: walkAcross 35s linear forwards;
+        }
+        @keyframes walkAcross {
+            0% { left: -10vw; }
+            100% { left: 85vw; } /* Il arrive presque au soleil à droite */
         }
         .head {
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
             background: black;
             border-radius: 50%;
             position: absolute;
             top: 0;
-            left: 15px;
+            left: 20px;
         }
         .body {
-            width: 4px;
+            width: 6px;
+            height: 60px;
+            background: black;
+            position: absolute;
+            top: 40px;
+            left: 37px;
+        }
+        .arms {
+            position: absolute;
+            width: 50px;
+            height: 6px;
+            background: black;
+            top: 60px;
+            left: 15px;
+            transform-origin: center;
+            animation: swingArms 1s infinite alternate;
+        }
+        @keyframes swingArms {
+            0% { transform: rotate(-30deg); }
+            100% { transform: rotate(30deg); }
+        }
+        .leg-left, .leg-right {
+            width: 6px;
             height: 50px;
             background: black;
             position: absolute;
-            top: 30px;
-            left: 28px;
+            top: 100px;
         }
-        .arms {
-            width: 40px;
-            height: 4px;
-            background: black;
-            position: absolute;
-            top: 50px;
-            left: 10px;
-            animation: swing 1s infinite alternate;
-        }
-        @keyframes swing {
-            0% { transform: rotate(-20deg); }
-            100% { transform: rotate(20deg); }
-        }
-        .legs {
-            width: 4px;
-            height: 40px;
-            background: black;
-            position: absolute;
-            top: 80px;
-        }
-        .leg-left { left: 20px; animation: walkLeg 1s infinite alternate; }
-        .leg-right { left: 36px; animation: walkLeg 1s infinite alternate-reverse; }
+        .leg-left { left: 25px; animation: walkLeg 1s infinite alternate; }
+        .leg-right { left: 49px; animation: walkLeg 1s infinite alternate-reverse; }
         @keyframes walkLeg {
-            0% { transform: rotate(-20deg); }
-            100% { transform: rotate(20deg); }
+            0% { transform: rotate(-25deg); }
+            100% { transform: rotate(25deg); }
         }
         .sun {
             position: absolute;
-            top: 50px;
-            right: 10%;
-            width: 100px;
-            height: 100px;
-            opacity: 0;
-            animation: appearSun 10s forwards 5s;
-        }
-        @keyframes appearSun {
-            to { opacity: 1; transform: scale(1.2); }
+            bottom: 25vh;
+            right: 5vw;
+            width: 150px;
+            height: 150px;
         }
         .sun-face {
-            width: 100px;
-            height: 100px;
+            width: 150px;
+            height: 150px;
             background: yellow;
             border-radius: 50%;
             position: relative;
-            box-shadow: 0 0 40px orange;
+            box-shadow: 0 0 60px orange;
         }
         .sun-smile {
-            width: 50px;
-            height: 20px;
-            border-bottom: 8px solid orange;
+            width: 80px;
+            height: 40px;
+            border-bottom: 12px solid orange;
             border-radius: 50%;
             position: absolute;
-            bottom: 20px;
-            left: 25px;
+            bottom: 30px;
+            left: 35px;
         }
-        .sun-rays {
+        .sun-rays .ray {
             position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-        .ray {
-            position: absolute;
-            width: 10px;
-            height: 50px;
+            width: 12px;
+            height: 80px;
             background: orange;
-            top: -20px;
-            left: 45px;
+            top: -30px;
+            left: 69px;
             transform-origin: bottom center;
         }
-        .ray:nth-child(1) { transform: rotate(0deg); }
-        .ray:nth-child(2) { transform: rotate(45deg); }
-        .ray:nth-child(3) { transform: rotate(90deg); }
-        .ray:nth-child(4) { transform: rotate(135deg); }
-        .ray:nth-child(5) { transform: rotate(180deg); }
-        .ray:nth-child(6) { transform: rotate(225deg); }
-        .ray:nth-child(7) { transform: rotate(270deg); }
-        .ray:nth-child(8) { transform: rotate(315deg); }
+        .sun-rays .ray:nth-child(1) { transform: rotate(0deg); }
+        .sun-rays .ray:nth-child(2) { transform: rotate(45deg); }
+        .sun-rays .ray:nth-child(3) { transform: rotate(90deg); }
+        .sun-rays .ray:nth-child(4) { transform: rotate(135deg); }
+        .sun-rays .ray:nth-child(5) { transform: rotate(180deg); }
+        .sun-rays .ray:nth-child(6) { transform: rotate(225deg); }
+        .sun-rays .ray:nth-child(7) { transform: rotate(270deg); }
+        .sun-rays .ray:nth-child(8) { transform: rotate(315deg); }
     </style>
 </head>
 <body>
 
-<div class="message">
-    J'ai marché longtemps dans le noir,<br>
-    cherchant le bonheur...<br><br>
-    Et puis je t'ai trouvée, Hind.<br><br>
-    Tu es mon soleil qui sourit,<br>
-    qui réchauffe tout,<br>
-    qui illumine ma vie entière.<br><br>
-    Merci d'être là, ma chérie.<br>
-    Je t’aime pour toujours. ❤️
-</div>
-
 <div class="scene">
     <div class="road"></div>
-    <div class="character">
-        <div class="stickman">
-            <div class="head"></div>
-            <div class="body"></div>
-            <div class="arms"></div>
-            <div class="legs leg-left"></div>
-            <div class="legs leg-right"></div>
-        </div>
+    
+    <div class="stickman">
+        <div class="head"></div>
+        <div class="body"></div>
+        <div class="arms"></div>
+        <div class="leg-left"></div>
+        <div class="leg-right"></div>
     </div>
+    
     <div class="sun">
         <div class="sun-face">
             <div class="sun-smile"></div>
