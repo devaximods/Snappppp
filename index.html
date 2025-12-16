@@ -3,148 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toi + Moi = Bonheur éternel ❤️</title>
+    <title>Hind & Moi vers le bonheur ❤️</title>
     <style>
         body {
             margin: 0;
             height: 100vh;
-            background: linear-gradient(to bottom, #fffaf0, #ffe4e1);
+            background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+            perspective: 1000px;
             overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
         }
         .scene {
             position: relative;
             width: 100vw;
             height: 100vh;
+            transform-style: preserve-3d;
+        }
+        .road {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 50vh;
+            background: linear-gradient(to bottom, #d3d3d3, #a9a9a9);
+            transform: rotateX(70deg);
+            transform-origin: bottom;
+            box-shadow: 0 0 50px rgba(0,0,0,0.3);
+        }
+        .lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(to bottom, transparent 0, transparent 20px, white 20px, white 40px);
+            opacity: 0.5;
+        }
+        .couple {
+            position: absolute;
+            bottom: 10vh;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            animation: walkToHorizon 40s linear forwards;
+            transform-style: preserve-3d;
+        }
+        @keyframes walkToHorizon {
+            0% { transform: translateX(-50%) translateZ(0) scale(1); }
+            100% { transform: translateX(-50%) translateZ(2000px) scale(0.2); }
         }
         .boy, .girl {
             position: absolute;
-            bottom: 20vh;
             width: 80px;
+            height: 150px;
+            bottom: 0;
         }
-        .boy { left: -10vw; animation: boyWalk 20s linear forwards; }
-        .girl { right: 10vw; }
-        @keyframes boyWalk {
-            0% { left: -10vw; }
-            80% { left: calc(50% - 100px); }
-            100% { left: calc(50% - 60px); }
-        }
-        .stick-figure {
-            width: 60px;
-            height: 120px;
-            position: relative;
-        }
+        .boy { left: 0; }
+        .girl { right: 0; }
         .head {
-            width: 40px;
-            height: 40px;
-            background: #333;
+            width: 50px;
+            height: 50px;
+            background: #ffdab9;
             border-radius: 50%;
             position: absolute;
             top: 0;
-            left: 10px;
+            left: 15px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
         }
         .body {
-            width: 6px;
-            height: 60px;
-            background: #333;
+            width: 50px;
+            height: 80px;
+            background: #87ceeb;
             position: absolute;
-            top: 40px;
-            left: 27px;
+            top: 50px;
+            left: 15px;
+            border-radius: 20px;
         }
+        .girl .body { background: #ffc0cb; }
         .arms {
             position: absolute;
-            width: 50px;
-            height: 6px;
-            background: #333;
+            width: 20px;
+            height: 60px;
+            background: #ffdab9;
             top: 60px;
-            left: 5px;
-            animation: swing 1.5s infinite alternate;
+            animation: swing 2s infinite alternate;
         }
-        .legs {
-            width: 6px;
-            height: 50px;
-            background: #333;
+        .boy .arms { left: 60px; }
+        .girl .arms { left: 20px; }
+        .hands {
             position: absolute;
-            top: 100px;
+            width: 30px;
+            height: 30px;
+            background: #ffdab9;
+            border-radius: 50%;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
         }
-        .leg1 { left: 15px; animation: legMove 1s infinite alternate; }
-        .leg2 { left: 39px; animation: legMove 1s infinite alternate-reverse; }
-        @keyframes swing { 0% { transform: rotate(-20deg); } 100% { transform: rotate(20deg); } }
-        @keyframes legMove { 0% { transform: rotate(-30deg); } 100% { transform: rotate(30deg); } }
-        .girl .head { background: pink; }
-        .girl .body, .girl .arms, .girl .legs { background: hotpink; }
-        .hearts {
-            position: absolute;
-            font-size: 30px;
-            opacity: 0;
-            animation: heartPop 2s forwards;
-        }
-        @keyframes heartPop {
-            0% { opacity: 0; transform: scale(0); }
-            50% { opacity: 1; transform: scale(1.5); }
-            100% { opacity: 0; transform: scale(0) translateY(-100px); }
-        }
+        .boy .hands { left: 80px; }
+        .girl .hands { left: 0; }
         .sun {
             position: absolute;
             top: 10vh;
-            right: 10vw;
-            width: 150px;
-            height: 150px;
-            opacity: 0.8;
-            animation: sunGlow 4s infinite alternate;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, #ffeb3b, #ffc107);
+            border-radius: 50%;
+            box-shadow: 0 0 100px #ff9800;
+            animation: pulse 4s infinite alternate;
         }
-        @keyframes sunGlow {
-            0% { transform: scale(1); box-shadow: 0 0 50px yellow; }
-            100% { transform: scale(1.1); box-shadow: 0 0 100px orange; }
+        @keyframes pulse {
+            0% { transform: translateX(-50%) scale(1); box-shadow: 0 0 100px #ff9800; }
+            100% { transform: translateX(-50%) scale(1.1); box-shadow: 0 0 150px #ff5722; }
+        }
+        .rays .ray {
+            position: absolute;
+            width: 10px;
+            height: 100px;
+            background: #ffeb3b;
+            top: -50px;
+            left: 95px;
+            transform-origin: bottom center;
+            opacity: 0.7;
+        }
+        .rays .ray:nth-child(1) { transform: rotate(0deg); }
+        .rays .ray:nth-child(2) { transform: rotate(45deg); }
+        .rays .ray:nth-child(3) { transform: rotate(90deg); }
+        .rays .ray:nth-child(4) { transform: rotate(135deg); }
+        .rays .ray:nth-child(5) { transform: rotate(180deg); }
+        .rays .ray:nth-child(6) { transform: rotate(225deg); }
+        .rays .ray:nth-child(7) { transform: rotate(270deg); }
+        .rays .ray:nth-child(8) { transform: rotate(315deg); }
+        .hearts {
+            position: absolute;
+            font-size: 40px;
+            opacity: 0;
+            animation: floatHeart 3s forwards;
+        }
+        @keyframes floatHeart {
+            0% { opacity: 0; transform: translateY(0); }
+            50% { opacity: 1; }
+            100% { opacity: 0; transform: translateY(-200px); }
         }
     </style>
 </head>
 <body>
 <div class="scene">
-    <div class="boy">
-        <div class="stick-figure">
-            <div class="head"></div>
-            <div class="body"></div>
-            <div class="arms"></div>
-            <div class="legs leg1"></div>
-            <div class="legs leg2"></div>
-        </div>
-    </div>
-    <div class="girl">
-        <div class="stick-figure">
-            <div class="head"></div>
-            <div class="body"></div>
-            <div class="arms"></div>
-            <div class="legs leg1"></div>
-            <div class="legs leg2"></div>
-        </div>
+    <div class="road">
+        <div class="lines"></div>
     </div>
     <div class="sun">
-        <svg viewBox="0 0 100 100" width="150" height="150">
-            <circle cx="50" cy="50" r="40" fill="yellow"/>
-            <circle cx="35" cy="40" r="5" fill="orange"/>
-            <circle cx="65" cy="40" r="5" fill="orange"/>
-            <path d="M30 60 Q50 80 70 60" stroke="orange" stroke-width="4" fill="none"/>
-            <line x1="50" y1="0" x2="50" y2="-30" stroke="orange" stroke-width="8"/>
-            <!-- Plus de rayons -->
-            <line x1="0" y1="50" x2="-30" y2="50" stroke="orange" stroke-width="8" transform="rotate(45 50 50)"/>
-            <!-- Etc pour 8 rayons -->
-        </svg>
+        <div class="rays">
+            <div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div>
+            <div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div>
+        </div>
+    </div>
+    <div class="couple">
+        <div class="boy">
+            <div class="head"></div>
+            <div class="body"></div>
+            <div class="arms"></div>
+            <div class="hands"></div>
+        </div>
+        <div class="girl">
+            <div class="head"></div>
+            <div class="body"></div>
+            <div class="arms"></div>
+            <div class="hands"></div>
+        </div>
     </div>
 </div>
 
 <script>
-    // Pop de cœurs quand ils se rejoignent
+    // Cœurs qui pop quand ils se rapprochent
     setTimeout(() => {
-        for(let i=0; i<20; i++) {
+        for(let i = 0; i < 30; i++) {
             let heart = document.createElement('div');
             heart.innerHTML = '❤️';
             heart.classList.add('hearts');
-            heart.style.left = Math.random() * 60 + 20 + '%';
-            heart.style.bottom = Math.random() * 40 + 30 + 'vh';
-            heart.style.animationDelay = i*0.2 + 's';
+            heart.style.left = Math.random() * 80 + 10 + '%';
+            heart.style.bottom = Math.random() * 50 + 20 + 'vh';
+            heart.style.animationDelay = i * 0.3 + 's';
             document.body.appendChild(heart);
         }
-    }, 16000); // Quand le boy arrive près de la girl
+    }, 10000);
 </script>
 </body>
 </html>
