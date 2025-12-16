@@ -1,135 +1,180 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monstre Login Volé pour Hind ❤️😂</title>
+    <title>Je cherche la lumière... Hind ❤️</title>
     <style>
-        /* CSS complet du Pen */
-        html {width: 100%; height: 100%;}
         body {
-            background-color: #eff3f4; position: relative; width: 100%; height: 100%;
-            font-size: 16px; font-family: 'Source Sans Pro', sans-serif; font-weight: 400;
-            -webkit-font-smoothing: antialiased;
+            margin: 0;
+            height: 100vh;
+            background: #000;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            font-family: 'Georgia', serif;
+            color: white;
         }
-        form {
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-            display: block; width: 100%; max-width: 400px; background-color: #FFF;
-            margin: 0; padding: 2.25em; box-sizing: border-box; border: solid 1px #DDD; border-radius: .5em;
-            font-family: 'Source Sans Pro', sans-serif;
+        .message {
+            text-align: center;
+            padding: 40px 20px 20px;
+            font-size: 28px;
+            line-height: 1.8;
+            max-width: 90%;
+            opacity: 0;
+            animation: fadeIn 4s forwards 1s;
         }
-        .svgContainer {
-            position: relative; width: 200px; height: 200px; margin: 0 auto 1em;
-            border-radius: 50%; background: rgba(255,255,255,0.5); pointer-events: none;
+        @keyframes fadeIn {
+            to { opacity: 1; }
         }
-        .svgContainer div {position: relative; width: 100%; height: 0; overflow: hidden; border-radius: 50%; padding-bottom: 100%;}
-        .mySVG {position: absolute; width: 100%; height: 100%; left: 0; top: 0;}
-        .inputGroup {background: #fff; margin: 0 0 1em; padding: 0; position: relative; width: 100%;}
-        .inputGroup label {position: absolute; transform: translate(0, 25px); line-height: 1em; font-size: 1.2em; color: #aaa; transition: all .2s;}
-        .inputGroup.focusWithText label {transform: translate(0, 5px) scale(.8);}
-        .inputGroup input {width: 100%; padding: 20px 0 5px; border: none; border-bottom: solid 1px #ddd; font-size: 1.2em; background: transparent;}
-        #showPasswordToggle {display: block; padding: 0 0 0 2em; cursor: pointer; font-size: .9em; color: #999;}
-        #showPasswordCheck {position: absolute; opacity: 0; left: -9999px;}
-        .indicator {position: absolute; left: 0; top: 50%; transform: translate(0,-50%); width: 1.2em; height: 1.2em; background: #e6e6e6; border-radius: 50%;}
-        #showPasswordCheck:checked ~ .indicator {background: #4eb8dd;}
-        #login {width: 100%; padding: 1em; background: #4eb8dd; color: #fff; border: none; border-radius: .3em; font-size: 1.2em; cursor: pointer;}
+        .scene {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            overflow: hidden;
+        }
+        .road {
+            position: absolute;
+            bottom: 20%;
+            width: 100%;
+            height: 4px;
+            background: #111;
+            box-shadow: 0 0 10px #333;
+        }
+        .character {
+            position: absolute;
+            bottom: 20%;
+            left: 10%;
+            width: 80px;
+            animation: walk 20s linear infinite;
+        }
+        @keyframes walk {
+            0% { left: -100px; }
+            100% { left: 110%; }
+        }
+        .body {
+            width: 40px;
+            height: 60px;
+            background: #222;
+            border-radius: 20px 20px 10px 10px;
+            position: relative;
+            margin: 0 auto;
+        }
+        .head {
+            width: 50px;
+            height: 50px;
+            background: #222;
+            border-radius: 50%;
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .eyes {
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 18px;
+            animation: lookAround 6s infinite;
+        }
+        .eye1 { left: 12px; }
+        .eye2 { right: 12px; }
+        @keyframes lookAround {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        .arm {
+            width: 15px;
+            height: 50px;
+            background: #222;
+            position: absolute;
+            bottom: -10px;
+            border-radius: 10px;
+            transform-origin: top center;
+            animation: swing 2s infinite alternate;
+        }
+        .arm-left { left: -10px; animation-delay: 0s; }
+        .arm-right { right: -10px; animation-delay: 1s; }
+        @keyframes swing {
+            0% { transform: rotate(-20deg); }
+            100% { transform: rotate(20deg); }
+        }
+        .lamp {
+            width: 30px;
+            height: 40px;
+            background: #333;
+            border-radius: 10px;
+            position: absolute;
+            bottom: -40px;
+            right: -25px;
+        }
+        .light {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255,220,100,0.6) 0%, rgba(255,200,50,0.2) 40%, transparent 70%);
+            position: absolute;
+            bottom: -100px;
+            right: -100px;
+            border-radius: 50%;
+            animation: flicker 4s infinite;
+            pointer-events: none;
+        }
+        @keyframes flicker {
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+        .hand-shield {
+            width: 40px;
+            height: 30px;
+            background: #222;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            animation: shieldEyes 10s infinite;
+        }
+        @keyframes shieldEyes {
+            20%, 30% { opacity: 1; }
+            0%, 100% { opacity: 0; }
+        }
     </style>
-    <!-- GSAP CDN pour les animations de bite -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
-    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/MorphSVGPlugin.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
 </head>
 <body>
 
-<!-- HTML complet avec le SVG monstre poilu -->
-<form>
-	<div class="svgContainer">
-		<div>
-			<svg class="mySVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 200 200">
-				<!-- Tout le SVG volé intégral, comme dans ton document -->
-				<defs>
-					<circle id="armMaskPath" cx="100" cy="100" r="100"/>	
-				</defs>
-				<clipPath id="armMask">
-					<use xlink:href="#armMaskPath" overflow="visible"/>
-				</clipPath>
-				<circle cx="100" cy="100" r="100" fill="#a9ddf3"/>
-				<!-- ... Le reste du SVG complet (body, ears, face, eyes, mouth, arms, etc.) exactement comme fourni ... -->
-				<g class="arms" clip-path="url(#armMask)">
-					<g class="armL" style="visibility: hidden;">
-						<!-- Bras gauche complet avec fingers -->
-						<polygon fill="#DDF1FA" stroke="#3A5E77" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="121.3,98.4 111,59.7 149.8,49.3 169.8,85.4"/>
-						<!-- ... tout le code des bras et fingers ... -->
-						<g class="twoFingers">			
-							<!-- Les doigts qui s'écartent pour montrer le password -->
-						</g>
-					</g>
-					<g class="armR" style="visibility: hidden;">
-						<!-- Bras droit symétrique -->
-					</g>				
-				</g>
-			</svg>
-		</div>
-	</div>
-	
-	<div class="inputGroup inputGroup1">
-		<label for="loginEmail" id="loginEmailLabel">Email</label>
-		<input type="email" id="loginEmail" class="loginEmail" maxlength="256" autocomplete="off"/>
-	</div>
-	
-	<div class="inputGroup inputGroup2">
-		<label for="loginPassword" id="loginPasswordLabel">Password</label>
-		<input type="password" id="loginPassword" class="loginPassword"/>
-		<label id="showPasswordToggle" for="showPasswordCheck">
-			Show
-			<input id="showPasswordCheck" type="checkbox"/>
-			<div class="indicator"></div>
-		</label>
-	</div>
-	
-	<div class="inputGroup inputGroup3">
-		<button id="login">Log in</button>
-	</div>	
-</form>
+<div class="message">
+    Je marche dans le noir,<br>
+    une petite lampe à la main,<br>
+    cherchant le bonheur partout...<br><br>
+    Mais sans toi, Hind,<br>
+    la lumière n’est jamais assez forte.<br><br>
+    Tu es ma vraie lumière.<br>
+    Reviens illuminer ma route, ma chérie.<br><br>
+    Je t’aime infiniment. ❤️
+</div>
 
-<script>
-    // JS complet volé – le cerveau qui fait bouger les yeux, bouche, bras comme une pute animée
-    var svg = document.querySelector(".mySVG");
-    var armL = document.querySelector(".armL");
-    var armR = document.querySelector(".armR");
-    var eyeL = document.querySelector(".eyeL");
-    var eyeR = document.querySelector(".eyeR");
-    var nose = document.querySelector(".nose");
-    var mouth = document.querySelector(".mouth");
-    var mouthBG = document.querySelector(".mouthBG");
-    var mouthSmallBG = document.querySelector(".mouthSmallBG");
-    var mouthMediumBG = document.querySelector(".mouthMediumBG");
-    var mouthLargeBG = document.querySelector(".mouthLargeBG");
-    var mouthOutline = document.querySelector(".mouthOutline");
-    var tooth = document.querySelector(".tooth");
-    var tongue = document.querySelector(".tongue");
-    var chin = document.querySelector(".chin");
-    var face = document.querySelector(".face");
-    var eyebrow = document.querySelector(".eyebrow");
-    var outerEarL = document.querySelector(".earL .outerEar");
-    var outerEarR = document.querySelector(".earR .outerEar");
-    var earHairL = document.querySelector(".earL .earHair");
-    var earHairR = document.querySelector(".earR .earHair");
-    var hair = document.querySelector(".hair");
-    var bodyBG = document.querySelector(".bodyBGnormal");
-    var bodyBGchanged = document.querySelector(".bodyBGchanged");
-    var twoFingers = document.querySelector(".twoFingers");
-
-    var email = document.querySelector('#loginEmail');
-    var password = document.querySelector('#loginPassword');
-    var showPasswordCheck = document.querySelector('#showPasswordCheck');
-    var showPasswordToggle = document.querySelector('#showPasswordToggle');
-    var login = document.querySelector('#login');
-
-    // ... Tout le JS long et sale du pen : onEmailInput, coverEyes, uncoverEyes, spreadFingers, etc. jusqu'à initLoginForm(); ...
-
-    initLoginForm();
-</script>
+<div class="scene">
+    <div class="road"></div>
+    <div class="character">
+        <div class="head">
+            <div class="eyes eye1"></div>
+            <div class="eyes eye2"></div>
+            <div class="hand-shield"></div>
+        </div>
+        <div class="body">
+            <div class="arm arm-left"></div>
+            <div class="arm arm-right">
+                <div class="lamp"></div>
+                <div class="light"></div>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
