@@ -3,150 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hind, mon soleil ❤️</title>
+    <title>Toi + Moi = Bonheur éternel ❤️</title>
     <style>
         body {
             margin: 0;
             height: 100vh;
-            background: white;
+            background: linear-gradient(to bottom, #fffaf0, #ffe4e1);
             overflow: hidden;
-            display: flex;
-            align-items: flex-end;
-            justify-content: flex-start;
         }
         .scene {
             position: relative;
             width: 100vw;
             height: 100vh;
         }
-        .road {
+        .boy, .girl {
             position: absolute;
             bottom: 20vh;
-            width: 100%;
-            height: 4px;
-            background: black;
-        }
-        .stickman {
-            position: absolute;
-            bottom: 20vh;
-            left: -10vw;
             width: 80px;
-            animation: walkAcross 35s linear forwards;
         }
-        @keyframes walkAcross {
+        .boy { left: -10vw; animation: boyWalk 20s linear forwards; }
+        .girl { right: 10vw; }
+        @keyframes boyWalk {
             0% { left: -10vw; }
-            100% { left: 85vw; } /* Il arrive presque au soleil à droite */
+            80% { left: calc(50% - 100px); }
+            100% { left: calc(50% - 60px); }
+        }
+        .stick-figure {
+            width: 60px;
+            height: 120px;
+            position: relative;
         }
         .head {
             width: 40px;
             height: 40px;
-            background: black;
+            background: #333;
             border-radius: 50%;
             position: absolute;
             top: 0;
-            left: 20px;
+            left: 10px;
         }
         .body {
             width: 6px;
             height: 60px;
-            background: black;
+            background: #333;
             position: absolute;
             top: 40px;
-            left: 37px;
+            left: 27px;
         }
         .arms {
             position: absolute;
             width: 50px;
             height: 6px;
-            background: black;
+            background: #333;
             top: 60px;
-            left: 15px;
-            transform-origin: center;
-            animation: swingArms 1s infinite alternate;
+            left: 5px;
+            animation: swing 1.5s infinite alternate;
         }
-        @keyframes swingArms {
-            0% { transform: rotate(-30deg); }
-            100% { transform: rotate(30deg); }
-        }
-        .leg-left, .leg-right {
+        .legs {
             width: 6px;
             height: 50px;
-            background: black;
+            background: #333;
             position: absolute;
             top: 100px;
         }
-        .leg-left { left: 25px; animation: walkLeg 1s infinite alternate; }
-        .leg-right { left: 49px; animation: walkLeg 1s infinite alternate-reverse; }
-        @keyframes walkLeg {
-            0% { transform: rotate(-25deg); }
-            100% { transform: rotate(25deg); }
+        .leg1 { left: 15px; animation: legMove 1s infinite alternate; }
+        .leg2 { left: 39px; animation: legMove 1s infinite alternate-reverse; }
+        @keyframes swing { 0% { transform: rotate(-20deg); } 100% { transform: rotate(20deg); } }
+        @keyframes legMove { 0% { transform: rotate(-30deg); } 100% { transform: rotate(30deg); } }
+        .girl .head { background: pink; }
+        .girl .body, .girl .arms, .girl .legs { background: hotpink; }
+        .hearts {
+            position: absolute;
+            font-size: 30px;
+            opacity: 0;
+            animation: heartPop 2s forwards;
+        }
+        @keyframes heartPop {
+            0% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1.5); }
+            100% { opacity: 0; transform: scale(0) translateY(-100px); }
         }
         .sun {
             position: absolute;
-            bottom: 25vh;
-            right: 5vw;
+            top: 10vh;
+            right: 10vw;
             width: 150px;
             height: 150px;
+            opacity: 0.8;
+            animation: sunGlow 4s infinite alternate;
         }
-        .sun-face {
-            width: 150px;
-            height: 150px;
-            background: yellow;
-            border-radius: 50%;
-            position: relative;
-            box-shadow: 0 0 60px orange;
+        @keyframes sunGlow {
+            0% { transform: scale(1); box-shadow: 0 0 50px yellow; }
+            100% { transform: scale(1.1); box-shadow: 0 0 100px orange; }
         }
-        .sun-smile {
-            width: 80px;
-            height: 40px;
-            border-bottom: 12px solid orange;
-            border-radius: 50%;
-            position: absolute;
-            bottom: 30px;
-            left: 35px;
-        }
-        .sun-rays .ray {
-            position: absolute;
-            width: 12px;
-            height: 80px;
-            background: orange;
-            top: -30px;
-            left: 69px;
-            transform-origin: bottom center;
-        }
-        .sun-rays .ray:nth-child(1) { transform: rotate(0deg); }
-        .sun-rays .ray:nth-child(2) { transform: rotate(45deg); }
-        .sun-rays .ray:nth-child(3) { transform: rotate(90deg); }
-        .sun-rays .ray:nth-child(4) { transform: rotate(135deg); }
-        .sun-rays .ray:nth-child(5) { transform: rotate(180deg); }
-        .sun-rays .ray:nth-child(6) { transform: rotate(225deg); }
-        .sun-rays .ray:nth-child(7) { transform: rotate(270deg); }
-        .sun-rays .ray:nth-child(8) { transform: rotate(315deg); }
     </style>
 </head>
 <body>
-
 <div class="scene">
-    <div class="road"></div>
-    
-    <div class="stickman">
-        <div class="head"></div>
-        <div class="body"></div>
-        <div class="arms"></div>
-        <div class="leg-left"></div>
-        <div class="leg-right"></div>
+    <div class="boy">
+        <div class="stick-figure">
+            <div class="head"></div>
+            <div class="body"></div>
+            <div class="arms"></div>
+            <div class="legs leg1"></div>
+            <div class="legs leg2"></div>
+        </div>
     </div>
-    
+    <div class="girl">
+        <div class="stick-figure">
+            <div class="head"></div>
+            <div class="body"></div>
+            <div class="arms"></div>
+            <div class="legs leg1"></div>
+            <div class="legs leg2"></div>
+        </div>
+    </div>
     <div class="sun">
-        <div class="sun-face">
-            <div class="sun-smile"></div>
-        </div>
-        <div class="sun-rays">
-            <div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div>
-            <div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div>
-        </div>
+        <svg viewBox="0 0 100 100" width="150" height="150">
+            <circle cx="50" cy="50" r="40" fill="yellow"/>
+            <circle cx="35" cy="40" r="5" fill="orange"/>
+            <circle cx="65" cy="40" r="5" fill="orange"/>
+            <path d="M30 60 Q50 80 70 60" stroke="orange" stroke-width="4" fill="none"/>
+            <line x1="50" y1="0" x2="50" y2="-30" stroke="orange" stroke-width="8"/>
+            <!-- Plus de rayons -->
+            <line x1="0" y1="50" x2="-30" y2="50" stroke="orange" stroke-width="8" transform="rotate(45 50 50)"/>
+            <!-- Etc pour 8 rayons -->
+        </svg>
     </div>
 </div>
 
+<script>
+    // Pop de cœurs quand ils se rejoignent
+    setTimeout(() => {
+        for(let i=0; i<20; i++) {
+            let heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.classList.add('hearts');
+            heart.style.left = Math.random() * 60 + 20 + '%';
+            heart.style.bottom = Math.random() * 40 + 30 + 'vh';
+            heart.style.animationDelay = i*0.2 + 's';
+            document.body.appendChild(heart);
+        }
+    }, 16000); // Quand le boy arrive près de la girl
+</script>
 </body>
 </html>
