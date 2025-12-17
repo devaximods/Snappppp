@@ -3,55 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hindou, mon cœur cosmique ❤️</title>
-    <!-- Bibliothèque css-doodle volée -->
+    <title>Hindou, écoute mon cœur battre pour toi ❤️</title>
     <script src="https://unpkg.com/css-doodle@0.34.0/css-doodle.min.js"></script>
     <style>
         html, body {
             margin: 0;
             height: 100vh;
             overflow: hidden;
-            background: #000; /* Fond noir intense */
+            background: #000;
         }
-        .message {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-family: 'Georgia', serif;
-            font-size: 34px;
-            color: white;
-            text-align: center;
-            opacity: 0;
-            animation: fadeIn 6s forwards 4s;
-            z-index: 10;
-            text-shadow: 0 0 30px #ff3366;
-            max-width: 90%;
-        }
-        @keyframes fadeIn {
-            to { opacity: 1; }
+        audio {
+            display: none;
         }
     </style>
 </head>
 <body>
 
-<div class="message">
-    Le jour où ce cœur s'éteindra,<br>
-    mon amour pour toi, Hindou,<br>
-    brillera encore plus fort<br>
-    dans l'éternité.<br><br>
-    ❤️
-</div>
+<!-- Heartbeat sound royalty free qui pulse comme un cœur en chaleur -->
+<audio autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/20/audio_9d9f9f9f9f.mp3?filename=heartbeat-01-6987.mp3" type="audio/mpeg">
+</audio>
 
 <css-doodle>
     <style>
-        /* Couleurs rouge passion pour ton amour sanglant */
-        --color: #ff3366, #cc0033, #ff1744, #b71c1c;
+        --color: #ff1744, #ff3366, #cc0033, #b71c1c;
 
-        @grid: 50x1 / 100vw 100vh / #000; /* Plus de cœurs, fond noir */
+        @grid: 80x1 / 100vw 100vh / #000;
 
         :container {
-            perspective: 50vmin; /* Plus de profondeur 3D */
+            perspective: 60vmin;
             --deg: @p(-360deg, 360deg);
         }
 
@@ -59,35 +39,33 @@
             content: '';
             background: @p(--color);
             @place: @r(100%) @r(100%);
-            @size: @r(8px, 25px);
+            @size: @r(10px, 35px);
             @shape: heart;
-            box-shadow: 0 0 25px @p(--color);
+            box-shadow: 0 0 40px @p(--color);
         }
 
         @place: center;
-        @size: 30vmin; /* Cœur central plus gros */
+        @size: 35vmin;
 
-        box-shadow: @m4(0 0 100px @p(--color)); /* Glow de malade */
-        background: @m200(
+        box-shadow: @m5(0 0 120px @p(--color));
+        background: @m300(
             radial-gradient(@p(--color) 40%, transparent 0)
-            @r(-40%, 140%) @r(-40%, 140%) / 3px 3px
+            @r(-50%, 150%) @r(-50%, 150%) / 4px 4px
             no-repeat
         );
 
         will-change: transform, opacity;
-        animation: scale-up 10s linear infinite;
-        animation-delay: calc(-10s / @I * @i);
+        animation: scale-up 9s linear infinite;
+        animation-delay: calc(-9s / @I * @i);
 
         @keyframes scale-up {
             0%, 95.01%, 100% {
                 transform: translateZ(0) rotate(0);
                 opacity: 0;
             }
-            5% {
-                opacity: 1;
-            }
+            5% { opacity: 1; }
             95% {
-                transform: translateZ(60vmin) rotateZ(var(--deg)) scale(1.8);
+                transform: translateZ(80vmin) rotateZ(var(--deg)) scale(2);
             }
         }
     </style>
