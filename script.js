@@ -1,17 +1,17 @@
 const startScreen = document.querySelector('.start-screen');
 const content = document.querySelector('.content');
 
-// Musique Teresita vibe (piano romantique royalty free proche de l'émotion)
-const music = new Audio('https://cdn.pixabay.com/download/audio/2022/03/28/audio_0c3e0c5d5c.mp3?filename=piano-moment-9837.mp3');
+// Musique romantique piano intense (le plus proche de Teresita vibe royalty free que j’ai trouvé – doux, passionné, émouvant)
+const music = new Audio('https://cdn.pixabay.com/download/audio/2023/01/23/audio_8a1f0b0e8d.mp3?filename=romantic-piano-1070.mp3');
 music.loop = true;
-music.volume = 0.5;
+music.volume = 0.6;
 
-function startAnimation() {
+function startEverything() {
     startScreen.style.display = 'none';
     content.style.display = 'block';
-    music.play().catch(e => console.log("Son bloqué, mais c'est normal sur mobile sans interaction"));
+    music.play();
 }
 
-// Écoute le premier touch ou clic
-document.body.addEventListener('touchstart', startAnimation, { once: true });
-document.body.addEventListener('click', startAnimation, { once: true });
+// Démarre au premier touch ou clic (obligatoire sur mobile)
+document.body.addEventListener('touchstart', startEverything, { once: true });
+document.body.addEventListener('click', startEverything, { once: true });
