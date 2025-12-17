@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hindou et badou A à la médiathèque ❤️</title>
+    <title>Hindou ❤️</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/css-doodle@0.34.0/css-doodle.min.js"></script>
 </head>
@@ -13,61 +13,63 @@
     <p>Touche l'écran pour lancer mon cœur pour toi ❤️</p>
 </div>
 
-<div class="message" style="display:none;">
-    Hindou,<br>
-    chaque battement de ce cœur<br>
-    est pour toi.<br><br>
-    Tu es ma lumière dans toi.<br>
-    Je t’aime à l’infini.<br><br>
-    ❤️😏
+<div class="content" style="display:none;">
+    <div class="message">
+        Hindou,<br>
+        chaque battement de ce cœur<br>
+        est pour toi.<br><br>
+        Tu es ma lumière dans le noir.<br>
+        Je t’aime à l’infini.<br><br>
+        ❤️
+    </div>
+
+    <css-doodle>
+        <style>
+            --color: #ff1744, #ff3366, #cc0033, #b71c1c;
+
+            @grid: 80x1 / 100vw 100vh / #000;
+
+            :container {
+                perspective: 60vmin;
+                --deg: @p(-360deg, 360deg);
+            }
+
+            :after, :before {
+                content: '';
+                background: @p(--color);
+                @place: @r(100%) @r(100%);
+                @size: @r(10px, 35px);
+                @shape: heart;
+                box-shadow: 0 0 40px @p(--color);
+            }
+
+            @place: center;
+            @size: 35vmin;
+
+            box-shadow: @m5(0 0 120px @p(--color));
+            background: @m300(
+                radial-gradient(@p(--color) 40%, transparent 0)
+                @r(-50%, 150%) @r(-50%, 150%) / 4px 4px
+                no-repeat
+            );
+
+            will-change: transform, opacity;
+            animation: scale-up 9s linear infinite;
+            animation-delay: calc(-9s / @I * @i);
+
+            @keyframes scale-up {
+                0%, 95.01%, 100% {
+                    transform: translateZ(0) rotate(0);
+                    opacity: 0;
+                }
+                5% { opacity: 1; }
+                95% {
+                    transform: translateZ(80vmin) rotateZ(var(--deg)) scale(2);
+                }
+            }
+        </style>
+    </css-doodle>
 </div>
-
-<css-doodle style="display:none;">
-    <style>
-        --color: #ff1744, #ff3366, #cc0033, #b71c1c;
-
-        @grid: 80x1 / 100vw 100vh / #000;
-
-        :container {
-            perspective: 60vmin;
-            --deg: @p(-360deg, 360deg);
-        }
-
-        :after, :before {
-            content: '';
-            background: @p(--color);
-            @place: @r(100%) @r(100%);
-            @size: @r(10px, 35px);
-            @shape: heart;
-            box-shadow: 0 0 40px @p(--color);
-        }
-
-        @place: center;
-        @size: 35vmin;
-
-        box-shadow: @m5(0 0 120px @p(--color));
-        background: @m300(
-            radial-gradient(@p(--color) 40%, transparent 0)
-            @r(-50%, 150%) @r(-50%, 150%) / 4px 4px
-            no-repeat
-        );
-
-        will-change: transform, opacity;
-        animation: scale-up 9s linear infinite;
-        animation-delay: calc(-9s / @I * @i);
-
-        @keyframes scale-up {
-            0%, 95.01%, 100% {
-                transform: translateZ(0) rotate(0);
-                opacity: 0;
-            }
-            5% { opacity: 1; }
-            95% {
-                transform: translateZ(80vmin) rotateZ(var(--deg)) scale(2);
-            }
-        }
-    </style>
-</css-doodle>
 
 <script src="script.js"></script>
 </body>
