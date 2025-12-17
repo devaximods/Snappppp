@@ -26,6 +26,10 @@ html, body {
     text-shadow: 0 0 30px #ff1744;
 }
 
+.content {
+    display: none;
+}
+
 .message {
     position: absolute;
     top: 50%;
