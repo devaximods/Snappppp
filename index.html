@@ -3,14 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hindou, écoute mon cœur battre pour toi ❤️</title>
-    <script src="https://unpkg.com/css-doodle@0.34.0/css-doodle.min.js"></script>
+    <title>Hindou, mon amour éternel ❤️</title>
     <style>
-        html, body {
+        body {
             margin: 0;
             height: 100vh;
-            overflow: hidden;
             background: #000;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1000px;
+        }
+        .container {
+            position: relative;
+            width: 80vmin;
+            height: 80vmin;
+        }
+        .big-heart {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, #ff1744, #b71c1c);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 120px #ff1744, 0 0 200px #ff5722;
+            animation: pulse 4s infinite ease-in-out;
+        }
+        .big-heart::before, .big-heart::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 80%;
+            background: inherit;
+            border-radius: 50%;
+            top: 10%;
+        }
+        .big-heart::before {
+            left: 25%;
+            transform: rotate(-45deg);
+        }
+        .big-heart::after {
+            right: 25%;
+            transform: rotate(45deg);
+        }
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+        }
+        .small-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        .small-heart {
+            position: absolute;
+            font-size: 40px;
+            opacity: 0;
+            animation: floatHeart 10s infinite linear;
+        }
+        @keyframes floatHeart {
+            0% { opacity: 0; transform: translateY(100vh) scale(0); }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { opacity: 0; transform: translateY(-100px) scale(1.5); }
+        }
+        .message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Georgia', serif;
+            font-size: 32px;
+            color: white;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 8s forwards 5s;
+            z-index: 10;
+            max-width: 90%;
+            text-shadow: 0 0 30px #ff1744;
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; }
         }
         audio {
             display: none;
@@ -19,57 +95,40 @@
 </head>
 <body>
 
-<!-- Heartbeat sound royalty free qui pulse comme un cœur en chaleur -->
+<div class="message">
+    Hindou,<br>
+    chaque battement de ce cœur<br>
+    est pour toi.<br><br>
+    Tu es ma lumière, ma musique,<br>
+    mon tout.<br><br>
+    Je t’aime plus que tout<br>
+    au monde.<br><br>
+    ❤️
+</div>
+
+<div class="container">
+    <div class="big-heart"></div>
+    <div class="small-hearts"></div>
+</div>
+
+<!-- Musique Teresita vibe – version instrumentale royalty free proche (piano romantique intense) -->
 <audio autoplay loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/05/20/audio_9d9f9f9f9f.mp3?filename=heartbeat-01-6987.mp3" type="audio/mpeg">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/28/audio_0c3e0c5d5c.mp3?filename=piano-moment-9837.mp3" type="audio/mpeg">
 </audio>
 
-<css-doodle>
-    <style>
-        --color: #ff1744, #ff3366, #cc0033, #b71c1c;
-
-        @grid: 80x1 / 100vw 100vh / #000;
-
-        :container {
-            perspective: 60vmin;
-            --deg: @p(-360deg, 360deg);
-        }
-
-        :after, :before {
-            content: '';
-            background: @p(--color);
-            @place: @r(100%) @r(100%);
-            @size: @r(10px, 35px);
-            @shape: heart;
-            box-shadow: 0 0 40px @p(--color);
-        }
-
-        @place: center;
-        @size: 35vmin;
-
-        box-shadow: @m5(0 0 120px @p(--color));
-        background: @m300(
-            radial-gradient(@p(--color) 40%, transparent 0)
-            @r(-50%, 150%) @r(-50%, 150%) / 4px 4px
-            no-repeat
-        );
-
-        will-change: transform, opacity;
-        animation: scale-up 9s linear infinite;
-        animation-delay: calc(-9s / @I * @i);
-
-        @keyframes scale-up {
-            0%, 95.01%, 100% {
-                transform: translateZ(0) rotate(0);
-                opacity: 0;
-            }
-            5% { opacity: 1; }
-            95% {
-                transform: translateZ(80vmin) rotateZ(var(--deg)) scale(2);
-            }
-        }
-    </style>
-</css-doodle>
+<script>
+    // Génère 30 petits cœurs flottants
+    const container = document.querySelector('.small-hearts');
+    for (let i = 0; i < 30; i++) {
+        let heart = document.createElement('div');
+        heart.classList.add('small-heart');
+        heart.innerHTML = '❤️';
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.animationDelay = Math.random() * 10 + 's';
+        heart.style.animationDuration = (Math.random() * 10 + 10) + 's';
+        container.appendChild(heart);
+    }
+</script>
 
 </body>
 </html>
