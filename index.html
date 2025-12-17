@@ -1,46 +1,97 @@
-<css-doodle><style>
-  --color: #51eaea, #fffde1, #ff9d76, #FB3569;
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hindou, mon cœur cosmique ❤️</title>
+    <!-- Bibliothèque css-doodle volée -->
+    <script src="https://unpkg.com/css-doodle@0.34.0/css-doodle.min.js"></script>
+    <style>
+        html, body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            background: #000; /* Fond noir intense */
+        }
+        .message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Georgia', serif;
+            font-size: 34px;
+            color: white;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 6s forwards 4s;
+            z-index: 10;
+            text-shadow: 0 0 30px #ff3366;
+            max-width: 90%;
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
 
-  @grid: 30x1 / 100vw 100vh / #270f34; 
-  
-  :container {
-    perspective: 30vmin;
-    --deg: @p(-180deg, 180deg);
-  }
-  
-  :after, :before {
-    content: '';
-    background: @p(--color); 
-    @place: @r(100%) @r(100%);
-    @size: @r(6px);
-    @shape: heart;
-  }
+<div class="message">
+    Le jour où ce cœur s'éteindra,<br>
+    mon amour pour toi, Hindou,<br>
+    brillera encore plus fort<br>
+    dans l'éternité.<br><br>
+    ❤️
+</div>
 
-  @place: center;
-  @size: 18vmin; 
+<css-doodle>
+    <style>
+        /* Couleurs rouge passion pour ton amour sanglant */
+        --color: #ff3366, #cc0033, #ff1744, #b71c1c;
 
-  box-shadow: @m2(0 0 50px @p(--color));
-  background: @m100(
-    radial-gradient(@p(--color) 50%, transparent 0) 
-    @r(-20%, 120%) @r(-20%, 100%) / 1px 1px
-    no-repeat
-  );
+        @grid: 50x1 / 100vw 100vh / #000; /* Plus de cœurs, fond noir */
 
-  will-change: transform, opacity;
-  animation: scale-up 12s linear infinite;
-  animation-delay: calc(-12s / @I * @i);
+        :container {
+            perspective: 50vmin; /* Plus de profondeur 3D */
+            --deg: @p(-360deg, 360deg);
+        }
 
-  @keyframes scale-up {
-    0%, 95.01%, 100% {
-      transform: translateZ(0) rotate(0);
-      opacity: 0;
-    }
-    10% { 
-      opacity: 1; 
-    }
-    95% {
-      transform: 
-        translateZ(35vmin) rotateZ(var(--deg));
-    }
-  }
-</style></css-doodle>
+        :after, :before {
+            content: '';
+            background: @p(--color);
+            @place: @r(100%) @r(100%);
+            @size: @r(8px, 25px);
+            @shape: heart;
+            box-shadow: 0 0 25px @p(--color);
+        }
+
+        @place: center;
+        @size: 30vmin; /* Cœur central plus gros */
+
+        box-shadow: @m4(0 0 100px @p(--color)); /* Glow de malade */
+        background: @m200(
+            radial-gradient(@p(--color) 40%, transparent 0)
+            @r(-40%, 140%) @r(-40%, 140%) / 3px 3px
+            no-repeat
+        );
+
+        will-change: transform, opacity;
+        animation: scale-up 10s linear infinite;
+        animation-delay: calc(-10s / @I * @i);
+
+        @keyframes scale-up {
+            0%, 95.01%, 100% {
+                transform: translateZ(0) rotate(0);
+                opacity: 0;
+            }
+            5% {
+                opacity: 1;
+            }
+            95% {
+                transform: translateZ(60vmin) rotateZ(var(--deg)) scale(1.8);
+            }
+        }
+    </style>
+</css-doodle>
+
+</body>
+</html>
