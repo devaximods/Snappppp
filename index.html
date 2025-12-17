@@ -4,73 +4,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hindou ❤️</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://unpkg.com/css-doodle@0.34.0/css-doodle.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: #000;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .heart-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+        }
+        .heart {
+            position: absolute;
+            width: 400px;
+            height: 360px;
+            background: #e00;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            box-shadow: 0 0 100px #f00;
+            animation: beat 1.4s infinite;
+        }
+        .heart:before, .heart:after {
+            content: '';
+            position: absolute;
+            width: 360px;
+            height: 400px;
+            background: #e00;
+            border-radius: 50%;
+            box-shadow: inherit;
+        }
+        .heart:before {
+            top: -200px;
+            left: 0;
+        }
+        .heart:after {
+            left: 200px;
+            top: 0;
+        }
+        @keyframes beat {
+            0%, 100% { transform: translate(-50%, -50%) rotate(-45deg) scale(1); box-shadow: 0 0 100px #f00; }
+            50% { transform: translate(-50%, -50%) rotate(-45deg) scale(1.15); box-shadow: 0 0 180px #ff3366; }
+        }
+        .small-heart {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 100px;
+            animation: smallBeat 1.4s infinite;
+        }
+        @keyframes smallBeat {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.3); }
+        }
+        .particles .p {
+            position: absolute;
+            font-size: 40px;
+            opacity: 0;
+            animation: burst 1.4s infinite;
+        }
+        @keyframes burst {
+            0% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0) translateY(-150px) rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
 
-<div class="start-screen">
-    <p>Touche l'écran pour que je te doigte a la m... ❤️</p>
-</div>
-
-<div class="content">
-    <div class="message">
-        Hindou,<br>
-        chaque battement de ce cœur<br>
-        est pour toi.<br><br>
-        Tu es ma lumière dans toi😏.<br>
-        Je t’aime à l’infini.<br><br>
-        ❤️
+<div class="heart-container">
+    <div class="heart"></div>
+    <div class="small-heart">❤️</div>
+    <div class="particles">
+        <!-- Particles générés par JS -->
     </div>
-
-    <css-doodle>
-        <style>
-            --color: #ff1744, #ff3366, #cc0033, #b71c1c;
-
-            @grid: 80x1 / 100vw 100vh / #000;
-
-            :container {
-                perspective: 60vmin;
-                --deg: @p(-360deg, 360deg);
-            }
-
-            :after, :before {
-                content: '';
-                background: @p(--color);
-                @place: @r(100%) @r(100%);
-                @size: @r(10px, 35px);
-                @shape: heart;
-                box-shadow: 0 0 40px @p(--color);
-            }
-
-            @place: center;
-            @size: 35vmin;
-
-            box-shadow: @m5(0 0 120px @p(--color));
-            background: @m300(
-                radial-gradient(@p(--color) 40%, transparent 0)
-                @r(-50%, 150%) @r(-50%, 150%) / 4px 4px
-                no-repeat
-            );
-
-            will-change: transform, opacity;
-            animation: scale-up 9s linear infinite;
-            animation-delay: calc(-9s / @I * @i);
-
-            @keyframes scale-up {
-                0%, 95.01%, 100% {
-                    transform: translateZ(0) rotate(0);
-                    opacity: 0;
-                }
-                5% { opacity: 1; }
-                95% {
-                    transform: translateZ(80vmin) rotateZ(var(--deg)) scale(2);
-                }
-            }
-        </style>
-    </css-doodle>
 </div>
 
-<script src="script.js"></script>
+<script>
+    const container = document.querySelector('.heart-container');
+    setInterval(() => {
+        for (let i = 0; i < 15; i++) {
+            let p = document.createElement('div');
+            p.classList.add('p');
+            p.innerHTML = '❤️';
+            p.style.left = 50 + (Math.random() - 0.5) * 80 + '%';
+            p.style.top = 50 + (Math.random() - 0.5) * 80 + '%';
+            p.style.animationDelay = Math.random() * 1.4 + 's';
+            container.appendChild(p);
+            setTimeout(() => p.remove(), 1400);
+        }
+    }, 1400);
+</script>
+
 </body>
 </html>
