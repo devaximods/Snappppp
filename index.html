@@ -3,104 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hindou ❤️</title>
+    <title>Calendrier d'Amour pour Hindou ❤️</title>
     <style>
         body {
             margin: 0;
             height: 100vh;
-            background: #000;
-            overflow: hidden;
+            background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Georgia', serif;
+            color: #333;
+        }
+        h1 {
+            margin: 40px 0 20px;
+            font-size: 48px;
+            color: #d63384;
+            text-shadow: 0 0 20px #ff69b4;
+        }
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 15px;
+            max-width: 90%;
+            padding: 20px;
+        }
+        .day {
+            position: relative;
+            width: 100%;
+            padding-bottom: 100%;
+            perspective: 1000px;
+        }
+        .day input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 100%;
+            width: 100%;
+        }
+        .door {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(#ff3366, #cc0033);
+            border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 36px;
+            color: white;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
-        .heart-container {
-            position: relative;
-            width: 400px;
-            height: 400px;
+        .day input:checked + .door {
+            transform: rotateY(180deg);
         }
-        .heart {
+        .front, .back {
             position: absolute;
-            width: 400px;
-            height: 360px;
-            background: #e00;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(-45deg);
-            box-shadow: 0 0 100px #f00;
-            animation: beat 1.4s infinite;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
         }
-        .heart:before, .heart:after {
-            content: '';
-            position: absolute;
-            width: 360px;
-            height: 400px;
-            background: #e00;
-            border-radius: 50%;
-            box-shadow: inherit;
+        .front {
+            background: linear-gradient(#ff3366, #cc0033);
+            color: white;
+            font-size: 48px;
+            text-shadow: 0 0 20px #fff;
         }
-        .heart:before {
-            top: -200px;
-            left: 0;
+        .back {
+            background: #fff;
+            color: #d63384;
+            transform: rotateY(180deg);
+            font-size: 20px;
+            text-align: center;
         }
-        .heart:after {
-            left: 200px;
-            top: 0;
+        .heart-icon {
+            font-size: 60px;
+            animation: pulse 2s infinite;
         }
-        @keyframes beat {
-            0%, 100% { transform: translate(-50%, -50%) rotate(-45deg) scale(1); box-shadow: 0 0 100px #f00; }
-            50% { transform: translate(-50%, -50%) rotate(-45deg) scale(1.15); box-shadow: 0 0 180px #ff3366; }
-        }
-        .small-heart {
-            position: absolute;
-            top: 20%;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 100px;
-            animation: smallBeat 1.4s infinite;
-        }
-        @keyframes smallBeat {
-            0%, 100% { transform: translateX(-50%) scale(1); }
-            50% { transform: translateX(-50%) scale(1.3); }
-        }
-        .particles .p {
-            position: absolute;
-            font-size: 40px;
-            opacity: 0;
-            animation: burst 1.4s infinite;
-        }
-        @keyframes burst {
-            0% { opacity: 0; transform: scale(0); }
-            50% { opacity: 1; transform: scale(1); }
-            100% { opacity: 0; transform: scale(0) translateY(-150px) rotate(360deg); }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
         }
     </style>
 </head>
 <body>
 
-<div class="heart-container">
-    <div class="heart"></div>
-    <div class="small-heart">❤️</div>
-    <div class="particles">
-        <!-- Particles générés par JS -->
-    </div>
-</div>
+<h1>Calendrier d'Amour pour Hindou ❤️</h1>
 
-<script>
-    const container = document.querySelector('.heart-container');
-    setInterval(() => {
-        for (let i = 0; i < 15; i++) {
-            let p = document.createElement('div');
-            p.classList.add('p');
-            p.innerHTML = '❤️';
-            p.style.left = 50 + (Math.random() - 0.5) * 80 + '%';
-            p.style.top = 50 + (Math.random() - 0.5) * 80 + '%';
-            p.style.animationDelay = Math.random() * 1.4 + 's';
-            container.appendChild(p);
-            setTimeout(() => p.remove(), 1400);
-        }
-    }, 1400);
-</script>
+<div class="calendar">
+    <!-- Jour 1 -->
+    <label class="day">
+        <input type="checkbox">
+        <div class="door">
+            <div class="front">1</div>
+            <div class="back">
+                <div class="heart-icon">❤️</div>
+                Jour 1 : Tu es la raison de mon sourire tous les matins, Hindou.
+            </div>
+        </div>
+    </label>
+
+    <!-- Jour 2 -->
+    <label class="day">
+        <input type="checkbox">
+        <div class="door">
+            <div class="front">2</div>
+            <div class="back">
+                <div class="heart-icon">❤️</div>
+                Jour 2 : Ton rire est la plus belle musique du monde.
+            </div>
+        </div>
+    </label>
+
+    <!-- Répète pour 31 jours – je te mets un exemple pour 5, tu copies pour les autres -->
+    <label class="day">
+        <input type="checkbox">
+        <div class="door">
+            <div class="front">3</div>
+            <div class="back">
+                <div class="heart-icon">❤️</div>
+                Jour 3 : Je pense à toi à chaque battement de mon cœur.
+            </div>
+        </div>
+    </label>
+
+    <!-- ... Ajoute jusqu'à 31 avec tes messages perso pour Hindou ... -->
+
+    <!-- Exemple jour 31 -->
+    <label class="day">
+        <input type="checkbox">
+        <div class="door">
+            <div class="front">31</div>
+            <div class="back">
+                <div class="heart-icon">❤️</div>
+                Jour 31 : Tu es mon éternité, Hindou. Je t’aime pour toujours.
+            </div>
+        </div>
+    </label>
+</div>
 
 </body>
 </html>
