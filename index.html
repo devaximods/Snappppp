@@ -13,50 +13,40 @@
             flex-direction: column;
             align-items: center;
             font-family: 'Georgia', serif;
-            color: #333;
         }
         h1 {
-            margin: 40px 0 20px;
-            font-size: 48px;
+            margin: 40px 0;
+            font-size: 50px;
             color: #d63384;
-            text-shadow: 0 0 20px #ff69b4;
+            text-shadow: 0 0 30px #ff69b4;
         }
         .calendar {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 15px;
-            max-width: 90%;
+            gap: 20px;
             padding: 20px;
+            max-width: 95%;
         }
         .day {
+            perspective: 1000px;
+        }
+        .door {
             position: relative;
             width: 100%;
             padding-bottom: 100%;
-            perspective: 1000px;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: transform 0.8s;
         }
         .day input {
             position: absolute;
             opacity: 0;
+            width: 100%;
+            height: 100%;
             cursor: pointer;
-            height: 100%;
-            width: 100%;
+            z-index: 2;
         }
-        .door {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(#ff3366, #cc0033);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 36px;
-            color: white;
-            transition: transform 0.8s;
-            transform-style: preserve-3d;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-        .day input:checked + .door {
+        .day input:checked ~ .door {
             transform: rotateY(180deg);
         }
         .front, .back {
@@ -64,17 +54,16 @@
             width: 100%;
             height: 100%;
             backface-visibility: hidden;
-            border-radius: 15px;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
-            box-sizing: border-box;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
         .front {
             background: linear-gradient(#ff3366, #cc0033);
             color: white;
-            font-size: 48px;
+            font-size: 50px;
             text-shadow: 0 0 20px #fff;
         }
         .back {
@@ -82,10 +71,11 @@
             color: #d63384;
             transform: rotateY(180deg);
             font-size: 20px;
+            padding: 20px;
             text-align: center;
         }
-        .heart-icon {
-            font-size: 60px;
+        .heart {
+            font-size: 80px;
             animation: pulse 2s infinite;
         }
         @keyframes pulse {
@@ -96,58 +86,57 @@
 </head>
 <body>
 
-<h1>Calendrier d'Amour pour Hindou ❤️</h1>
+<h1>Mon Calendrier d'Amour pour Hindou ❤️</h1>
 
 <div class="calendar">
     <!-- Jour 1 -->
-    <label class="day">
-        <input type="checkbox">
-        <div class="door">
+    <div class="day">
+        <input type="checkbox" id="day1">
+        <label for="day1" class="door">
             <div class="front">1</div>
             <div class="back">
-                <div class="heart-icon">❤️</div>
-                Jour 1 : Tu es la raison de mon sourire tous les matins, Hindou.
+                <div class="heart">❤️</div>
+                Jour 1 : Tu es la raison pour laquelle je souris tous les jours, Hindou.
             </div>
-        </div>
-    </label>
+        </label>
+    </div>
 
     <!-- Jour 2 -->
-    <label class="day">
-        <input type="checkbox">
-        <div class="door">
+    <div class="day">
+        <input type="checkbox" id="day2">
+        <label for="day2" class="door">
             <div class="front">2</div>
             <div class="back">
-                <div class="heart-icon">❤️</div>
-                Jour 2 : Ton rire est la plus belle musique du monde.
+                <div class="heart">❤️</div>
+                Jour 2 : Ton rire est la plus belle mélodie de ma vie.
             </div>
-        </div>
-    </label>
+        </label>
+    </div>
 
-    <!-- Répète pour 31 jours – je te mets un exemple pour 5, tu copies pour les autres -->
-    <label class="day">
-        <input type="checkbox">
-        <div class="door">
+    <!-- Répète pour 31 jours avec tes messages perso -->
+    <!-- Exemple jour 3 -->
+    <div class="day">
+        <input type="checkbox" id="day3">
+        <label for="day3" class="door">
             <div class="front">3</div>
             <div class="back">
-                <div class="heart-icon">❤️</div>
-                Jour 3 : Je pense à toi à chaque battement de mon cœur.
+                <div class="heart">❤️</div>
+                Jour 3 : Je pense à toi à chaque instant.
             </div>
-        </div>
-    </label>
+        </label>
+    </div>
 
-    <!-- ... Ajoute jusqu'à 31 avec tes messages perso pour Hindou ... -->
-
-    <!-- Exemple jour 31 -->
-    <label class="day">
-        <input type="checkbox">
-        <div class="door">
+    <!-- ... Jusqu'au jour 31 ... -->
+    <div class="day">
+        <input type="checkbox" id="day31">
+        <label for="day31" class="door">
             <div class="front">31</div>
             <div class="back">
-                <div class="heart-icon">❤️</div>
+                <div class="heart">❤️</div>
                 Jour 31 : Tu es mon éternité, Hindou. Je t’aime pour toujours.
             </div>
-        </div>
-    </label>
+        </label>
+    </div>
 </div>
 
 </body>
