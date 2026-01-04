@@ -3,141 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendrier d'Amour pour Hindou ❤️</title>
+    <title>Hindou, mon cœur cosmique ❤️</title>
     <style>
         body {
             margin: 0;
             height: 100vh;
-            background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-family: 'Georgia', serif;
-        }
-        h1 {
-            margin: 40px 0;
-            font-size: 50px;
-            color: #d63384;
-            text-shadow: 0 0 30px #ff69b4;
-        }
-        .calendar {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 20px;
-            padding: 20px;
-            max-width: 95%;
-        }
-        .day {
-            perspective: 1000px;
-        }
-        .door {
-            position: relative;
-            width: 100%;
-            padding-bottom: 100%;
-            cursor: pointer;
-            transform-style: preserve-3d;
-            transition: transform 0.8s;
-        }
-        .day input {
-            position: absolute;
-            opacity: 0;
-            width: 100%;
-            height: 100%;
-            cursor: pointer;
-            z-index: 2;
-        }
-        .day input:checked ~ .door {
-            transform: rotateY(180deg);
-        }
-        .front, .back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 20px;
+            background: #000;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
-        .front {
-            background: linear-gradient(#ff3366, #cc0033);
-            color: white;
+        .container {
+            position: relative;
+            width: 80vmin;
+            height: 80vmin;
+            animation: appear 4s forwards;
+        }
+        @keyframes appear {
+            0% { opacity: 0; transform: scale(0); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        .big-heart {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, #ff1744, #b71c1c);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 120px #ff1744, 0 0 200px #ff5722;
+            animation: cosmicPulse 3s infinite alternate;
+        }
+        .big-heart::before, .big-heart::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 80%;
+            background: inherit;
+            border-radius: 50%;
+            top: 10%;
+        }
+        .big-heart::before {
+            left: 25%;
+            transform: rotate(-45deg);
+        }
+        .big-heart::after {
+            right: 25%;
+            transform: rotate(45deg);
+        }
+        @keyframes cosmicPulse {
+            0% { box-shadow: 0 0 100px #ff1744, 0 0 180px #ff5722; transform: translate(-50%, -50%) scale(1); }
+            100% { box-shadow: 0 0 180px #ff5722, 0 0 300px #ff1744; transform: translate(-50%, -50%) scale(1.08); }
+        }
+        .small-heart {
+            position: absolute;
+            top: -15%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 100px;
+            animation: smallCosmic 3s infinite;
+        }
+        @keyframes smallCosmic {
+            0%, 100% { transform: translateX(-50%) scale(1) translateY(0); }
+            50% { transform: translateX(-50%) scale(1.3) translateY(-30px); }
+        }
+        .particles .p {
+            position: absolute;
             font-size: 50px;
-            text-shadow: 0 0 20px #fff;
+            opacity: 0;
+            animation: cosmicBurst 3s infinite;
         }
-        .back {
-            background: #fff;
-            color: #d63384;
-            transform: rotateY(180deg);
-            font-size: 20px;
-            padding: 20px;
-            text-align: center;
-        }
-        .heart {
-            font-size: 80px;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
+        @keyframes cosmicBurst {
+            0% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1.5); }
+            100% { opacity: 0; transform: scale(0) translateY(-200px) rotate(720deg); }
         }
     </style>
 </head>
 <body>
 
-<h1>Mon Calendrier d'Amour pour Hindou ❤️</h1>
-
-<div class="calendar">
-    <!-- Jour 1 -->
-    <div class="day">
-        <input type="checkbox" id="day1">
-        <label for="day1" class="door">
-            <div class="front">1</div>
-            <div class="back">
-                <div class="heart">❤️</div>
-                Jour 1 : Tu es la raison pour laquelle je souris tous les jours, Hindou.
-            </div>
-        </label>
-    </div>
-
-    <!-- Jour 2 -->
-    <div class="day">
-        <input type="checkbox" id="day2">
-        <label for="day2" class="door">
-            <div class="front">2</div>
-            <div class="back">
-                <div class="heart">❤️</div>
-                Jour 2 : Ton rire est la plus belle mélodie de ma vie.
-            </div>
-        </label>
-    </div>
-
-    <!-- Répète pour 31 jours avec tes messages perso -->
-    <!-- Exemple jour 3 -->
-    <div class="day">
-        <input type="checkbox" id="day3">
-        <label for="day3" class="door">
-            <div class="front">3</div>
-            <div class="back">
-                <div class="heart">❤️</div>
-                Jour 3 : Je pense à toi à chaque instant.
-            </div>
-        </label>
-    </div>
-
-    <!-- ... Jusqu'au jour 31 ... -->
-    <div class="day">
-        <input type="checkbox" id="day31">
-        <label for="day31" class="door">
-            <div class="front">31</div>
-            <div class="back">
-                <div class="heart">❤️</div>
-                Jour 31 : Tu es mon éternité, Hindou. Je t’aime pour toujours.
-            </div>
-        </label>
+<div class="container">
+    <div class="big-heart"></div>
+    <div class="small-heart">❤️</div>
+    <div class="particles">
+        <!-- Particles générés par JS -->
     </div>
 </div>
+
+<script>
+    const container = document.querySelector('.container');
+    setInterval(() => {
+        for (let i = 0; i < 20; i++) {
+            let p = document.createElement('div');
+            p.classList.add('p');
+            p.innerHTML = '❤️';
+            p.style.left = 50 + (Math.random() - 0.5) * 100 + '%';
+            p.style.top = 50 + (Math.random() - 0.5) * 100 + '%';
+            p.style.animationDelay = Math.random() * 3 + 's';
+            container.appendChild(p);
+            setTimeout(() => p.remove(), 3000);
+        }
+    }, 1500);
+</script>
 
 </body>
 </html>
