@@ -3,183 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendrier d'Amour Explosif pour Hindou ❤️</title>
+    <title>Hindou, ma princesse ❤️</title>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
         body {
             margin: 0;
             height: 100vh;
-            background: linear-gradient(to bottom, #000, #330011);
+            background: #000;
+            overflow: hidden;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-family: 'Georgia', serif;
-            color: white;
-        }
-        h1 {
-            margin: 40px 0;
-            font-size: 50px;
-            color: #ff3366;
-            text-shadow: 0 0 40px #ff1744;
-            animation: pulseText 2s infinite;
-        }
-        @keyframes pulseText {
-            0%, 100% { text-shadow: 0 0 40px #ff1744; }
-            50% { text-shadow: 0 0 80px #ff3366; }
-        }
-        .calendar {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 20px;
-            padding: 20px;
-            max-width: 95%;
-        }
-        .day {
-            perspective: 1000px;
-        }
-        .door {
-            position: relative;
-            width: 100%;
-            padding-bottom: 100%;
-            cursor: pointer;
-            transform-style: preserve-3d;
-            transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-        }
-        .day input {
-            position: absolute;
-            opacity: 0;
-            width: 100%;
-            height: 100%;
-            cursor: pointer;
-            z-index: 2;
-        }
-        .day input:checked ~ .door {
-            transform: rotateY(180deg);
-        }
-        .front, .back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 20px;
-            display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 10px 30px rgba(255,0,0,0.5);
-            padding: 20px;
+            cursor: pointer;
         }
-        .front {
-            background: linear-gradient(135deg, #ff3366, #cc0033);
-            color: white;
-            font-size: 60px;
-            text-shadow: 0 0 30px #fff;
-            animation: pulseDoor 2s infinite;
+        .heart-container {
+            position: relative;
+            width: 70vmin;
+            height: 63vmin;
+            animation: float 6s infinite ease-in-out;
         }
-        @keyframes pulseDoor {
-            0%, 100% { box-shadow: 0 10px 30px rgba(255,0,0,0.5); }
-            50% { box-shadow: 0 0 60px #ff1744; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-30px); }
         }
-        .back {
-            background: #fff;
-            color: #cc0033;
-            transform: rotateY(180deg);
-            font-size: 20px;
-            text-align: center;
+        .heart {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, #1e90ff, #00008b);
+            border-radius: 50%;
+            box-shadow: 0 0 120px #1e90ff, 0 0 200px #4169e1;
+            animation: pulse 2s infinite alternate;
         }
-        .heart-big {
+        .heart::before, .heart::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 80%;
+            background: inherit;
+            border-radius: 50%;
+            top: 10%;
+        }
+        .heart::before {
+            left: 25%;
+            transform: rotate(-45deg);
+        }
+        .heart::after {
+            right: 25%;
+            transform: rotate(45deg);
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 100px #1e90ff, 0 0 180px #4169e1; transform: scale(1); }
+            100% { box-shadow: 0 0 150px #4169e1, 0 0 250px #1e90ff; transform: scale(1.05); }
+        }
+        .small-heart {
+            position: absolute;
+            top: -15%;
+            left: 50%;
+            transform: translateX(-50%);
             font-size: 100px;
-            animation: pulseBig 2s infinite;
+            animation: smallPulse 2s infinite;
         }
-        @keyframes pulseBig {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.3); }
+        @keyframes smallPulse {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.3); }
         }
-        .hindou-name {
+        .message {
+            position: absolute;
+            bottom: 10vh;
+            font-family: 'Georgia', serif;
             font-size: 40px;
-            margin-top: 20px;
-            animation: glowName 2s infinite alternate;
-        }
-        @keyframes glowName {
-            0% { text-shadow: 0 0 20px #ff1744; }
-            100% { text-shadow: 0 0 60px #ff3366; }
+            color: white;
+            text-align: center;
+            opacity: 0;
+            text-shadow: 0 0 30px #1e90ff;
+            transition: opacity 1s;
         }
     </style>
 </head>
 <body>
 
-<h1>Calendrier d'Amour Explosif pour Hindou ❤️</h1>
+<div class="heart-container">
+    <div class="heart"></div>
+    <div class="small-heart">❤️</div>
+</div>
 
-<div class="calendar">
-    <!-- Jour 1 -->
-    <div class="day">
-        <input type="checkbox" id="day1">
-        <label for="day1" class="door">
-            <div class="front">❤️</div>
-            <div class="back">
-                <div class="heart-big">❤️</div>
-                <p>Jour 1 : Tu es la raison de mon sourire tous les matins, Hindou.</p>
-                <div class="hindou-name">HINDOU</div>
-            </div>
-        </label>
-    </div>
-
-    <!-- Jour 2 -->
-    <div class="day">
-        <input type="checkbox" id="day2">
-        <label for="day2" class="door">
-            <div class="front">❤️</div>
-            <div class="back">
-                <div class="heart-big">❤️</div>
-                <p>Jour 2 : Ton rire est la plus belle musique du monde.</p>
-                <div class="hindou-name">HINDOU</div>
-            </div>
-        </label>
-    </div>
-
-    <!-- Répète pour 31 jours avec tes messages -->
-    <!-- Exemple jour 3 -->
-    <div class="day">
-        <input type="checkbox" id="day3">
-        <label for="day3" class="door">
-            <div class="front">❤️</div>
-            <div class="back">
-                <div class="heart-big">❤️</div>
-                <p>Jour 3 : Je pense à toi à chaque battement de mon cœur.</p>
-                <div class="hindou-name">HINDOU</div>
-            </div>
-        </label>
-    </div>
-
-    <!-- ... Jusqu'au jour 31 ... -->
-    <div class="day">
-        <input type="checkbox" id="day31">
-        <label for="day31" class="door">
-            <div class="front">❤️</div>
-            <div class="back">
-                <div class="heart-big">❤️</div>
-                <p>Jour 31 : Tu es mon éternité, Hindou. Je t’aime pour toujours.</p>
-                <div class="hindou-name">HINDOU</div>
-            </div>
-        </label>
-    </div>
+<div class="message">
+    vien on dessine ma princesse ❤️😋
 </div>
 
 <script>
-// Feux d'artifice cœurs quand elle ouvre une porte
-document.querySelectorAll('.day input').forEach(input => {
-    input.addEventListener('change', () => {
-        if (input.checked) {
+    const message = document.querySelector('.message');
+
+    document.body.addEventListener('click', () => {
+        if (message.style.opacity === '0' || message.style.opacity === '') {
+            message.style.opacity = '1';
+            // Feux d'artifice bleus au clic
             confetti({
-                particleCount: 100,
-                spread: 70,
+                particleCount: 150,
+                spread: 100,
                 origin: { y: 0.6 },
-                colors: ['#ff1744', '#ff3366', '#cc0033'],
-                shapes: ['heart']
+                colors: ['#1e90ff', '#4169e1', '#0000cd', '#6495ed']
             });
         }
     });
-});
 </script>
 
 </body>
