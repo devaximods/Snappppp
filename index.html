@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hindou, ma princesse ❤️</title>
+    <title>Hindou, ma princesse bleue ❤️</title>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
         body {
@@ -26,7 +26,7 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-30px); }
         }
-        .heart {
+        .big-heart {
             position: absolute;
             width: 100%;
             height: 100%;
@@ -34,8 +34,9 @@
             border-radius: 50%;
             box-shadow: 0 0 120px #1e90ff, 0 0 200px #4169e1;
             animation: pulse 2s infinite alternate;
+            cursor: pointer;
         }
-        .heart::before, .heart::after {
+        .big-heart::before, .big-heart::after {
             content: '';
             position: absolute;
             width: 50%;
@@ -44,11 +45,11 @@
             border-radius: 50%;
             top: 10%;
         }
-        .heart::before {
+        .big-heart::before {
             left: 25%;
             transform: rotate(-45deg);
         }
-        .heart::after {
+        .big-heart::after {
             right: 25%;
             transform: rotate(45deg);
         }
@@ -66,14 +67,31 @@
         }
         @keyframes smallPulse {
             0%, 100% { transform: translateX(-50%) scale(1); }
-            50% { transform: translateX(-50%) scale(1.3); }
+            50% { transform: translateX(-50%) scale(1.3) translateY(-20px); }
+        }
+        .blue-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        .blue-heart {
+            position: absolute;
+            font-size: 40px;
+            opacity: 0;
+            animation: blueFloat 10s infinite linear;
+        }
+        @keyframes blueFloat {
+            0% { opacity: 0; transform: translateY(100vh) scale(0); }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { opacity: 0; transform: translateY(-100px) scale(1.5); }
         }
         .message {
             position: absolute;
             bottom: 10vh;
             font-family: 'Georgia', serif;
             font-size: 40px;
-            color: white;
+            color: #1e90ff;
             text-align: center;
             opacity: 0;
             text-shadow: 0 0 30px #1e90ff;
@@ -84,8 +102,9 @@
 <body>
 
 <div class="heart-container">
-    <div class="heart"></div>
+    <div class="big-heart"></div>
     <div class="small-heart">❤️</div>
+    <div class="blue-hearts"></div>
 </div>
 
 <div class="message">
@@ -94,16 +113,29 @@
 
 <script>
     const message = document.querySelector('.message');
+    const container = document.querySelector('.blue-hearts');
 
-    document.body.addEventListener('click', () => {
+    // Plein de cœurs bleus qui flottent partout
+    for (let i = 0; i < 40; i++) {
+        let h = document.createElement('div');
+        h.classList.add('blue-heart');
+        h.innerHTML = '💙';
+        h.style.left = Math.random() * 100 + '%';
+        h.style.animationDelay = Math.random() * 10 + 's';
+        h.style.animationDuration = (Math.random() * 10 + 10) + 's';
+        container.appendChild(h);
+    }
+
+    // Au clic sur le cœur bleu central
+    document.querySelector('.big-heart').addEventListener('click', () => {
         if (message.style.opacity === '0' || message.style.opacity === '') {
             message.style.opacity = '1';
-            // Feux d'artifice bleus au clic
+            // Feux d'artifice bleus
             confetti({
-                particleCount: 150,
+                particleCount: 200,
                 spread: 100,
                 origin: { y: 0.6 },
-                colors: ['#1e90ff', '#4169e1', '#0000cd', '#6495ed']
+                colors: ['#1e90ff', '#4169e1', '#0000cd', '#6495ed', '#87cefa']
             });
         }
     });
