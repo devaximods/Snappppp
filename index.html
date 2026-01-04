@@ -3,139 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendrier d'Amour pour Hindou ❤️</title>
+    <title>Calendrier d'Amour Explosif pour Hindou ❤️</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
         body {
+            margin: 0;
             height: 100vh;
-            background: #000;
+            background: linear-gradient(to bottom, #000, #330011);
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            color: white;
             font-family: 'Georgia', serif;
+            color: white;
         }
         h1 {
             margin: 40px 0;
-            font-size: 48px;
+            font-size: 50px;
             color: #ff3366;
-            text-shadow: 0 0 30px #ff1744;
+            text-shadow: 0 0 40px #ff1744;
+            animation: pulseText 2s infinite;
         }
-        main {
+        @keyframes pulseText {
+            0%, 100% { text-shadow: 0 0 40px #ff1744; }
+            50% { text-shadow: 0 0 80px #ff3366; }
+        }
+        .calendar {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 20px;
-            max-width: 95%;
             padding: 20px;
+            max-width: 95%;
         }
-        .present {
+        .day {
+            perspective: 1000px;
+        }
+        .door {
             position: relative;
             width: 100%;
             padding-bottom: 100%;
-            perspective: 1000px;
-        }
-        .present__pane {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #ff3366, #cc0033);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 60px;
-            color: white;
-            text-shadow: 0 0 20px #fff;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            transition: all 0.5s ease;
-            transform-style: preserve-3d;
             cursor: pointer;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
         }
-        .present:hover .present__pane {
-            transform: rotateY(-100deg);
-            box-shadow: 0 0 80px #ff1744;
+        .day input {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            z-index: 2;
         }
-        .present__content {
+        .day input:checked ~ .door {
+            transform: rotateY(180deg);
+        }
+        .front, .back {
             position: absolute;
             width: 100%;
             height: 100%;
-            background: #fff;
+            backface-visibility: hidden;
             border-radius: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: #cc0033;
+            box-shadow: 0 10px 30px rgba(255,0,0,0.5);
             padding: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .front {
+            background: linear-gradient(135deg, #ff3366, #cc0033);
+            color: white;
+            font-size: 60px;
+            text-shadow: 0 0 30px #fff;
+            animation: pulseDoor 2s infinite;
+        }
+        @keyframes pulseDoor {
+            0%, 100% { box-shadow: 0 10px 30px rgba(255,0,0,0.5); }
+            50% { box-shadow: 0 0 60px #ff1744; }
+        }
+        .back {
+            background: #fff;
+            color: #cc0033;
             transform: rotateY(180deg);
-            backface-visibility: hidden;
-        }
-        .present__bauble {
-            font-size: 100px;
-            animation: pulse 2s infinite;
-            margin-bottom: 20px;
-        }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-        }
-        .present__content p {
-            font-size: 22px;
+            font-size: 20px;
             text-align: center;
+        }
+        .heart-big {
+            font-size: 100px;
+            animation: pulseBig 2s infinite;
+        }
+        @keyframes pulseBig {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+        }
+        .hindou-name {
+            font-size: 40px;
+            margin-top: 20px;
+            animation: glowName 2s infinite alternate;
+        }
+        @keyframes glowName {
+            0% { text-shadow: 0 0 20px #ff1744; }
+            100% { text-shadow: 0 0 60px #ff3366; }
         }
     </style>
 </head>
 <body>
 
-<h1>Calendrier d'Amour pour Hindou ❤️</h1>
+<h1>Calendrier d'Amour Explosif pour Hindou ❤️</h1>
 
-<main>
+<div class="calendar">
     <!-- Jour 1 -->
-    <article class="present">
-        <div class="present__pane">
-            <h2>1</h2>
-        </div>
-        <div class="present__content">
-            <div class="present__bauble">❤️</div>
-            <p>Jour 1 : Tu es la lumière qui illumine ma vie, Hindou.</p>
-        </div>
-    </article>
+    <div class="day">
+        <input type="checkbox" id="day1">
+        <label for="day1" class="door">
+            <div class="front">❤️</div>
+            <div class="back">
+                <div class="heart-big">❤️</div>
+                <p>Jour 1 : Tu es la raison de mon sourire tous les matins, Hindou.</p>
+                <div class="hindou-name">HINDOU</div>
+            </div>
+        </label>
+    </div>
 
     <!-- Jour 2 -->
-    <article class="present">
-        <div class="present__pane">
-            <h2>2</h2>
-        </div>
-        <div class="present__content">
-            <div class="present__bauble">❤️</div>
-            <p>Jour 2 : Ton sourire est mon trésor le plus précieux.</p>
-        </div>
-    </article>
+    <div class="day">
+        <input type="checkbox" id="day2">
+        <label for="day2" class="door">
+            <div class="front">❤️</div>
+            <div class="back">
+                <div class="heart-big">❤️</div>
+                <p>Jour 2 : Ton rire est la plus belle musique du monde.</p>
+                <div class="hindou-name">HINDOU</div>
+            </div>
+        </label>
+    </div>
 
-    <!-- Répète pour 31 jours avec tes messages perso -->
+    <!-- Répète pour 31 jours avec tes messages -->
     <!-- Exemple jour 3 -->
-    <article class="present">
-        <div class="present__pane">
-            <h2>3</h2>
-        </div>
-        <div class="present__content">
-            <div class="present__bauble">❤️</div>
-            <p>Jour 3 : Je t’aime plus que les mots peuvent le dire.</p>
-        </div>
-    </article>
+    <div class="day">
+        <input type="checkbox" id="day3">
+        <label for="day3" class="door">
+            <div class="front">❤️</div>
+            <div class="back">
+                <div class="heart-big">❤️</div>
+                <p>Jour 3 : Je pense à toi à chaque battement de mon cœur.</p>
+                <div class="hindou-name">HINDOU</div>
+            </div>
+        </label>
+    </div>
 
     <!-- ... Jusqu'au jour 31 ... -->
-    <article class="present">
-        <div class="present__pane">
-            <h2>31</h2>
-        </div>
-        <div class="present__content">
-            <div class="present__bauble">❤️</div>
-            <p>Jour 31 : Tu es mon éternité, Hindou. Pour toujours.</p>
-        </div>
-    </article>
-</main>
+    <div class="day">
+        <input type="checkbox" id="day31">
+        <label for="day31" class="door">
+            <div class="front">❤️</div>
+            <div class="back">
+                <div class="heart-big">❤️</div>
+                <p>Jour 31 : Tu es mon éternité, Hindou. Je t’aime pour toujours.</p>
+                <div class="hindou-name">HINDOU</div>
+            </div>
+        </label>
+    </div>
+</div>
+
+<script>
+// Feux d'artifice cœurs quand elle ouvre une porte
+document.querySelectorAll('.day input').forEach(input => {
+    input.addEventListener('change', () => {
+        if (input.checked) {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#ff1744', '#ff3366', '#cc0033'],
+                shapes: ['heart']
+            });
+        }
+    });
+});
+</script>
 
 </body>
 </html>
