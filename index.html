@@ -1,144 +1,370 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hindou, ma princesse bleue ❤️</title>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            background: #000;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-        .heart-container {
-            position: relative;
-            width: 70vmin;
-            height: 63vmin;
-            animation: float 6s infinite ease-in-out;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-30px); }
-        }
-        .big-heart {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 30% 30%, #1e90ff, #00008b);
-            border-radius: 50%;
-            box-shadow: 0 0 120px #1e90ff, 0 0 200px #4169e1;
-            animation: pulse 2s infinite alternate;
-            cursor: pointer;
-        }
-        .big-heart::before, .big-heart::after {
-            content: '';
-            position: absolute;
-            width: 50%;
-            height: 80%;
-            background: inherit;
-            border-radius: 50%;
-            top: 10%;
-        }
-        .big-heart::before {
-            left: 25%;
-            transform: rotate(-45deg);
-        }
-        .big-heart::after {
-            right: 25%;
-            transform: rotate(45deg);
-        }
-        @keyframes pulse {
-            0% { box-shadow: 0 0 100px #1e90ff, 0 0 180px #4169e1; transform: scale(1); }
-            100% { box-shadow: 0 0 150px #4169e1, 0 0 250px #1e90ff; transform: scale(1.05); }
-        }
-        .small-heart {
-            position: absolute;
-            top: -15%;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 100px;
-            animation: smallPulse 2s infinite;
-        }
-        @keyframes smallPulse {
-            0%, 100% { transform: translateX(-50%) scale(1); }
-            50% { transform: translateX(-50%) scale(1.3) translateY(-20px); }
-        }
-        .blue-hearts {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-        .blue-heart {
-            position: absolute;
-            font-size: 40px;
-            opacity: 0;
-            animation: blueFloat 10s infinite linear;
-        }
-        @keyframes blueFloat {
-            0% { opacity: 0; transform: translateY(100vh) scale(0); }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { opacity: 0; transform: translateY(-100px) scale(1.5); }
-        }
-        .message {
-            position: absolute;
-            bottom: 10vh;
-            font-family: 'Georgia', serif;
-            font-size: 40px;
-            color: #1e90ff;
-            text-align: center;
-            opacity: 0;
-            text-shadow: 0 0 30px #1e90ff;
-            transition: opacity 1s;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carrelage City - Carrelage Béziers & Occitanie | Qualité & Prix canons</title>
+  <meta name="description" content="Carrelage City – Votre expert carrelage à Béziers. Grands formats, imitation béton, pierre naturelle, mosaïque, faïence XXL. Livraison rapide & pose par nos équipes."/>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --blanc: #ffffff;
+      --gris-clair: #f8f9fa;
+      --gris-moyen: #e0e0e0;
+      --gris-fonce: #4a4a4a;
+      --noir: #1a1a1a;
+      --accent: #c9a96e;     /* doré / champagne discret */
+      --accent-dark: #b08c52;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--gris-clair);
+      color: var(--noir);
+      line-height: 1.6;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 25px rgba(0,0,0,0.08);
+      transition: all 0.4s ease;
+    }
+
+    header.scrolled {
+      background: rgba(255,255,255,0.99);
+      box-shadow: 0 6px 35px rgba(0,0,0,0.12);
+    }
+
+    nav {
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--noir);
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--gris-fonce);
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -6px;
+      left: 0;
+      background: var(--accent);
+      transition: width 0.35s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--noir);
+    }
+
+    .hero {
+      height: 100vh;
+      min-height: 680px;
+      background: linear-gradient(rgba(0,0,0,0.48), rgba(0,0,0,0.65)),
+                  url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=90') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 90%;
+      padding: 0 1.5rem;
+      animation: fadeUp 1.4s ease-out;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(60px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 9vw, 5.2rem);
+      margin-bottom: 1.3rem;
+      line-height: 1.05;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.15rem, 4.5vw, 1.45rem);
+      margin-bottom: 2.2rem;
+      opacity: 0.95;
+      font-weight: 300;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 1rem 2.4rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.35s;
+      box-shadow: 0 8px 30px rgba(201,169,110,0.35);
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-4px);
+      background: var(--accent-dark);
+      box-shadow: 0 14px 40px rgba(176,140,82,0.45);
+    }
+
+    section {
+      padding: 5rem 5%;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: var(--noir);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.6rem;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: all 0.4s ease;
+      background: white;
+    }
+
+    .card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 22px 50px rgba(0,0,0,0.14);
+    }
+
+    .card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .card:hover img {
+      transform: scale(1.12);
+    }
+
+    .card-info {
+      padding: 1.4rem;
+      text-align: center;
+    }
+
+    .card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .price-tag {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 1.4rem;
+      margin: 0.8rem 0;
+    }
+
+    .contact-section {
+      background: var(--blanc);
+      text-align: center;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .big-phone {
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 1.5rem 0;
+      letter-spacing: 2px;
+    }
+
+    footer {
+      background: var(--noir);
+      color: white;
+      text-align: center;
+      padding: 3rem 5%;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        gap: 1.4rem;
+      }
+      h1 {
+        font-size: 3.8rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<div class="heart-container">
-    <div class="big-heart"></div>
-    <div class="small-heart">❤️</div>
-    <div class="blue-hearts"></div>
-</div>
+<header>
+  <nav>
+    <div class="logo">Carrelage<span>City</span></div>
+    <ul class="nav-links">
+      <li><a href="#accueil" class="active">Accueil</a></li>
+      <li><a href="#produits">Nos carrelages</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
-<div class="message">
-    vien on dessine ma princesse ❤️😋
-</div>
+<section class="hero" id="accueil">
+  <div class="hero-content">
+    <h1>Carrelage City</h1>
+    <p class="hero-subtitle">Le carrelage qui claque, les prix qui ne cognent pas</p>
+    <a href="#contact" class="cta-btn">Appelez Chef Badou → 07 80 60 13 22</a>
+  </div>
+</section>
+
+<section id="produits">
+  <h2>Ce qu’on déchire en ce moment</h2>
+  
+  <div class="grid">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=85" alt="grand carrelage gris imitation béton">
+      <div class="card-info">
+        <h3>Béton Ciré XL 120×120</h3>
+        <div class="price-tag">29,90 € / m²</div>
+        <p>Effet béton brut ultra tendance – épaisseur 10 mm renforcée</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=85" alt="carrelage imitation pierre naturelle beige">
+      <div class="card-info">
+        <h3>Pierre de Bourgogne 60×120</h3>
+        <div class="price-tag">42,50 € / m²</div>
+        <p>Veinage naturel – anti-dérapant R10 – terrasse & intérieur</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1618221195710-dd2dabb60b29?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=85" alt="carrelage mosaïque noir et blanc">
+      <div class="card-info">
+        <h3>Mosaïque Hexa Noir & Blanc</h3>
+        <div class="price-tag">18,90 € / plaque</div>
+        <p>Format 29×25 cm – douche & crédence qui pètent</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=85" alt="carrelage grand format marbre blanc veiné or">
+      <div class="card-info">
+        <h3>Marbre Calacatta Gold 160×320</h3>
+        <div class="price-tag">89,00 € / m²</div>
+        <p>Slab géant – luxe abordable pour séjour & salle de bain</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1581235720704-06d1018152dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=85" alt="carrelage imitation parquet chêne clair">
+      <div class="card-info">
+        <h3>Parquet Grès Cérame Chêne Naturel</h3>
+        <div class="price-tag">34,90 € / m²</div>
+        <p>Epaisseur 20 mm – chauffant au sol compatible</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <h2>Contact Chef Badou</h2>
+  <div class="contact-grid">
+    <div>
+      <p style="font-size:1.3rem; margin-bottom:1rem;">Appelez-moi direct, j’te réponds cash</p>
+      <a href="tel:0780601322" class="big-phone">07 80 60 13 22</a>
+      <p style="margin:1.5rem 0; font-size:1.1rem;">Carrelage City – Béziers & toute l’Occitanie</p>
+      <p>Showroom sur RDV – Devis pose gratuit sous 48h</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025–2026 Carrelage City – Béziers – SIRET en cours d’immatriculation – Chef Badou t’attend</p>
+</footer>
 
 <script>
-    const message = document.querySelector('.message');
-    const container = document.querySelector('.blue-hearts');
+  // petit scroll sympa pour le header
+  window.addEventListener('scroll', () => {
+    document.querySelector('header').classList.toggle('scrolled', window.scrollY > 80);
+  });
 
-    // Plein de cœurs bleus qui flottent partout
-    for (let i = 0; i < 40; i++) {
-        let h = document.createElement('div');
-        h.classList.add('blue-heart');
-        h.innerHTML = '💙';
-        h.style.left = Math.random() * 100 + '%';
-        h.style.animationDelay = Math.random() * 10 + 's';
-        h.style.animationDuration = (Math.random() * 10 + 10) + 's';
-        container.appendChild(h);
-    }
-
-    // Au clic sur le cœur bleu central
-    document.querySelector('.big-heart').addEventListener('click', () => {
-        if (message.style.opacity === '0' || message.style.opacity === '') {
-            message.style.opacity = '1';
-            // Feux d'artifice bleus
-            confetti({
-                particleCount: 200,
-                spread: 100,
-                origin: { y: 0.6 },
-                colors: ['#1e90ff', '#4169e1', '#0000cd', '#6495ed', '#87cefa']
-            });
-        }
+  // smooth scroll pour les ancres
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
     });
+  });
 </script>
 
 </body>
