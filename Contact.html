@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact - Carrelage City | Béziers & Occitanie</title>
+  <meta name="description" content="Contactez Carrelage City à Béziers pour vos projets carrelage : devis gratuit, showroom sur RDV, pose professionnelle. Appelez-nous au 07 80 60 13 22."/>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --blanc: #ffffff;
+      --gris-clair: #f8f9fa;
+      --gris-moyen: #e0e0e0;
+      --gris-fonce: #4a4a4a;
+      --noir: #1a1a1a;
+      --accent: #c9a96e;
+      --accent-dark: #b08c52;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--gris-clair);
+      color: var(--noir);
+      line-height: 1.6;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 25px rgba(0,0,0,0.08);
+      transition: all 0.4s ease;
+    }
+
+    header.scrolled {
+      background: rgba(255,255,255,0.99);
+      box-shadow: 0 6px 35px rgba(0,0,0,0.12);
+    }
+
+    nav {
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--noir);
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--gris-fonce);
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -6px;
+      left: 0;
+      background: var(--accent);
+      transition: width 0.35s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--noir);
+    }
+
+    .page-hero {
+      height: 60vh;
+      min-height: 400px;
+      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.75)),
+                  url('https://images.unsplash.com/photo-1581235720704-06d1018152dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=90') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      margin-top: 70px; /* pour le header fixe */
+    }
+
+    .page-hero-content {
+      max-width: 90%;
+      padding: 0 1.5rem;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 8vw, 4.2rem);
+      margin-bottom: 1rem;
+    }
+
+    .contact-section {
+      padding: 4rem 5% 6rem;
+      background: var(--blanc);
+      text-align: center;
+    }
+
+    .contact-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      margin-bottom: 2.5rem;
+      color: var(--noir);
+    }
+
+    .big-phone {
+      display: block;
+      font-size: clamp(2.6rem, 10vw, 4.2rem);
+      font-weight: 700;
+      color: var(--accent);
+      margin: 1.8rem 0 1.2rem;
+      letter-spacing: 1px;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .big-phone:hover {
+      color: var(--accent-dark);
+      transform: scale(1.05);
+    }
+
+    .info-block {
+      margin: 2.5rem 0;
+      font-size: 1.15rem;
+    }
+
+    .info-block strong {
+      color: var(--noir);
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.15rem;
+      margin-top: 2rem;
+      transition: all 0.35s;
+      box-shadow: 0 8px 30px rgba(201,169,110,0.3);
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-4px);
+      background: var(--accent-dark);
+      box-shadow: 0 14px 40px rgba(176,140,82,0.4);
+    }
+
+    footer {
+      background: var(--noir);
+      color: white;
+      text-align: center;
+      padding: 3rem 5%;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        gap: 1.2rem;
+        font-size: 0.95rem;
+      }
+      .page-hero {
+        height: 50vh;
+        min-height: 340px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Carrelage<span>City</span></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="index.html#produits">Nos carrelages</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="page-hero">
+  <div class="page-hero-content">
+    <h1>Contactez-nous</h1>
+    <p style="font-size:1.3rem; opacity:0.9;">On répond vite et on bouge vite</p>
+  </div>
+</div>
+
+<section class="contact-section">
+  <div class="contact-container">
+    <h2>Par téléphone</h2>
+    <a href="tel:0780601322" class="big-phone">07 80 60 13 22</a>
+    
+    <div class="info-block">
+      <p><strong>Horaires :</strong> Du lundi au samedi – 9h à 19h (et parfois plus tard si t’es chaud)</p>
+      <p><strong>Zone :</strong> Béziers + toute l’Occitanie (déplacement possible)</p>
+    </div>
+
+    <h2>Showroom & Devis</h2>
+    <div class="info-block">
+      <p>Showroom visible uniquement sur rendez-vous (pour éviter les curieux qui touchent à tout)</p>
+      <p>Devis pose + fourniture gratuit et détaillé sous 48h max</p>
+      <p>Photos de votre chantier ou plan suffisent pour démarrer</p>
+    </div>
+
+    <a href="tel:0780601322" class="cta-btn">Appeler maintenant</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Carrelage City – Béziers – SIRET en cours d’immatriculation</p>
+  <p style="margin-top:1rem; opacity:0.7;">Livraison & pose partout en Occitanie – Qualité sans chichi, prix sans tabou</p>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.querySelector('header').classList.toggle('scrolled', window.scrollY > 80);
+  });
+</script>
+
+</body>
+</html>
