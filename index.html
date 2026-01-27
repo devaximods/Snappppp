@@ -1,13 +1,13 @@
-<!-- index.html -->
+<!-- index.html – version améliorée avec effets 3D, parallax, hover 3D, animations plus immersives -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NAËL Revêtements Murs et Sols - Carrelage & Vente sur Catalogue</title>
-  <meta name="description" content="NAËL Revêtements Murs et Sols - Pose et vente de carrelage, sols et murs à Nîmes. Devis gratuit, qualité artisanale."/>
+  <title>NAËL Revêtements Murs et Sols – Carrelage & Vente Catalogue</title>
+  <meta name="description" content="Pose professionnelle de carrelage, faïence, sols & murs. Vente directe sur catalogue. Artisan à Nîmes – Devis gratuit."/>
   <link rel="stylesheet" href="style.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"/>
 </head>
 <body>
 
@@ -25,62 +25,120 @@
   </header>
 
   <main>
-    <section class="hero">
+    <!-- Hero avec parallax subtil + overlay motif carrelage -->
+    <section class="hero parallax">
+      <div class="hero-bg"></div>
+      <div class="hero-overlay"></div>
       <div class="hero-content">
-        <h1>NAËL Revêtements Murs et Sols</h1>
-        <h2>Carrelage • Pose • Vente sur Catalogue</h2>
-        <p>Artisan qualifié – Nîmes & alentours</p>
-        <a href="contact.html" class="cta">Demander un devis gratuit</a>
+        <h1 class="reveal">NAËL Revêtements</h1>
+        <h2 class="reveal delay-1">Murs • Sols • Carrelage</h2>
+        <p class="reveal delay-2">Pose experte – Vente catalogue – Nîmes</p>
+        <a href="contact.html" class="cta reveal delay-3">Devis Gratuit</a>
       </div>
     </section>
 
+    <!-- Services avec cartes 3D tilt -->
     <section class="services">
-      <h2>Nos Prestations</h2>
+      <h2 class="section-title">Nos Savoir-faire</h2>
       <div class="grid">
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pose carrelage sol"/>
-          <h3>Pose Carrelage Sols</h3>
-          <p>Préparation, ragréage, pose parfaite</p>
+        <div class="card card-3d">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" alt="Pose carrelage sol"/>
+              <div class="card-overlay">
+                <h3>Pose Sols</h3>
+              </div>
+            </div>
+            <div class="card-back">
+              <h3>Pose Sols</h3>
+              <p>Ragréage parfait – Découpes précises – Jointoiement impeccable</p>
+              <a href="contact.html" class="card-btn">Demander devis</a>
+            </div>
+          </div>
         </div>
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Revêtement mural"/>
-          <h3>Revêtements Murs</h3>
-          <p>Faïence, mosaïque, pierre naturelle</p>
+
+        <div class="card card-3d">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" alt="Revêtement mural"/>
+              <div class="card-overlay">
+                <h3>Revêtements Murs</h3>
+              </div>
+            </div>
+            <div class="card-back">
+              <h3>Revêtements Murs</h3>
+              <p>Faïence, mosaïque, grès cérame, pierre naturelle</p>
+              <a href="contact.html" class="card-btn">Demander devis</a>
+            </div>
+          </div>
         </div>
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1618221195710-dd2dabb60b29?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Vente carrelage"/>
-          <h3>Vente sur Catalogue</h3>
-          <p>Grand choix de carrelages, grès cérame, parquet céramique</p>
+
+        <div class="card card-3d">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="https://images.unsplash.com/photo-1618221195710-dd2dabb60b29?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" alt="Vente carrelage"/>
+              <div class="card-overlay">
+                <h3>Vente Catalogue</h3>
+              </div>
+            </div>
+            <div class="card-back">
+              <h3>Vente Catalogue</h3>
+              <p>Large choix – Prix directs – Livraison possible</p>
+              <a href="catalogue.html" class="card-btn">Voir le catalogue</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- Galerie avec hover scale + light effect -->
     <section class="gallery">
-      <h2>Quelques Réalisations</h2>
+      <h2 class="section-title">Réalisations</h2>
       <div class="gallery-grid">
-        <img src="https://images.unsplash.com/photo-1581235720704-06d8e9b4d8d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Salle de bain carrelée"/>
-        <img src="https://images.unsplash.com/photo-1600563438938-a9a6a8c3c0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cuisine moderne carrelage"/>
-        <img src="https://images.unsplash.com/photo-1616046229478-9901c5536a45?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Terrasse extérieure"/>
-        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mur en mosaïque"/>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1581235720704-06d8e9b4d8d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" alt="Salle de bain"/></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1600563438938-a9a6a8c3c0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" alt="Cuisine"/></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1616046229478-9901c5536a45?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" alt="Terrasse"/></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" alt="Mosaïque"/></div>
       </div>
     </section>
 
-    <section class="call-to-action">
-      <h2>Prêt à transformer votre espace ?</h2>
-      <a href="contact.html" class="cta">Contactez-moi maintenant</a>
+    <!-- Call to action final avec pulsation -->
+    <section class="cta-section">
+      <div class="cta-content">
+        <h2>Transformez votre intérieur dès aujourd'hui</h2>
+        <a href="contact.html" class="cta pulse">Contactez NAËL</a>
+      </div>
     </section>
   </main>
 
   <footer>
-    <p>NAËL Revêtements Murs et Sols – 20 avenue Fanfonne Guillierme, 30000 Nîmes</p>
-    <p>06 52 15 84 84 | nael.entreprise@gmail.com | SIRET 511 527 566 00034</p>
-    <p>© 2026 – Tous droits réservés</p>
+    <div class="footer-content">
+      <p>NAËL Revêtements Murs et Sols</p>
+      <p>20 avenue Fanfonne Guillierme – 30000 Nîmes</p>
+      <p>06 52 15 84 84 | nael.entreprise@gmail.com</p>
+      <p>SIRET 511 527 566 00034</p>
+      <p>© 2026 NAËL – Artisan Carrelage</p>
+    </div>
   </footer>
 
   <script>
+    // Hamburger mobile
     document.querySelector('.hamburger').addEventListener('click', () => {
       document.querySelector('.nav-links').classList.toggle('active');
     });
+
+    // Scroll reveal simple (optionnel GSAP si tu veux plus tard)
+    const reveals = document.querySelectorAll('.reveal');
+    function checkReveal() {
+      reveals.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 80) {
+          el.classList.add('active');
+        }
+      });
+    }
+    window.addEventListener('scroll', checkReveal);
+    checkReveal();
   </script>
 </body>
 </html>
