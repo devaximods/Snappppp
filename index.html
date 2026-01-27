@@ -1,362 +1,86 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Carrelage City - Carrelage Béziers & Occitanie | Qualité & Prix canons</title>
-  <meta name="description" content="Carrelage City – Votre expert carrelage à Béziers. Grands formats, imitation béton, pierre naturelle, mosaïque, faïence XXL. Livraison rapide & pose par nos équipes."/>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      --blanc: #ffffff;
-      --gris-clair: #f8f9fa;
-      --gris-moyen: #e0e0e0;
-      --gris-fonce: #4a4a4a;
-      --noir: #1a1a1a;
-      --accent: #c9a96e;     /* doré / champagne discret */
-      --accent-dark: #b08c52;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--gris-clair);
-      color: var(--noir);
-      line-height: 1.6;
-    }
-
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 4px 25px rgba(0,0,0,0.08);
-      transition: all 0.4s ease;
-    }
-
-    header.scrolled {
-      background: rgba(255,255,255,0.99);
-      box-shadow: 0 6px 35px rgba(0,0,0,0.12);
-    }
-
-    nav {
-      max-width: 100%;
-      margin: 0 auto;
-      padding: 1rem 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.7rem;
-      font-weight: 700;
-      color: var(--noir);
-      letter-spacing: 1px;
-    }
-
-    .logo span {
-      color: var(--accent);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2.2rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: var(--gris-fonce);
-      font-weight: 500;
-      position: relative;
-      transition: color 0.3s;
-    }
-
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -6px;
-      left: 0;
-      background: var(--accent);
-      transition: width 0.35s ease;
-    }
-
-    .nav-links a:hover::after,
-    .nav-links a.active::after {
-      width: 100%;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--noir);
-    }
-
-    .hero {
-      height: 100vh;
-      min-height: 680px;
-      background: linear-gradient(rgba(0,0,0,0.48), rgba(0,0,0,0.65)),
-                  url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=90') center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: white;
-      position: relative;
-    }
-
-    .hero-content {
-      max-width: 90%;
-      padding: 0 1.5rem;
-      animation: fadeUp 1.4s ease-out;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(60px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.8rem, 9vw, 5.2rem);
-      margin-bottom: 1.3rem;
-      line-height: 1.05;
-    }
-
-    .hero-subtitle {
-      font-size: clamp(1.15rem, 4.5vw, 1.45rem);
-      margin-bottom: 2.2rem;
-      opacity: 0.95;
-      font-weight: 300;
-    }
-
-    .cta-btn {
-      display: inline-block;
-      background: var(--accent);
-      color: white;
-      padding: 1rem 2.4rem;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1rem;
-      transition: all 0.35s;
-      box-shadow: 0 8px 30px rgba(201,169,110,0.35);
-    }
-
-    .cta-btn:hover {
-      transform: translateY(-4px);
-      background: var(--accent-dark);
-      box-shadow: 0 14px 40px rgba(176,140,82,0.45);
-    }
-
-    section {
-      padding: 5rem 5%;
-    }
-
-    h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.6rem;
-      text-align: center;
-      margin-bottom: 3rem;
-      color: var(--noir);
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.6rem;
-    }
-
-    .card {
-      position: relative;
-      overflow: hidden;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      transition: all 0.4s ease;
-      background: white;
-    }
-
-    .card:hover {
-      transform: translateY(-12px);
-      box-shadow: 0 22px 50px rgba(0,0,0,0.14);
-    }
-
-    .card img {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-      transition: transform 0.6s ease;
-    }
-
-    .card:hover img {
-      transform: scale(1.12);
-    }
-
-    .card-info {
-      padding: 1.4rem;
-      text-align: center;
-    }
-
-    .card h3 {
-      font-size: 1.35rem;
-      margin-bottom: 0.6rem;
-    }
-
-    .price-tag {
-      color: var(--accent);
-      font-weight: 700;
-      font-size: 1.4rem;
-      margin: 0.8rem 0;
-    }
-
-    .contact-section {
-      background: var(--blanc);
-      text-align: center;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .big-phone {
-      font-size: 3.2rem;
-      font-weight: 700;
-      color: var(--accent);
-      margin: 1.5rem 0;
-      letter-spacing: 2px;
-    }
-
-    footer {
-      background: var(--noir);
-      color: white;
-      text-align: center;
-      padding: 3rem 5%;
-      font-size: 0.95rem;
-    }
-
-    @media (max-width: 768px) {
-      .nav-links {
-        gap: 1.4rem;
-      }
-      h1 {
-        font-size: 3.8rem;
-      }
-    }
-  </style>
+  <title>NAËL Revêtements Murs et Sols - Carrelage & Vente sur Catalogue</title>
+  <meta name="description" content="NAËL Revêtements Murs et Sols - Pose et vente de carrelage, sols et murs à Nîmes. Devis gratuit, qualité artisanale."/>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet"/>
 </head>
 <body>
 
+  <header>
+    <nav class="navbar">
+      <div class="logo">NAËL</div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Accueil</a></li>
+        <li><a href="apropos.html">À propos</a></li>
+        <li><a href="catalogue.html">Catalogue</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="hamburger">☰</div>
+    </nav>
+  </header>
 
-
-<section class="hero" id="accueil">
-  <div class="hero-content">
-    <h1>Carrelage City</h1>
-    <p class="hero-subtitle">Le carrelage qui claque, les prix qui ne cognent pas</p>
-    <a href="#contact" class="cta-btn">Appelez Lhaj → 07 80 60 13 22</a>
-  </div>
-</section>
-
-<section id="produits">
-  <h2>Ce qu’on Propose en ce moment</h2>
-  
-  <div class="grid">
-    <div class="card">
-      <img src="https://www.espace-aubade.fr/uploads/blog/picture/630x410/une-carrelage-poli.jpg" alt="grand carrelage gris imitation béton">
-      <div class="card-info">
-        <h3>Béton Ciré XL 120×120</h3>
-        <div class="price-tag">29,90 € / m²</div>
-        <p>Effet béton brut ultra tendance – épaisseur 10 mm renforcée</p>
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>NAËL Revêtements Murs et Sols</h1>
+        <h2>Carrelage • Pose • Vente sur Catalogue</h2>
+        <p>Artisan qualifié – Nîmes & alentours</p>
+        <a href="contact.html" class="cta">Demander un devis gratuit</a>
       </div>
-    </div>
+    </section>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=85" alt="carrelage imitation pierre naturelle beige">
-      <div class="card-info">
-        <h3>Pierre de Bourgogne 60×120</h3>
-        <div class="price-tag">42,50 € / m²</div>
-        <p>Veinage naturel – anti-dérapant R10 – terrasse & intérieur</p>
+    <section class="services">
+      <h2>Nos Prestations</h2>
+      <div class="grid">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pose carrelage sol"/>
+          <h3>Pose Carrelage Sols</h3>
+          <p>Préparation, ragréage, pose parfaite</p>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Revêtement mural"/>
+          <h3>Revêtements Murs</h3>
+          <p>Faïence, mosaïque, pierre naturelle</p>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1618221195710-dd2dabb60b29?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Vente carrelage"/>
+          <h3>Vente sur Catalogue</h3>
+          <p>Grand choix de carrelages, grès cérame, parquet céramique</p>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="card">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcXaI6AZIO6LSKchqDrIw5LENFDHY3GoVsOOzW1VYZUw&s=10" alt="carrelage mosaïque noir et blanc">
-      <div class="card-info">
-        <h3>Mosaïque Hexa Noir & Blanc</h3>
-        <div class="price-tag">18,90 € / plaque</div>
-        <p>Format 29×25 cm – douche & crédence qui pètent</p>
+    <section class="gallery">
+      <h2>Quelques Réalisations</h2>
+      <div class="gallery-grid">
+        <img src="https://images.unsplash.com/photo-1581235720704-06d8e9b4d8d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Salle de bain carrelée"/>
+        <img src="https://images.unsplash.com/photo-1600563438938-a9a6a8c3c0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cuisine moderne carrelage"/>
+        <img src="https://images.unsplash.com/photo-1616046229478-9901c5536a45?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Terrasse extérieure"/>
+        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mur en mosaïque"/>
       </div>
-    </div>
+    </section>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=85" alt="carrelage grand format marbre blanc veiné or">
-      <div class="card-info">
-        <h3>Marbre Calacatta Gold 160×320</h3>
-        <div class="price-tag">89,00 € / m²</div>
-        <p>Slab géant – luxe abordable pour séjour & salle de bain</p>
-      </div>
-    </div>
+    <section class="call-to-action">
+      <h2>Prêt à transformer votre espace ?</h2>
+      <a href="contact.html" class="cta">Contactez-moi maintenant</a>
+    </section>
+  </main>
 
-    <div class="card">
-      <img src="https://www.parquet-carrelage.com/4531/carrelage-sol-et-mur-aspect-marbre-blanc-albufera-60x60-cm-rectifie.jpg" alt="carrelage imitation parquet chêne clair">
-      <div class="card-info">
-        <h3>Parquet Grès Cérame Chêne Naturel</h3>
-        <div class="price-tag">34,90 € / m²</div>
-        <p>Epaisseur 20 mm – chauffant au sol compatible</p>
-      </div>
-    </div>
-  </div>
-</section>
+  <footer>
+    <p>NAËL Revêtements Murs et Sols – 20 avenue Fanfonne Guillierme, 30000 Nîmes</p>
+    <p>06 52 15 84 84 | nael.entreprise@gmail.com | SIRET 511 527 566 00034</p>
+    <p>© 2026 – Tous droits réservés</p>
+  </footer>
 
-<section class="contact-section" id="contact">
-  <h2>Contact Chef </h2>
-  <div class="contact-grid">
-    <div>
-      <p style="font-size:1.3rem; margin-bottom:1rem;">Appelez-moi direct, j’te réponds cash</p>
-      <a href="tel:0780601322" class="big-phone">07 80 60 13 22</a>
-      <p style="margin:1.5rem 0; font-size:1.1rem;">Carrelage City – Béziers & toute l’Occitanie</p>
-      <p>Showroom sur RDV – Devis pose gratuit sous 48h</p>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <p>© 2025–2026 Carrelage City – Béziers – SIRET en cours d’immatriculation – Chef haj t’attend</p>
-</footer>
-
-<script>
-  // petit scroll sympa pour le header
-  window.addEventListener('scroll', () => {
-    document.querySelector('header').classList.toggle('scrolled', window.scrollY > 80);
-  });
-
-  // smooth scroll pour les ancres
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth'
-      });
+  <script>
+    document.querySelector('.hamburger').addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.toggle('active');
     });
-  });
-</script>
-
+  </script>
 </body>
 </html>
