@@ -30,18 +30,10 @@
       font-family:'Playfair Display',serif; font-size:2.8rem; font-weight:700; color:var(--white); letter-spacing:4px;
     }
     .logo-hex span { color:var(--accent); }
-    .nav-container {
-      display:flex; align-items:center; gap:4rem;
+    .contact-top {
+      color:var(--white); font-size:1.3rem; font-weight:500; display:flex; align-items:center; gap:1rem;
     }
-    .nav-btn {
-      background:transparent; border:2px solid var(--accent); color:var(--white);
-      padding:1rem 2.5rem; border-radius:50px; font-size:1.3rem; font-weight:600;
-      cursor:pointer; transition:0.4s; display:flex; align-items:center; gap:1rem;
-    }
-    .nav-btn:hover {
-      background:var(--accent); color:var(--black); transform:scale(1.08);
-    }
-    .nav-btn i { font-size:1.6rem; }
+    .contact-top i { font-size:1.6rem; color:var(--accent); }
     .hero {
       height:100vh; min-height:800px;
       background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.75)),
@@ -88,9 +80,10 @@
       .footer-info { justify-content:center; flex-direction:column; text-align:center; gap:1.5rem; }
     }
     @media (max-width:768px) {
-      .header-inner { padding:0 5%; flex-direction:column; gap:1rem; height:auto; padding:1.5rem 5%; }
-      .nav-container { flex-wrap:wrap; justify-content:center; }
-      .nav-btn { margin:0.5rem; }
+      .header-inner { padding:0 5%; }
+      nav ul { display:none; position:absolute; top:90px; left:0; right:0; background:#000; flex-direction:column; padding:3rem 5%; gap:2.5rem; }
+      nav ul.active { display:flex; }
+      .menu-toggle { display:block; }
       .hero h1 { font-size:5rem; }
     }
   </style>
@@ -100,12 +93,11 @@
 <header>
   <div class="header-inner">
     <div class="logo-hex">NAËL</div>
-    <div class="nav-container">
-      <button class="nav-btn"><i class="fas fa-envelope"></i> Contact</button>
-      <button class="nav-btn"><i class="fas fa-images"></i> Réalisations</button>
-      <button class="nav-btn"><i class="fas fa-book-open"></i> Catalogue</button>
-      <button class="nav-btn"><i class="fas fa-info-circle"></i> À propos</button>
+    <div class="contact-top">
+      <i class="fas fa-phone-alt"></i>
+      <span>06 52 15 84 84</span>
     </div>
+    <button class="menu-toggle">☰</button>
   </div>
 </header>
 
@@ -114,7 +106,7 @@
     <h1>NAËL</h1>
     <p>Revêtements Murs et Sols – Artisanat d’exception à Nîmes</p>
     <a href="#contact" class="btn-contact">
-      <i class="fas fa-phone-alt"></i> NOUS CONTACTER
+      <i class="fas fa-envelope"></i> NOUS CONTACTER
     </a>
   </div>
 </section>
@@ -160,7 +152,7 @@
 
 <script>
   document.querySelector('.menu-toggle').addEventListener('click', () => {
-    document.querySelector('.nav-container').classList.toggle('active');
+    document.querySelector('nav ul').classList.toggle('active');
   });
 </script>
 </body>
