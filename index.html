@@ -1,376 +1,158 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NAËL Revêtements Murs et Sols – Nîmes</title>
-  <meta name="description" content="Pose et vente de carrelage à Nîmes – Artisan Naël – Devis gratuit">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NAËL – Revêtements Murs et Sols</title>
+  <meta name="description" content="Pose & vente carrelage Nîmes – Artisan Naël – Devis gratuit"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
     :root {
-      --beige-clair: #f5f2eb;
-      --beige-fonce: #e0d4c2;
-      --noir: #0d0d0d;
-      --gris-fonce: #333333;
-      --gris-moyen: #666666;
-      --blanc: #ffffff;
-      --max-width: 1400px;
-      --transition: all 0.4s ease;
+      --beige: #f5f2eb;
+      --beige-dark: #e0d4c2;
+      --black: #000;
+      --gray: #3a3a3a;
+      --white: #fff;
+      --accent: #d4a373;
     }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--beige-clair);
-      color: var(--noir);
-      line-height: 1.65;
-    }
-
-    .container {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 5%;
-    }
-
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Inter',sans-serif; background:var(--beige); color:var(--black); line-height:1.6; }
     header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 90px;
-      background: #000;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
+      position:fixed; top:0; left:0; right:0; height:90px; background:#000; z-index:1000; display:flex; align-items:center;
     }
-
     .header-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
+      width:100%; max-width:1600px; margin:0 auto; padding:0 6%; display:flex; justify-content:space-between; align-items:center;
     }
-
     .logo-hex {
-      font-size: 2.4rem;
-      font-weight: 700;
-      color: var(--blanc);
-      letter-spacing: 2px;
+      font-family:'Playfair Display',serif; font-size:2.8rem; font-weight:700; color:var(--white); letter-spacing:4px;
     }
-
-    .logo-hex span {
-      color: var(--beige-fonce);
+    .logo-hex span { color:var(--accent); }
+    .contact-top {
+      color:var(--white); font-size:1.3rem; font-weight:500; display:flex; align-items:center; gap:1rem;
     }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 3rem;
-    }
-
-    nav a {
-      color: var(--blanc);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 1.1rem;
-      transition: var(--transition);
-    }
-
-    nav a:hover {
-      color: var(--beige-fonce);
-    }
-
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      color: white;
-      font-size: 2rem;
-      cursor: pointer;
-    }
-
+    .contact-top i { font-size:1.6rem; color:var(--accent); }
     .hero {
-      height: 100vh;
-      min-height: 700px;
-      position: relative;
-      background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.65)),
-                  url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=2560') center/cover fixed;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+      height:100vh; min-height:800px;
+      background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.75)),
+                 url('https://images.unsplash.com/photo-1600563438938-a9a6a8c3c0e0?w=2560') center/cover fixed;
+      display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; color:var(--white);
     }
-
-    .hero-content {
-      max-width: 900px;
-      padding: 0 5%;
-    }
-
     .hero h1 {
-      font-size: clamp(3.8rem, 10vw, 6.5rem);
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      letter-spacing: -1px;
+      font-family:'Playfair Display',serif; font-size:clamp(5rem,14vw,10rem); margin-bottom:1rem; letter-spacing:-2px;
     }
-
-    .hero p {
-      font-size: clamp(1.4rem, 4vw, 1.8rem);
-      font-weight: 300;
-      margin-bottom: 3rem;
-      max-width: 720px;
-      margin-left: auto;
-      margin-right: auto;
+    .hero p { font-size:clamp(1.8rem,5vw,2.8rem); font-weight:300; max-width:900px; margin:0 auto 4rem; }
+    .btn-contact {
+      background:var(--accent); color:var(--black); padding:1.4rem 4rem; border-radius:50px; font-weight:700; font-size:1.4rem;
+      text-decoration:none; display:flex; align-items:center; gap:1rem; transition:0.4s; box-shadow:0 10px 30px rgba(212,163,115,0.4);
     }
-
-    .cta-btn {
-      display: inline-block;
-      background: var(--beige-clair);
-      color: var(--noir);
-      padding: 1.3rem 3.5rem;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 1.25rem;
-      text-decoration: none;
-      transition: var(--transition);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    .btn-contact:hover { transform:translateY(-8px); box-shadow:0 20px 60px rgba(212,163,115,0.6); background:#e6b980; }
+    .btn-contact i { font-size:1.8rem; }
+    .showcase {
+      padding:12rem 6%; display:grid; grid-template-columns:repeat(auto-fit,minmax(400px,1fr)); gap:6rem;
     }
-
-    .cta-btn:hover {
-      background: var(--beige-fonce);
-      transform: translateY(-6px);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    .showcase-item {
+      position:relative; overflow:hidden; border-radius:16px; box-shadow:0 20px 60px rgba(0,0,0,0.25);
+      height:620px;
     }
-
-    section {
-      padding: 10rem 0;
+    .showcase-item img {
+      width:100%; height:100%; object-fit:cover; transition:transform 0.8s ease;
     }
-
-    h2 {
-      font-size: 3.2rem;
-      text-align: center;
-      margin-bottom: 4rem;
-      color: var(--noir);
-      font-weight: 600;
+    .showcase-item:hover img { transform:scale(1.12); }
+    .overlay-process {
+      position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,0.85),transparent 40%);
+      display:flex; flex-direction:column; justify-content:flex-end; padding:4rem 3rem; color:var(--white); opacity:0; transition:0.5s;
     }
-
-    .split-section {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 6rem;
-    }
-
-    .split-text, .split-image {
-      flex: 1;
-      min-width: 300px;
-    }
-
-    .split-text {
-      padding: 0 5%;
-    }
-
-    .split-text h3 {
-      font-size: 2.6rem;
-      margin-bottom: 1.8rem;
-      color: var(--noir);
-    }
-
-    .split-image img {
-      width: 100%;
-      height: 600px;
-      object-fit: cover;
-      border-radius: 12px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-    }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-      gap: 3rem;
-      margin-top: 5rem;
-    }
-
-    .project-card {
-      position: relative;
-      overflow: hidden;
-      border-radius: 16px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.12);
-      transition: transform 0.6s ease, box-shadow 0.6s ease;
-    }
-
-    .project-card:hover {
-      transform: translateY(-16px);
-      box-shadow: 0 30px 80px rgba(0,0,0,0.2);
-    }
-
-    .project-card img {
-      width: 100%;
-      height: 520px;
-      object-fit: cover;
-      transition: transform 0.8s ease;
-    }
-
-    .project-card:hover img {
-      transform: scale(1.12);
-    }
-
-    .project-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.85), transparent 40%);
-      display: flex;
-      align-items: flex-end;
-      padding: 3rem 2.5rem;
-      color: white;
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
-
-    .project-card:hover .project-overlay {
-      opacity: 1;
-    }
-
-    .project-overlay h3 {
-      font-size: 1.9rem;
-      margin-bottom: 0.8rem;
-    }
-
+    .showcase-item:hover .overlay-process { opacity:1; }
+    .overlay-process h3 { font-size:2.2rem; margin-bottom:1rem; }
     footer {
-      background: #000;
-      color: white;
-      text-align: center;
-      padding: 5rem 6% 3rem;
-      font-size: 0.95rem;
+      background:#000; color:var(--white); text-align:center; padding:6rem 6% 4rem;
     }
-
-    .footer-contact {
-      font-size: 1.4rem;
-      margin-bottom: 2rem;
+    .footer-info {
+      display:flex; justify-content:flex-end; align-items:center; gap:2rem; max-width:1600px; margin:0 auto;
     }
-
-    .cookies {
-      margin-top: 3rem;
-      font-size: 0.9rem;
-      opacity: 0.7;
+    .footer-info p { font-size:1.3rem; }
+    .footer-info i { font-size:2.5rem; color:var(--accent); }
+    @media (max-width:900px) {
+      .showcase { grid-template-columns:1fr; }
+      .footer-info { justify-content:center; flex-direction:column; text-align:center; gap:1.5rem; }
     }
-
-    @media (max-width: 1024px) {
-      .split-section { flex-direction: column; }
-      .split-image img { height: 500px; }
-    }
-
-    @media (max-width: 768px) {
-      .nav-links { 
-        display: none; 
-        position: absolute; top: 90px; left: 0; right: 0; 
-        background: #000; flex-direction: column; padding: 3rem 6%; gap: 2.5rem; 
-      }
-      .nav-links.active { display: flex; }
-      .menu-toggle { display: block; }
-      h1 { font-size: 4.5rem; }
-      .projects-grid { grid-template-columns: 1fr; }
+    @media (max-width:768px) {
+      .header-inner { padding:0 5%; }
+      nav ul { display:none; position:absolute; top:90px; left:0; right:0; background:#000; flex-direction:column; padding:3rem 5%; gap:2.5rem; }
+      nav ul.active { display:flex; }
+      .menu-toggle { display:block; }
+      .hero h1 { font-size:5rem; }
     }
   </style>
 </head>
 <body>
 
 <header>
-  <div class="nav-container">
+  <div class="header-inner">
     <div class="logo-hex">NAËL</div>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="#accueil" class="active">Accueil</a></li>
-        <li><a href="#apropos">À propos</a></li>
-        <li><a href="#catalogue">Catalogue</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="contact-top">
+      <i class="fas fa-phone-alt"></i>
+      <span>06 52 15 84 84</span>
+    </div>
     <button class="menu-toggle">☰</button>
   </div>
 </header>
 
-<section class="hero" id="accueil">
+<section class="hero">
   <div class="hero-content">
     <h1>NAËL</h1>
-    <p class="hero-subtitle">Revêtements Murs et Sols – Nîmes</p>
-    <a href="#contact" class="btn">PARTAGEZ VOS IDÉES</a>
+    <p>Revêtements Murs et Sols – Artisanat d’exception à Nîmes</p>
+    <a href="#contact" class="btn-contact">
+      <i class="fas fa-envelope"></i> NOUS CONTACTER
+    </a>
   </div>
 </section>
 
-<section id="presentation">
-  <div class="split-section container">
-    <div class="split-text">
-      <h2>NAËL Revêtements</h2>
-      <h3>Artisan depuis plus de 10 ans</h3>
-      <p>Spécialiste de la pose et de la vente de carrelage à Nîmes et alentours. Nous vous accompagnons dans tous vos projets neufs ou rénovation, intérieur comme extérieur.</p>
-      <p>Grand format, faïence, pierre naturelle, imitation bois, sur plot, piscine… Nous avons la solution adaptée à votre projet.</p>
-    </div>
-    <div class="split-image">
-      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200" alt="carrelage intérieur moderne" loading="lazy">
+<section class="showcase">
+  <div class="showcase-item">
+    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200" alt="pose précision" loading="lazy">
+    <div class="overlay-process">
+      <h3>Pose de précision</h3>
+      <p>Joint quasi invisible – Finitions parfaites</p>
     </div>
   </div>
-</section>
-
-<section id="catalogue">
-  <h2>Nos réalisations</h2>
-  <div class="projects-grid container">
-    <div class="project-card">
-      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800" alt="pose grand format" loading="lazy">
-      <div class="project-overlay">
-        <h3>Pose grand format</h3>
-      </div>
-    </div>
-    <div class="project-card">
-      <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800" alt="carrelage piscine" loading="lazy">
-      <div class="project-overlay">
-        <h3>Carrelage piscine</h3>
-      </div>
-    </div>
-    <div class="project-card">
-      <img src="https://images.unsplash.com/photo-1618221195710-dd2dabb60b29?w=800" alt="carrelage sur plot" loading="lazy">
-      <div class="project-overlay">
-        <h3>Carrelage sur plot</h3>
-      </div>
-    </div>
-    <div class="project-card">
-      <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800" alt="pierre naturelle" loading="lazy">
-      <div class="project-overlay">
-        <h3>Pierre naturelle</h3>
-      </div>
+  <div class="showcase-item">
+    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200" alt="faïence mur" loading="lazy">
+    <div class="overlay-process">
+      <h3>Faïence murale</h3>
+      <p>Grand format – Effet marbre ou béton ciré</p>
     </div>
   </div>
-</section>
-
-<section id="contact">
-  <h2>Contactez-nous</h2>
-  <div class="container" style="text-align:center; font-size:1.6rem;">
-    <p style="margin-bottom:2rem;">06 52 15 84 84</p>
-    <p>nael.entreprise@gmail.com</p>
-    <p style="margin:2rem 0;">20 Avenue Fanfonne Guillierme, 30000 Nîmes</p>
-    <p>SIRET 511 527 566 00034</p>
+  <div class="showcase-item">
+    <img src="https://images.unsplash.com/photo-1618221195710-dd2dabb60b29?w=1200" alt="terrasse" loading="lazy">
+    <div class="overlay-process">
+      <h3>Terrasse sur plot</h3>
+      <p>Drainage parfait – Anti-dérapant R11</p>
+    </div>
+  </div>
+  <div class="showcase-item">
+    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1200" alt="pierre naturelle" loading="lazy">
+    <div class="overlay-process">
+      <h3>Pierre naturelle</h3>
+      <p>Travertin, calcaire, marbre – Veinage authentique</p>
+    </div>
   </div>
 </section>
 
 <footer>
-  <p>© 2026 NAËL Revêtements Murs et Sols – Nîmes</p>
-  <p style="margin-top:1rem; font-size:0.9rem;">Tous droits réservés</p>
+  <div class="footer-info">
+    <p>NAËL Revêtements Murs et Sols</p>
+    <i class="fas fa-map-marker-alt"></i>
+    <p>20 Avenue Fanfonne Guillierme – 30000 Nîmes</p>
+  </div>
 </footer>
 
 <script>
   document.querySelector('.menu-toggle').addEventListener('click', () => {
-    document.querySelector('.nav-links').classList.toggle('active');
-  });
-
-  window.addEventListener('scroll', () => {
-    document.querySelector('header').classList.toggle('scrolled', window.scrollY > 80);
+    document.querySelector('nav ul').classList.toggle('active');
   });
 </script>
 </body>
