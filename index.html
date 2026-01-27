@@ -3,157 +3,359 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NAËL – Revêtements Murs et Sols</title>
-  <meta name="description" content="Pose & vente carrelage Nîmes – Artisan Naël – Devis gratuit"/>
+  <title>Carrelage City - Expert Carrelage Béziers & Occitanie</title>
+  <meta name="description" content="Carrelage City : carrelages haut de gamme, grands formats, imitation pierre, béton, marbre. Devis gratuit, pose pro à Béziers et Occitanie. Contact : 07 80 60 13 22"/>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
   <style>
     :root {
-      --beige: #f5f2eb;
-      --beige-dark: #e0d4c2;
-      --black: #000;
-      --gray: #3a3a3a;
-      --white: #fff;
-      --accent: #d4a373;
+      --blanc: #fdfdfd;
+      --gris-tres-clair: #f5f5f5;
+      --gris-clair: #ececec;
+      --gris: #a0a0a0;
+      --gris-fonce: #333333;
+      --noir: #111111;
+      --accent: #8c6b4f;      /* brun chaud terre cuite / cuivre discret */
+      --accent-light: #b89778;
     }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:'Inter',sans-serif; background:var(--beige); color:var(--black); line-height:1.6; }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--blanc);
+      color: var(--gris-fonce);
+      line-height: 1.7;
+    }
+
     header {
-      position:fixed; top:0; left:0; right:0; height:90px; background:#000; z-index:1000; display:flex; align-items:center;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(253,253,253,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gris-clair);
+      z-index: 999;
+      transition: all 0.4s;
     }
-    .header-inner {
-      width:100%; max-width:1600px; margin:0 auto; padding:0 6%; display:flex; justify-content:space-between; align-items:center;
+
+    header.scrolled {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
     }
-    .logo-hex {
-      font-family:'Playfair Display',serif; font-size:2.8rem; font-weight:700; color:var(--white); letter-spacing:4px;
+
+    nav {
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 1.2rem 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    .logo-hex span { color:var(--accent); }
-    .contact-top {
-      color:var(--white); font-size:1.3rem; font-weight:500; display:flex; align-items:center; gap:1rem;
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.1rem;
+      font-weight: 600;
+      color: var(--noir);
+      letter-spacing: 0.5px;
     }
-    .contact-top i { font-size:1.6rem; color:var(--accent); }
+
+    .logo span {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--gris-fonce);
+      font-weight: 500;
+      font-size: 1.05rem;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--accent);
+    }
+
     .hero {
-      height:100vh; min-height:800px;
-      background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.75)),
-                 url('https://images.unsplash.com/photo-1600563438938-a9a6a8c3c0e0?w=2560') center/cover fixed;
-      display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; color:var(--white);
+      height: 100vh;
+      min-height: 700px;
+      background: linear-gradient(rgba(17,17,17,0.58), rgba(17,17,17,0.72)),
+                  url('https://images.pexels.com/photos/6444967/pexels-photo-6444967.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
     }
-    .hero h1 {
-      font-family:'Playfair Display',serif; font-size:clamp(5rem,14vw,10rem); margin-bottom:1rem; letter-spacing:-2px;
+
+    .hero-content {
+      max-width: 88%;
+      padding: 0 1.8rem;
+      animation: fadeIn 1.6s ease-out;
     }
-    .hero p { font-size:clamp(1.8rem,5vw,2.8rem); font-weight:300; max-width:900px; margin:0 auto 4rem; }
-    .btn-contact {
-      background:var(--accent); color:var(--black); padding:1.4rem 4rem; border-radius:50px; font-weight:700; font-size:1.4rem;
-      text-decoration:none; display:flex; align-items:center; gap:1rem; transition:0.4s; box-shadow:0 10px 30px rgba(212,163,115,0.4);
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(50px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
-    .btn-contact:hover { transform:translateY(-8px); box-shadow:0 20px 60px rgba(212,163,115,0.6); background:#e6b980; }
-    .btn-contact i { font-size:1.8rem; }
-    .showcase {
-      padding:12rem 6%; display:grid; grid-template-columns:repeat(auto-fit,minmax(400px,1fr)); gap:6rem;
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.2rem, 10vw, 6rem);
+      margin-bottom: 1.4rem;
+      line-height: 1.1;
     }
-    .showcase-item {
-      position:relative; overflow:hidden; border-radius:16px; box-shadow:0 20px 60px rgba(0,0,0,0.25);
-      height:620px;
+
+    .hero-subtitle {
+      font-size: clamp(1.2rem, 5vw, 1.6rem);
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      opacity: 0.92;
     }
-    .showcase-item img {
-      width:100%; height:100%; object-fit:cover; transition:transform 0.8s ease;
+
+    .cta-btn {
+      background: var(--accent);
+      color: white;
+      padding: 1.1rem 2.8rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.15rem;
+      transition: all 0.4s;
+      display: inline-block;
     }
-    .showcase-item:hover img { transform:scale(1.12); }
-    .overlay-process {
-      position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,0.85),transparent 40%);
-      display:flex; flex-direction:column; justify-content:flex-end; padding:4rem 3rem; color:var(--white); opacity:0; transition:0.5s;
+
+    .cta-btn:hover {
+      background: var(--accent-light);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(140,107,79,0.3);
     }
-    .showcase-item:hover .overlay-process { opacity:1; }
-    .overlay-process h3 { font-size:2.2rem; margin-bottom:1rem; }
+
+    section {
+      padding: 6rem 6%;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      text-align: center;
+      margin-bottom: 3.5rem;
+      color: var(--noir);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .tile-card {
+      overflow: hidden;
+      border-radius: 10px;
+      background: white;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.07);
+      transition: all 0.45s ease;
+    }
+
+    .tile-card:hover {
+      transform: translateY(-14px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.14);
+    }
+
+    .tile-card img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .tile-card:hover img {
+      transform: scale(1.15);
+    }
+
+    .tile-info {
+      padding: 1.6rem;
+      text-align: center;
+    }
+
+    .tile-info h3 {
+      font-size: 1.45rem;
+      margin-bottom: 0.8rem;
+      color: var(--noir);
+    }
+
+    .price {
+      color: var(--accent);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0.9rem 0;
+    }
+
+    .contact-info {
+      background: var(--gris-tres-clair);
+      padding: 4rem 6%;
+      text-align: center;
+      border-radius: 12px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .contact-info h2 {
+      margin-bottom: 2rem;
+    }
+
+    .phone-big {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 1.8rem 0;
+      letter-spacing: 2px;
+      display: block;
+      text-decoration: none;
+    }
+
+    .phone-big:hover {
+      color: var(--accent-light);
+    }
+
+    .address {
+      font-size: 1.3rem;
+      margin: 1.5rem 0;
+      color: var(--gris-fonce);
+    }
+
     footer {
-      background:#000; color:var(--white); text-align:center; padding:6rem 6% 4rem;
+      background: var(--noir);
+      color: #ccc;
+      text-align: center;
+      padding: 4rem 6% 2rem;
+      font-size: 0.95rem;
     }
-    .footer-info {
-      display:flex; justify-content:flex-end; align-items:center; gap:2rem; max-width:1600px; margin:0 auto;
-    }
-    .footer-info p { font-size:1.3rem; }
-    .footer-info i { font-size:2.5rem; color:var(--accent); }
-    @media (max-width:900px) {
-      .showcase { grid-template-columns:1fr; }
-      .footer-info { justify-content:center; flex-direction:column; text-align:center; gap:1.5rem; }
-    }
-    @media (max-width:768px) {
-      .header-inner { padding:0 5%; }
-      nav ul { display:none; position:absolute; top:90px; left:0; right:0; background:#000; flex-direction:column; padding:3rem 5%; gap:2.5rem; }
-      nav ul.active { display:flex; }
-      .menu-toggle { display:block; }
-      .hero h1 { font-size:5rem; }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 1rem 5%;
+      }
+      .nav-links {
+        gap: 1.4rem;
+        font-size: 0.95rem;
+      }
+      h1 {
+        font-size: 4.2rem;
+      }
     }
   </style>
 </head>
 <body>
 
 <header>
-  <div class="header-inner">
-    <div class="logo-hex">NAËL</div>
-    <div class="contact-top">
-      <i class="fas fa-phone-alt"></i>
-      <span>06 52 15 84 84</span>
-    </div>
-    <button class="menu-toggle">☰</button>
-  </div>
+  <nav>
+    <div class="logo">Carrelage<span>City</span></div>
+    <ul class="nav-links">
+      <li><a href="#accueil" class="active">Accueil</a></li>
+      <li><a href="#galerie">Galerie</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 </header>
 
-<section class="hero">
+<section class="hero" id="accueil">
   <div class="hero-content">
-    <h1>NAËL</h1>
-    <p>Revêtements Murs et Sols – Artisanat d’exception à Nîmes</p>
-    <a href="#contact" class="btn-contact">
-      <i class="fas fa-envelope"></i> NOUS CONTACTER
-    </a>
+    <h1>Carrelage City</h1>
+    <p class="hero-subtitle">Des sols et murs qui racontent votre histoire – sans exploser le budget</p>
+    <a href="#contact" class="cta-btn">Obtenir un devis rapide</a>
   </div>
 </section>
 
-<section class="showcase">
-  <div class="showcase-item">
-    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200" alt="pose précision" loading="lazy">
-    <div class="overlay-process">
-      <h3>Pose de précision</h3>
-      <p>Joint quasi invisible – Finitions parfaites</p>
+<section id="galerie">
+  <h2>Nos collections phares</h2>
+  
+  <div class="gallery-grid">
+    <div class="tile-card">
+      <img src="https://images.pexels.com/photos/6444967/pexels-photo-6444967.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Salle de bain luxe marbre veiné">
+      <div class="tile-info">
+        <h3>Marbre Italien XL Veiné Or</h3>
+        <div class="price">78,50 € / m²</div>
+        <p>Format 120×278 cm – finition polie douce</p>
+      </div>
+    </div>
+
+    <div class="tile-card">
+      <img src="https://buildritebuilders.com/wp-content/uploads/2023/12/Kitchen-Renovation-Englewood-Fl.jpg" alt="Cuisine moderne imitation béton">
+      <div class="tile-info">
+        <h3>Béton Industrial 100×100</h3>
+        <div class="price">31,90 € / m²</div>
+        <p>Effet matière brute – rectifié 2 mm</p>
+      </div>
+    </div>
+
+    <div class="tile-card">
+      <img src="https://attractivekitchensandfloors-com-v1734694080.websitepro-cdn.com/wp-content/uploads/2024/10/Virginia-Tile-Tile-Inspiration-Photo-4-1024x682.webp" alt="Sol pierre naturelle beige">
+      <div class="tile-info">
+        <h3>Pierre Naturelle Travertin 60×120</h3>
+        <div class="price">49,00 € / m²</div>
+        <p>Anti-dérapant naturel – extérieur/intérieur</p>
+      </div>
+    </div>
+
+    <div class="tile-card">
+      <img src="https://cdn.prod.website-files.com/66a9fa7f9de2e13a4f019d5e/66df466537df0304b2dd1a12_19%20B.webp" alt="Salle de bain moderne carrelage grand format">
+      <div class="tile-info">
+        <h3>Grès Cérame Imitation Bois Chêne</h3>
+        <div class="price">36,80 € / m²</div>
+        <p>Format lame 20×120 cm – pose clic</p>
+      </div>
     </div>
   </div>
-  <div class="showcase-item">
-    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200" alt="faïence mur" loading="lazy">
-    <div class="overlay-process">
-      <h3>Faïence murale</h3>
-      <p>Grand format – Effet marbre ou béton ciré</p>
-    </div>
-  </div>
-  <div class="showcase-item">
-    <img src="https://images.unsplash.com/photo-1618221195710-dd2dabb60b29?w=1200" alt="terrasse" loading="lazy">
-    <div class="overlay-process">
-      <h3>Terrasse sur plot</h3>
-      <p>Drainage parfait – Anti-dérapant R11</p>
-    </div>
-  </div>
-  <div class="showcase-item">
-    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1200" alt="pierre naturelle" loading="lazy">
-    <div class="overlay-process">
-      <h3>Pierre naturelle</h3>
-      <p>Travertin, calcaire, marbre – Veinage authentique</p>
-    </div>
-  </div>
+</section>
+
+<section id="contact" class="contact-info">
+  <h2>Contactez-nous</h2>
+  
+  <p class="address">Carrelage City</p>
+  <p class="address">[Prénom Nom]</p>
+  <p class="address">Adresse : [Votre adresse complète, Béziers ou Marseille zone]</p>
+  <p class="address">SIRET : En cours d'immatriculation</p>
+  
+  <a href="tel:0780601322" class="phone-big">07 80 60 13 22</a>
+  
+  <p style="font-size:1.25rem; margin:2rem 0;">Devis personnalisé gratuit – Showroom sur rendez-vous</p>
+  <p>Photos de votre projet ou plans suffisent pour un chiffrage précis sous 24/48h</p>
+  
+  <a href="tel:0780601322" class="cta-btn" style="margin-top:2.5rem;">Appeler directement</a>
 </section>
 
 <footer>
-  <div class="footer-info">
-    <p>NAËL Revêtements Murs et Sols</p>
-    <i class="fas fa-map-marker-alt"></i>
-    <p>20 Avenue Fanfonne Guillierme – 30000 Nîmes</p>
-  </div>
+  <p>© 2026 Carrelage City – Spécialiste carrelage Occitanie – Qualité premium, prix directs usine</p>
 </footer>
 
 <script>
-  document.querySelector('.menu-toggle').addEventListener('click', () => {
-    document.querySelector('nav ul').classList.toggle('active');
+  window.addEventListener('scroll', () => {
+    document.querySelector('header').classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+    });
   });
 </script>
+
 </body>
 </html>
