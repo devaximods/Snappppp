@@ -1,23 +1,33 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NAËL Revêtements Murs et Sols – Nîmes</title>
-  <meta name="description" content="Pose et vente carrelage Nîmes – Artisan Naël – Devis gratuit"/>
+  <meta name="description" content="Pose carrelage Nîmes – Murs Sols Catalogue – Artisan Naël – Devis gratuit"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
     :root {
-      --bg: #f8f9fa;
-      --text: #0f172a;
-      --dark: #111827;
+      --bg: #f9fafb;
+      --text: #111827;
+      --dark: #0f172a;
       --accent: #1e40af;
       --accent-light: #3b82f6;
       --gray: #64748b;
       --light: #e2e8f0;
-      --white: #ffffff;
+      --glass: rgba(255,255,255,0.15);
+      --dark-bg: #0f172a;
+      --dark-text: #e2e8f0;
+    }
+    [data-theme="dark"] {
+      --bg: #0f172a;
+      --text: #e2e8f0;
+      --dark: #f1f5f9;
+      --glass: rgba(15,23,42,0.4);
+      --light: #334155;
     }
     * { margin:0; padding:0; box-sizing:border-box; }
     body {
@@ -25,29 +35,64 @@
       background: var(--bg);
       color: var(--text);
       line-height: 1.7;
+      transition: all 0.5s;
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><circle cx="12" cy="12" r="10" fill="%231e40af" opacity="0.5"/></svg>'), auto;
     }
     header {
       position: fixed;
       top:0; left:0; right:0;
-      background: rgba(255,255,255,0.97);
-      backdrop-filter: blur(12px);
+      background: var(--glass);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       z-index: 999;
       border-bottom: 1px solid var(--light);
-      text-align: center;
-      padding: 1.4rem 0;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transition: all .4s;
+    }
+    header.scrolled { box-shadow: 0 8px 32px rgba(0,0,0,0.15); }
+    .nav-container {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 1.5rem 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
     .logo {
       font-family: 'Playfair Display', serif;
-      font-size: 3.2rem;
+      font-size: 3rem;
       font-weight: 700;
       color: var(--dark);
       letter-spacing: -1px;
     }
+    .nav-links {
+      display: flex;
+      gap: 3.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--gray);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.15rem;
+      position: relative;
+      transition: color .3s;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -8px; left: 0;
+      width: 0; height: 3px;
+      background: var(--accent);
+      transition: width .5s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .nav-links a:hover::after, .active::after { width: 100%; }
+    .nav-links a:hover, .active { color: var(--dark) !important; }
+    .menu-toggle, .theme-toggle { background: none; border: none; font-size: 1.8rem; cursor: pointer; color: var(--accent); }
+    .menu-toggle { display: none; }
     .hero {
       height: 100vh;
-      min-height: 700px;
-      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.7)),
+      min-height: 800px;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)),
                   url('https://images.unsplash.com/photo-1600563438938-a9a6a8c3c0e0?w=2560') center/cover fixed;
       display: flex;
       flex-direction: column;
@@ -55,75 +100,122 @@
       align-items: center;
       text-align: center;
       color: white;
-      padding: 0 5%;
+      position: relative;
     }
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(4rem, 12vw, 7rem);
-      margin-bottom: 1rem;
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 70%, rgba(30,64,175,0.12) 0%, transparent 70%);
+    }
+    .hero-content {
+      max-width: 1100px;
+      padding: 0 5%;
+      animation: fadeInUp 1.8s ease-out;
       text-shadow: 0 8px 32px rgba(0,0,0,0.6);
     }
-    .hero p {
-      font-size: clamp(1.4rem, 5vw, 1.8rem);
-      max-width: 900px;
-      margin-bottom: 3rem;
+    @keyframes fadeInUp {
+      from { opacity:0; transform:translateY(100px); }
+      to { opacity:1; transform:translateY(0); }
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(5rem, 15vw, 9rem);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      line-height: 0.9;
+    }
+    .hero-subtitle {
+      font-size: clamp(1.6rem, 6vw, 2.4rem);
       font-weight: 300;
+      margin-bottom: 3.5rem;
     }
     .btn {
       background: var(--accent);
       color: white;
-      padding: 1.4rem 4rem;
+      padding: 1.5rem 4rem;
       border-radius: 999px;
       font-weight: 600;
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       text-decoration: none;
-      box-shadow: 0 12px 40px rgba(30,64,175,0.4);
-      transition: all .5s;
+      box-shadow: 0 15px 50px rgba(30,64,175,0.4);
+      transition: all .6s cubic-bezier(0.34,1.56,0.64,1);
+      display: inline-block;
     }
     .btn:hover {
       background: var(--accent-light);
-      transform: translateY(-8px);
-      box-shadow: 0 24px 60px rgba(59,130,246,0.5);
+      transform: translateY(-12px) scale(1.05);
+      box-shadow: 0 30px 80px rgba(59,130,246,0.6);
     }
-    section { padding: 8rem 6%; max-width: 1400px; margin: 0 auto; }
+    section { padding: 12rem 6%; max-width: 1600px; margin: 0 auto; }
     h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 3.5rem;
+      font-size: 4.2rem;
       text-align: center;
-      margin-bottom: 4rem;
+      margin-bottom: 6rem;
       color: var(--dark);
     }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 3rem;
+    .masonry {
+      column-count: 3;
+      column-gap: 2.5rem;
     }
-    .card-3d {
-      perspective: 1600px;
-      height: 420px;
+    .masonry-item {
+      break-inside: avoid;
+      margin-bottom: 2.5rem;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 25px 70px rgba(0,0,0,0.15);
+      transition: all .7s;
+      opacity: 0;
+      transform: translateY(80px);
+    }
+    .masonry-item.visible { opacity: 1; transform: translateY(0); }
+    .masonry-item:hover {
+      transform: scale(1.04) translateY(-16px);
+      box-shadow: 0 50px 100px rgba(0,0,0,0.25);
+    }
+    .masonry-item img { width: 100%; display: block; loading: lazy; }
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent 30%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 3.5rem;
+      color: white;
+      opacity: 0;
+      transition: opacity .6s;
+    }
+    .masonry-item:hover .overlay { opacity: 1; }
+    .services-grid, .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 3.5rem;
+      margin-top: 5rem;
+    }
+    .service-card {
+      perspective: 1800px;
+      height: 460px;
     }
     .card-inner {
       position: relative;
       width: 100%;
       height: 100%;
-      transition: transform 0.9s cubic-bezier(0.23,1,0.32,1);
+      transition: transform 1s cubic-bezier(0.23,1,0.32,1);
       transform-style: preserve-3d;
-      border-radius: 16px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
     }
-    .card-3d:hover .card-inner {
-      transform: rotateY(180deg) translateZ(40px);
-    }
+    .service-card:hover .card-inner { transform: rotateY(180deg) translateZ(60px); }
     .card-face {
       position: absolute;
       inset: 0;
       backface-visibility: hidden;
-      border-radius: 16px;
+      border-radius: 20px;
       overflow: hidden;
     }
-    .card-front {
-      background: var(--white);
-    }
+    .card-front { background: var(--white); }
     .card-back {
       background: linear-gradient(135deg, var(--accent), var(--accent-light));
       color: white;
@@ -133,98 +225,211 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 2.5rem;
+      padding: 3rem;
     }
-    .card-front img {
+    .card-front img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s; }
+    .service-card:hover .card-front img { transform: scale(1.15); }
+    .trust-item { text-align: center; }
+    .trust-item i { font-size: 4.5rem; color: var(--accent); margin-bottom: 1.8rem; display: block; }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8rem;
+      margin-top: 6rem;
+    }
+    .big-link {
+      font-size: 4.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+      display: block;
+      margin: 2rem 0;
+      transition: all .4s;
+    }
+    .big-link:hover { color: var(--accent-light); transform: translateX(12px); }
+    .form-group {
+      position: relative;
+      margin-bottom: 3rem;
+    }
+    .form-group input, .form-group textarea {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .6s;
+      padding: 1.6rem 1.5rem;
+      border: 1px solid var(--light);
+      border-radius: 16px;
+      font-size: 1.2rem;
+      background: transparent;
+      transition: all .4s;
     }
-    .card-3d:hover .card-front img {
-      transform: scale(1.12);
+    .form-group label {
+      position: absolute;
+      left: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gray);
+      transition: all .4s;
+      pointer-events: none;
     }
-    .card-title {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
+    .form-group input:focus, .form-group textarea:focus {
+      border-color: var(--accent);
+      outline: none;
+    }
+    .form-group input:focus + label,
+    .form-group input:not(:placeholder-shown) + label,
+    .form-group textarea:focus + label,
+    .form-group textarea:not(:placeholder-shown) + label {
+      top: -0.9rem;
+      left: 1.2rem;
+      font-size: 0.95rem;
+      background: var(--bg);
+      padding: 0 0.8rem;
+      color: var(--accent);
+    }
+    .btn-submit {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 1.5rem 4.5rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 1.3rem;
+      cursor: pointer;
+      transition: all .5s;
+    }
+    .btn-submit:hover {
+      background: var(--accent-light);
+      transform: translateY(-10px);
     }
     footer {
       background: var(--dark);
       color: white;
+      padding: 8rem 6% 4rem;
       text-align: center;
-      padding: 4rem 6%;
-      font-size: 1rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 5rem;
+      margin-bottom: 5rem;
+    }
+    .map-embed {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+    }
+    @media (max-width: 900px) {
+      .masonry { column-count: 2; }
+      .contact-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
-      .hero h1 { font-size: 4.5rem; }
-      .grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--bg); flex-direction: column; padding: 3rem 6%; gap: 3rem; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
+      .nav-links.active { display: flex; }
+      .menu-toggle { display: block; }
+      .masonry { column-count: 1; }
+      h1 { font-size: 5rem; }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <div class="logo">NAËL</div>
+<header id="header">
+  <div class="nav-container">
+    <div class="logo">NAËL</div>
+    <ul class="nav-links">
+      <li><a href="#accueil" class="active">Accueil</a></li>
+      <li><a href="#apropos">À propos</a></li>
+      <li><a href="#catalogue">Catalogue</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div style="display:flex; gap:2rem;">
+      <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
+      <button class="menu-toggle">☰</button>
+    </div>
+  </div>
 </header>
 
-<section class="hero">
-  <h1>NAËL Revêtements</h1>
-  <p>Murs • Sols • Carrelage • Artisan à Nîmes</p>
-  <a href="#contact" class="btn">Devis gratuit</a>
+<section class="hero" id="accueil">
+  <div class="hero-content">
+    <h1>NAËL</h1>
+    <p class="hero-subtitle">Revêtements Murs et Sols – Artisanat d’exception à Nîmes</p>
+    <a href="#contact" class="btn">Devis gratuit</a>
+  </div>
 </section>
 
-<section>
-  <h2>Nos prestations</h2>
-  <div class="grid">
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-face card-front">
-          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800" alt="Pose sols">
-        </div>
-        <div class="card-face card-back">
-          <h3 class="card-title">Pose Sols</h3>
-          <p>Grands formats, imitation bois, grès cérame</p>
-        </div>
-      </div>
+<section id="apropos">
+  <h2>À propos de Naël</h2>
+  <p style="max-width:900px; margin:0 auto 5rem; text-align:center; font-size:1.4rem; color:var(--gray);">
+    Artisan passionné basé à Nîmes, plus de 10 ans d’expérience dans la pose de carrelage, faïence, pierre naturelle et sols techniques.<br><br>
+    Qualité, précision, écoute – Devis personnalisé rapide.
+  </p>
+</section>
+
+<section id="catalogue">
+  <h2>Catalogue & Réalisations</h2>
+  <div class="masonry">
+    <div class="masonry-item">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800" alt="salle de bain" loading="lazy">
+      <div class="overlay"><h3>Salle de bain moderne</h3><p>Grands formats grès cérame</p></div>
     </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-face card-front">
-          <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800" alt="Revêtements murs">
-        </div>
-        <div class="card-face card-back">
-          <h3 class="card-title">Revêtements Murs</h3>
-          <p>Faïence XXL, mosaïque, pierre naturelle</p>
-        </div>
-      </div>
+    <div class="masonry-item">
+      <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800" alt="cuisine" loading="lazy">
+      <div class="overlay"><h3>Crédence cuisine</h3><p>Faïence effet marbre</p></div>
     </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-face card-front">
-          <img src="https://images.unsplash.com/photo-1618221195710-dd2dabb60b29?w=800" alt="Vente catalogue">
-        </div>
-        <div class="card-face card-back">
-          <h3 class="card-title">Vente Catalogue</h3>
-          <p>Large choix – Prix directs – Livraison</p>
-        </div>
-      </div>
+    <div class="masonry-item">
+      <img src="https://images.unsplash.com/photo-1618221195710-dd2dabb60b29?w=800" alt="terrasse" loading="lazy">
+      <div class="overlay"><h3>Terrasse extérieur</h3><p>Grès imitation bois R11</p></div>
     </div>
+    <!-- Ajoute tes images ici -->
   </div>
 </section>
 
 <section id="contact">
-  <h2>Contact</h2>
-  <p style="text-align:center; font-size:2rem; margin:2rem 0;">
-    06 52 15 84 84<br>
-    nael.entreprise@gmail.com<br>
-    20 avenue Fanfonne Guillierme, 30000 Nîmes<br>
-    SIRET 511 527 566 00034
-  </p>
+  <h2>Contactez Naël</h2>
+  <div class="contact-grid">
+    <div>
+      <a href="tel:+33652158484" class="big-link">06 52 15 84 84</a>
+      <p style="font-size:1.4rem; margin:2rem 0;">nael.entreprise@gmail.com</p>
+      <p>20 avenue Fanfonne Guillierme<br>30000 Nîmes</p>
+      <p style="margin-top:2rem; font-size:1.1rem; color:var(--gray);">SIRET 511 527 566 00034</p>
+      <iframe class="map-embed" src="https://www.google.com/maps/embed?pb=..." width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <form>
+      <div class="form-group"><input type="text" id="nom" placeholder=" " required><label for="nom">Votre nom</label></div>
+      <div class="form-group"><input type="tel" id="tel" placeholder=" " required><label for="tel">Téléphone</label></div>
+      <div class="form-group"><textarea id="msg" placeholder=" " rows="6" required></textarea><label for="msg">Votre projet</label></div>
+      <button type="submit" class="btn-submit">Envoyer le message</button>
+    </form>
+  </div>
 </section>
 
 <footer>
-  <p>© 2026 NAËL Revêtements Murs et Sols – Nîmes</p>
+  <div class="footer-grid">
+    <div><h3>NAËL</h3><p>Revêtements Murs et Sols Nîmes</p></div>
+    <div><h3>Navigation</h3><a href="#accueil">Accueil</a><br><a href="#apropos">À propos</a><br><a href="#catalogue">Catalogue</a></div>
+    <div><h3>Contact</h3><p>06 52 15 84 84<br>nael.entreprise@gmail.com</p></div>
+  </div>
+  <p>© 2026 NAËL – Tous droits réservés</p>
 </footer>
 
+<script>
+  function toggleTheme() {
+    document.documentElement.dataset.theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  }
+  window.addEventListener('scroll', () => {
+    document.querySelector('header').classList.toggle('scrolled', window.scrollY > 100);
+  });
+  document.querySelector('.menu-toggle').addEventListener('click', () => {
+    document.querySelector('.nav-links').classList.toggle('active');
+  });
+  document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'});
+    document.querySelector('.nav-links').classList.remove('active');
+  }));
+  const items = document.querySelectorAll('.masonry-item');
+  const observer = new IntersectionObserver(e => e.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  }), { threshold: 0.15 });
+  items.forEach(item => observer.observe(item));
+</script>
 </body>
 </html>
