@@ -1,144 +1,331 @@
-<!-- index.html – version améliorée avec effets 3D, parallax, hover 3D, animations plus immersives -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NAËL Revêtements Murs et Sols – Carrelage & Vente Catalogue</title>
-  <meta name="description" content="Pose professionnelle de carrelage, faïence, sols & murs. Vente directe sur catalogue. Artisan à Nîmes – Devis gratuit."/>
-  <link rel="stylesheet" href="style.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"/>
+  <title>NAËL Revêtements Murs et Sols – Carrelage Nîmes</title>
+  <meta name="description" content="Pose et vente de carrelage murs et sols. Artisan Naël à Nîmes. Devis gratuit."/>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --blanc: #ffffff;
+      --gris-clair: #f8f9fa;
+      --gris-moyen: #e5e5e5;
+      --gris-fonce: #444;
+      --noir: #1a1a1a;
+      --accent: #7da0c4;      /* bleu-gris doux carrelage */
+      --accent-dark: #5b829f;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--gris-clair);
+      color: var(--noir);
+      line-height: 1.7;
+    }
+
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.07);
+      transition: all 0.3s ease;
+    }
+
+    header.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.12); }
+
+    nav {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1.2rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: var(--noir);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.4rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--gris-fonce);
+      font-weight: 500;
+      font-size: 1.05rem;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0; height: 2px;
+      bottom: -6px; left: 0;
+      background: var(--accent);
+      transition: width 0.4s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after { width: 100%; }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--noir); }
+
+    .menu-toggle { display: none; font-size: 1.8rem; cursor: pointer; background: none; border: none; }
+
+    .hero {
+      height: 100vh;
+      min-height: 680px;
+      background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.6)),
+                  url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=90') center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 90%;
+      padding: 0 1.5rem;
+      animation: fadeUp 1.3s ease-out;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 9vw, 5.2rem);
+      margin-bottom: 1rem;
+      line-height: 1.05;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.2rem, 4vw, 1.5rem);
+      margin-bottom: 2rem;
+      opacity: 0.92;
+      font-weight: 300;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 1.1rem 2.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.15rem;
+      transition: all 0.35s;
+      box-shadow: 0 6px 25px rgba(125,160,196,0.35);
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-4px) scale(1.03);
+      background: var(--accent-dark);
+      box-shadow: 0 12px 35px rgba(91,130,159,0.45);
+    }
+
+    section { padding: 6rem 5%; }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      text-align: center;
+      margin-bottom: 3.5rem;
+      color: var(--noir);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: all 0.4s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.14);
+    }
+
+    .card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .card:hover img { transform: scale(1.08); }
+
+    .card-info {
+      padding: 1.6rem;
+      text-align: center;
+    }
+
+    .card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .contact-section {
+      background: white;
+      text-align: center;
+    }
+
+    .contact-grid {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .big-phone {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 1.5rem 0;
+      display: block;
+    }
+
+    footer {
+      background: var(--noir);
+      color: white;
+      text-align: center;
+      padding: 3rem 5%;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 2rem 5%; gap: 1.8rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+      .nav-links.active { display: flex; }
+      .menu-toggle { display: block; }
+      h1 { font-size: 3.8rem; }
+    }
+  </style>
 </head>
 <body>
 
-  <header>
-    <nav class="navbar">
-      <div class="logo">NAËL</div>
-      <ul class="nav-links">
-        <li><a href="index.html" class="active">Accueil</a></li>
-        <li><a href="apropos.html">À propos</a></li>
-        <li><a href="catalogue.html">Catalogue</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <div class="hamburger">☰</div>
-    </nav>
-  </header>
+<header>
+  <nav>
+    <div class="logo">NAËL</div>
+    <ul class="nav-links">
+      <li><a href="#accueil" class="active">Accueil</a></li>
+      <li><a href="#apropos">À propos</a></li>
+      <li><a href="#catalogue">Catalogue</a></li>
+      <li><a href="#contact">Nous contacter</a></li>
+    </ul>
+    <button class="menu-toggle">☰</button>
+  </nav>
+</header>
 
-  <main>
-    <!-- Hero avec parallax subtil + overlay motif carrelage -->
-    <section class="hero parallax">
-      <div class="hero-bg"></div>
-      <div class="hero-overlay"></div>
-      <div class="hero-content">
-        <h1 class="reveal">NAËL Revêtements</h1>
-        <h2 class="reveal delay-1">Murs • Sols • Carrelage</h2>
-        <p class="reveal delay-2">Pose experte – Vente catalogue – Nîmes</p>
-        <a href="contact.html" class="cta reveal delay-3">Devis Gratuit</a>
+<section class="hero" id="accueil">
+  <div class="hero-content">
+    <h1>NAËL Revêtements</h1>
+    <p class="hero-subtitle">Murs • Sols • Carrelage • Nîmes</p>
+    <a href="#contact" class="cta-btn">Demander un devis gratuit</a>
+  </div>
+</section>
+
+<section id="apropos">
+  <h2>À propos</h2>
+  <p style="max-width:800px; margin:0 auto; text-align:center; font-size:1.15rem;">
+    Artisan Naël, spécialiste des revêtements murs et sols à Nîmes depuis plus de 10 ans.<br>
+    Pose soignée, matériaux de qualité, vente directe sur catalogue.<br>
+    Devis gratuit et rapide – Travail garanti.
+  </p>
+</section>
+
+<section id="catalogue">
+  <h2>Nos prestations & catalogue</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=90" alt="carrelage sol">
+      <div class="card-info">
+        <h3>Pose Sols</h3>
+        <p>Grès cérame, imitation parquet, grands formats</p>
       </div>
-    </section>
-
-    <!-- Services avec cartes 3D tilt -->
-    <section class="services">
-      <h2 class="section-title">Nos Savoir-faire</h2>
-      <div class="grid">
-        <div class="card card-3d">
-          <div class="card-inner">
-            <div class="card-front">
-              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" alt="Pose carrelage sol"/>
-              <div class="card-overlay">
-                <h3>Pose Sols</h3>
-              </div>
-            </div>
-            <div class="card-back">
-              <h3>Pose Sols</h3>
-              <p>Ragréage parfait – Découpes précises – Jointoiement impeccable</p>
-              <a href="contact.html" class="card-btn">Demander devis</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="card card-3d">
-          <div class="card-inner">
-            <div class="card-front">
-              <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" alt="Revêtement mural"/>
-              <div class="card-overlay">
-                <h3>Revêtements Murs</h3>
-              </div>
-            </div>
-            <div class="card-back">
-              <h3>Revêtements Murs</h3>
-              <p>Faïence, mosaïque, grès cérame, pierre naturelle</p>
-              <a href="contact.html" class="card-btn">Demander devis</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="card card-3d">
-          <div class="card-inner">
-            <div class="card-front">
-              <img src="https://images.unsplash.com/photo-1618221195710-dd2dabb60b29?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" alt="Vente carrelage"/>
-              <div class="card-overlay">
-                <h3>Vente Catalogue</h3>
-              </div>
-            </div>
-            <div class="card-back">
-              <h3>Vente Catalogue</h3>
-              <p>Large choix – Prix directs – Livraison possible</p>
-              <a href="catalogue.html" class="card-btn">Voir le catalogue</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Galerie avec hover scale + light effect -->
-    <section class="gallery">
-      <h2 class="section-title">Réalisations</h2>
-      <div class="gallery-grid">
-        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1581235720704-06d8e9b4d8d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" alt="Salle de bain"/></div>
-        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1600563438938-a9a6a8c3c0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" alt="Cuisine"/></div>
-        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1616046229478-9901c5536a45?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" alt="Terrasse"/></div>
-        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" alt="Mosaïque"/></div>
-      </div>
-    </section>
-
-    <!-- Call to action final avec pulsation -->
-    <section class="cta-section">
-      <div class="cta-content">
-        <h2>Transformez votre intérieur dès aujourd'hui</h2>
-        <a href="contact.html" class="cta pulse">Contactez NAËL</a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="footer-content">
-      <p>NAËL Revêtements Murs et Sols</p>
-      <p>20 avenue Fanfonne Guillierme – 30000 Nîmes</p>
-      <p>06 52 15 84 84 | nael.entreprise@gmail.com</p>
-      <p>SIRET 511 527 566 00034</p>
-      <p>© 2026 NAËL – Artisan Carrelage</p>
     </div>
-  </footer>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=90" alt="revetement mur">
+      <div class="card-info">
+        <h3>Revêtements Murs</h3>
+        <p>Faïence, mosaïque, pierre naturelle, crédences</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=90" alt="vente catalogue">
+      <div class="card-info">
+        <h3>Vente Catalogue</h3>
+        <p>Large choix – Prix directs – Livraison possible</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <script>
-    // Hamburger mobile
-    document.querySelector('.hamburger').addEventListener('click', () => {
-      document.querySelector('.nav-links').classList.toggle('active');
+<section class="contact-section" id="contact">
+  <h2>Nous contacter</h2>
+  <div class="contact-grid">
+    <p style="font-size:1.3rem; margin-bottom:1rem;">Appelez-moi ou envoyez un message</p>
+    <a href="tel:+33652158484" class="big-phone">06 52 15 84 84</a>
+    <p style="margin:1.5rem 0; font-size:1.15rem;">nael.entreprise@gmail.com</p>
+    <p>20 avenue Fanfonne Guillierme – 30000 Nîmes</p>
+    <p>SIRET 511 527 566 00034</p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 NAËL Revêtements Murs et Sols – Nîmes – Tous droits réservés</p>
+</footer>
+
+<script>
+  // Menu burger mobile
+  document.querySelector('.menu-toggle').addEventListener('click', () => {
+    document.querySelector('.nav-links').classList.toggle('active');
+  });
+
+  // Header scroll
+  window.addEventListener('scroll', () => {
+    document.querySelector('header').classList.toggle('scrolled', window.scrollY > 80);
+  });
+
+  // Smooth scroll ancres
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(anchor.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      // ferme menu mobile
+      document.querySelector('.nav-links').classList.remove('active');
     });
+  });
+</script>
 
-    // Scroll reveal simple (optionnel GSAP si tu veux plus tard)
-    const reveals = document.querySelectorAll('.reveal');
-    function checkReveal() {
-      reveals.forEach(el => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 80) {
-          el.classList.add('active');
-        }
-      });
-    }
-    window.addEventListener('scroll', checkReveal);
-    checkReveal();
-  </script>
 </body>
 </html>
