@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Naël – Carrelage & Revêtements Nîmes | Qualité Premium</title>
-  <meta name="description" content="Naël – Spécialiste carrelage grands formats, imitation pierre, béton ciré, marbre à Nîmes. Devis gratuit, pose pro. 06 52 15 84 84"/>
+  <title>NAËL </title>
+  <meta name="description" content="NAËL Revêtements Murs et Sols – Spécialiste carrelage, sols et murs à Nîmes. Grands formats, imitation pierre, béton, marbre. Devis gratuit, pose professionnelle. 06 52 15 84 84"/>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,46 +52,86 @@
 
     .logo {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2.5rem;
+      font-size: 2.3rem;
       font-weight: 700;
       color: var(--noir);
-      letter-spacing: 0.8px;
+      letter-spacing: 0.6px;
     }
     .logo span { color: var(--accent); }
 
-    .nav-right {
-      display: flex;
-      gap: 2.5rem;
-      align-items: center;
+    .menu-toggle {
+      display: none;
+      font-size: 2.2rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--noir);
     }
 
-    .nav-icon {
-      font-size: 1.8rem;
-      color: var(--gris-fonce);
-      cursor: pointer;
-      transition: all 0.3s;
+    .nav-menu {
       position: relative;
     }
 
-    .nav-icon:hover {
-      color: var(--accent);
-      transform: scale(1.15);
-    }
-
-    .nav-icon::after {
-      content: attr(data-label);
-      position: absolute;
-      bottom: -28px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 0.75rem;
-      white-space: nowrap;
+    .nav-trigger {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      background: none;
+      border: none;
+      font-size: 1.18rem;
+      font-weight: 600;
       color: var(--gris-fonce);
-      opacity: 0;
-      transition: opacity 0.3s;
+      cursor: pointer;
+      transition: color 0.3s;
     }
 
-    .nav-icon:hover::after { opacity: 1; }
+    .nav-trigger:hover { color: var(--accent); }
+
+    .nav-trigger::after {
+      content: '▼';
+      font-size: 0.75rem;
+      opacity: 0.65;
+      transition: all 0.3s;
+    }
+
+    .nav-trigger.open::after { transform: rotate(180deg); }
+
+    .dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 14px 45px rgba(0,0,0,0.16);
+      min-width: 280px;
+      padding: 1.4rem 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(15px);
+      transition: all 0.4s ease;
+      pointer-events: none;
+    }
+
+    .dropdown.open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .dropdown a {
+      display: block;
+      padding: 1.1rem 2.2rem;
+      color: var(--gris-fonce);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.25s;
+    }
+
+    .dropdown a:hover {
+      background: var(--gris-clair);
+      color: var(--accent-dark);
+    }
 
     .hero {
       height: 100vh;
@@ -109,20 +149,20 @@
 
     h1 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(4rem, 13vw, 8rem);
+      font-size: clamp(3.8rem, 12vw, 7.4rem);
       margin-bottom: 1.6rem;
     }
 
-    .subtitle { font-size: clamp(1.4rem, 6vw, 2rem); margin-bottom: 3.5rem; font-weight: 300; }
+    .subtitle { font-size: clamp(1.35rem, 5.5vw, 1.95rem); margin-bottom: 3.2rem; font-weight: 300; }
 
     .btn-primary {
       background: var(--accent);
       color: white;
-      padding: 1.4rem 3.6rem;
+      padding: 1.4rem 3.4rem;
       border-radius: 8px;
       text-decoration: none;
       font-weight: 600;
-      font-size: 1.35rem;
+      font-size: 1.3rem;
       transition: all 0.4s;
     }
     .btn-primary:hover {
@@ -132,26 +172,47 @@
     }
 
     section { padding: 8rem 6%; }
-    h2 { font-family: 'Cormorant Garamond', serif; font-size: 3.6rem; text-align: center; margin-bottom: 5rem; }
+    h2 { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; text-align: center; margin-bottom: 4.5rem; }
 
-    .mega-grid {
+    .grid-gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.8rem;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2.5rem;
     }
 
     .card-pro {
       overflow: hidden;
       border-radius: 14px;
       background: white;
-      box-shadow: 0 10px 35px rgba(0,0,0,0.07);
-      transition: all 0.45s;
+      box-shadow: 0 12px 42px rgba(0,0,0,0.08);
+      transition: all 0.5s;
     }
-    .card-pro:hover { transform: translateY(-16px); box-shadow: 0 26px 65px rgba(0,0,0,0.16); }
-    .card-pro img { width: 100%; height: 320px; object-fit: cover; transition: transform 0.8s; }
-    .card-pro:hover img { transform: scale(1.18); }
-    .card-info { padding: 1.8rem; text-align: center; }
-    .price-tag { color: var(--accent); font-size: 1.6rem; font-weight: 700; margin: 1rem 0; }
+    .card-pro:hover { transform: translateY(-20px); box-shadow: 0 30px 75px rgba(0,0,0,0.18); }
+    .card-pro img { width: 100%; height: 370px; object-fit: cover; transition: transform 0.9s; }
+    .card-pro:hover img { transform: scale(1.22); }
+    .card-info { padding: 2.2rem; text-align: center; }
+    .price-tag { color: var(--accent); font-size: 1.75rem; font-weight: 700; margin: 1.2rem 0; }
+
+    .contact-block {
+      background: var(--gris-clair);
+      padding: 5rem 6%;
+      border-radius: 16px;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .big-phone {
+      font-size: 3.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 2rem 0;
+      letter-spacing: 2px;
+      display: block;
+      text-decoration: none;
+    }
+
+    .big-phone:hover { color: var(--accent-dark); }
 
     footer {
       background: var(--noir);
@@ -162,8 +223,8 @@
     }
 
     @media (max-width: 768px) {
-      .nav-right { gap: 1.8rem; }
-      .nav-icon { font-size: 1.6rem; }
+      .menu-toggle { display: block; }
+      .nav-trigger { font-size: 1.15rem; }
     }
   </style>
 </head>
@@ -171,58 +232,71 @@
 
 <header>
   <nav class="navbar">
-    <div class="logo">Naël<span> Carrelage</span></div>
+    <div class="logo">NAËL<span> Revêtements</span></div>
 
-    <div class="nav-right">
-      <div class="nav-icon" data-label="Catalogue" onclick="window.location='catalogue.html'">📋</div>
-      <div class="nav-icon" data-label="Réalisations" onclick="window.location='realisations.html'">🖼️</div>
-      <div class="nav-icon" data-label="À propos" onclick="window.location='a-propos.html'">ℹ️</div>
-      <div class="nav-icon" data-label="Contact" onclick="window.location='contact.html'">☎️</div>
+    <div class="nav-menu">
+      <button class="nav-trigger" id="menuBtn">Menu</button>
+      
+      <div class="dropdown" id="dropdown">
+        <a href="catalogue.html">Catalogue</a>
+        <a href="realisations.html">Réalisations</a>
+        <a href="a-propos.html">À propos</a>
+        <a href="contact.html">Contact</a>
+      </div>
     </div>
   </nav>
 </header>
 
 <section class="hero">
   <div class="hero-content">
-    <h1>Naël</h1>
-    <p class="subtitle">Carrelage d’exception – Nîmes & Gard – Pose irréprochable</p>
+    <h1>NAËL Revêtements Murs et Sols</h1>
+    <p class="subtitle">Carrelage premium, sols & murs d’exception – Nîmes & Gard</p>
     <a href="contact.html" class="btn-primary">Devis gratuit</a>
   </div>
 </section>
 
-<section>
-  <h2>20 pièces qui claquent</h2>
-  <div class="mega-grid">
-    <!-- 20 cartes identiques pour l'exemple – remplace les src par tes vraies photos plus tard -->
-    <div class="card-pro"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800" alt="Béton ciré gris"><div class="card-info"><h3>Béton Ciré XL</h3><div class="price-tag">34,90 €/m²</div></div></div>
-    <div class="card-pro"><img src="https://images.unsplash.com/photo-1581235720704-06d1018152dc?w=800" alt="Pierre naturelle beige"><div class="card-info"><h3>Pierre Travertin</h3><div class="price-tag">49,00 €/m²</div></div></div>
-    <div class="card-pro"><img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800" alt="Marbre veiné or"><div class="card-info"><h3>Marbre Calacatta</h3><div class="price-tag">89,00 €/m²</div></div></div>
-    <div class="card-pro"><img src="https://images.unsplash.com/photo-1618221195710-dd2dabb60b29?w=800" alt="Mosaïque hexa"><div class="card-info"><h3>Mosaïque Hexa</h3><div class="price-tag">22,50 €/plaque</div></div></div>
-    <div class="card-pro"><img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800" alt="Imitation parquet chêne"><div class="card-info"><h3>Chêne Grès Cérame</h3><div class="price-tag">37,90 €/m²</div></div></div>
-    <!-- Duplique x15 pour atteindre 20 – ou remplace par vraies images -->
-    <div class="card-pro"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800" alt="Exemple 6"><div class="card-info"><h3>Gris Anthracite</h3><div class="price-tag">32,90 €/m²</div></div></div>
-    <div class="card-pro"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800" alt="Exemple 7"><div class="card-info"><h3>Blanc Mat</h3><div class="price-tag">28,50 €/m²</div></div></div>
-    <div class="card-pro"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800" alt="Exemple 8"><div class="card-info"><h3>Noir Profond</h3><div class="price-tag">41,00 €/m²</div></div></div>
-    <div class="card-pro"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800" alt="Exemple 9"><div class="card-info"><h3>Effet Cuir</h3><div class="price-tag">45,90 €/m²</div></div></div>
-    <div class="card-pro"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800" alt="Exemple 10"><div class="card-info"><h3>Zellige Artisanale</h3><div class="price-tag">39,00 €/m²</div></div></div>
-    <div class="card-pro"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800" alt="Exemple 11"><div class="card-info"><h3>Terracotta</h3><div class="price-tag">29,90 €/m²</div></div></div>
-    <div class="card-pro"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800" alt="Exemple 12"><div class="card-info"><h3>Granit Noir</h3><div class="price-tag">78,00 €/m²</div></div></div>
-    <div class="card-pro"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800" alt="Exemple 13"><div class="card-info"><h3>Bois Clair</h3><div class="price-tag">35,50 €/m²</div></div></div>
-    <div class="card-pro"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800" alt="Exemple 14"><div class="card-info"><h3>Hexagone Mixte</h3><div class="price-tag">26,90 €/plaque</div></div></div>
-    <div class="card-pro"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800" alt="Exemple 15"><div class="card-info"><h3>Grès Imitation Pierre</h3><div class="price-tag">42,00 €/m²</div></div></div>
-    <div class="card-pro"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800" alt="Exemple 16"><div class="card-info"><h3>Effet Métal</h3><div class="price-tag">55,00 €/m²</div></div></div>
-    <div class="card-pro"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800" alt="Exemple 17"><div class="card-info"><h3>Blanc Brillant</h3><div class="price-tag">31,90 €/m²</div></div></div>
-    <div class="card-pro"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800" alt="Exemple 18"><div class="card-info"><h3>Gris Perle</h3><div class="price-tag">33,50 €/m²</div></div></div>
-    <div class="card-pro"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800" alt="Exemple 19"><div class="card-info"><h3>Terre Cuite</h3><div class="price-tag">38,00 €/m²</div></div></div>
-    <div class="card-pro"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800" alt="Exemple 20"><div class="card-info"><h3>Ardoise Noire</h3><div class="price-tag">47,90 €/m²</div></div></div>
-  </div>
+<section class="contact-block">
+  <h2>Contactez Naël</h2>
+  
+  <a href="tel:0652158484" class="big-phone">06 52 15 84 84</a>
+  
+  <p style="font-size:1.4rem; margin:1.8rem 0;">
+    NAËL Revêtements Murs et Sols<br>
+    20, avenue Fanfonne Guillierme<br>
+    30000 Nîmes
+  </p>
+  
+  <p style="font-size:1.25rem; margin:1.5rem 0;">
+    Email : <a href="mailto:nael.entreprise@gmail.com" style="color:var(--accent);">nael.entreprise@gmail.com</a><br>
+    SIRET : 511 527 566 00034
+  </p>
+  
+  <p style="font-size:1.3rem; margin-top:3rem;">
+    Showroom sur rendez-vous – Devis pose + fourniture sous 48h – Zone Nîmes & Gard
+  </p>
 </section>
 
 <footer>
-  <p>© 2026 Naël – 20, avenue Fanfonne Guillierme, 30000 Nîmes – 06 52 15 84 84 – SIRET 511 527 566 00034</p>
+  <p>© 2026 NAËL Revêtements Murs et Sols – Nîmes – SIRET 511 527 566 00034</p>
+  <p style="margin-top:1.5rem; opacity:0.75;">Spécialiste carrelage & revêtements – Qualité premium, service direct</p>
 </footer>
 
 <script>
+  const menuBtn = document.getElementById('menuBtn');
+  const dropdown = document.getElementById('dropdown');
+
+  menuBtn.addEventListener('click', () => {
+    dropdown.classList.toggle('open');
+    menuBtn.classList.toggle('open');
+  });
+
+  document.addEventListener('click', e => {
+    if (!menuBtn.contains(e.target) && !dropdown.contains(e.target)) {
+      dropdown.classList.remove('open');
+      menuBtn.classList.remove('open');
+    }
+  });
+
   window.addEventListener('scroll', () => {
     document.querySelector('header').classList.toggle('scrolled', window.scrollY > 80);
   });
