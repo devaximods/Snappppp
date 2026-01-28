@@ -2,136 +2,139 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NAËL CARRELAGE – Nîmes | Carrelage d’Exception</title>
-  <meta name="description" content="NAËL CARRELAGE – Grands formats, imitation pierre, marbre, béton ciré, mosaïque. Nîmes & Gard. Pose professionnelle."/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>NAËL CARRELAGE – Nîmes</title>
+  <meta name="description" content="NAËL CARRELAGE – Nîmes & Gard – Carrelage premium, grands formats, pose experte."/>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
   
   <style>
     :root {
-      --blanc: #fdfdfd;
-      --gris-clair: #f9f9f9;
-      --gris-fonce: #2a2a2a;
-      --noir: #0a0a0a;
+      --bg: #fcfcfc;
+      --text: #1a1a1a;
       --accent: #7a5c3f;
-      --accent-light: #a07e60;
+      --accent-soft: #a07e60;
+      --gray: #555;
+      --lightgray: #e8e8e8;
     }
 
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body {
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
       font-family: 'Inter', sans-serif;
-      background: var(--blanc);
-      color: var(--gris-fonce);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     header {
       position: fixed;
-      top: 0; left: 0; right: 0;
-      background: rgba(253,253,253,0.96);
-      backdrop-filter: blur(20px);
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 54px;
+      background: rgba(252,252,252,0.96);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(122,92,63,0.08);
       z-index: 9999;
-      transition: all 0.4s ease;
+      transition: all 0.3s ease;
     }
 
-    header.scrolled {
-      box-shadow: 0 6px 30px rgba(0,0,0,0.12);
-    }
-
-    .navbar {
-      max-width: 1440px;
-      margin: 0 auto;
-      padding: 1.4rem 5%;
+    .nav-container {
+      height: 100%;
+      max-width: 100%;
+      padding: 0 5%;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .logo-small {
+    .logo-mini {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2.2rem;
+      font-size: 1.55rem;
       font-weight: 700;
-      color: var(--noir);
-      letter-spacing: 1.2px;
+      letter-spacing: 0.8px;
+      color: var(--text);
     }
-    .logo-small span {
+    .logo-mini span {
       color: var(--accent);
-      font-weight: 800;
     }
 
-    .menu-btn {
+    .menu-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      color: var(--text);
       background: none;
       border: none;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.6rem;
-      font-weight: 600;
-      color: var(--noir);
       cursor: pointer;
-      letter-spacing: 1px;
-      transition: all 0.35s ease;
-      position: relative;
+      transition: color 0.3s;
     }
 
-    .menu-btn:hover {
+    .menu-text:hover,
+    .menu-text:focus {
       color: var(--accent);
     }
 
-    .menu-btn::after {
-      content: '▼';
-      font-size: 0.7rem;
-      margin-left: 0.6rem;
-      opacity: 0.7;
-      transition: transform 0.4s;
-    }
-
-    .menu-btn.open::after {
-      transform: rotate(180deg);
-    }
-
-    .dropdown-menu {
+    .dropdown {
       position: absolute;
-      top: 100%;
-      right: 0;
+      top: 54px;
+      right: 5%;
       background: white;
-      border-radius: 12px;
-      box-shadow: 0 16px 55px rgba(0,0,0,0.18);
-      min-width: 240px;
-      padding: 1.2rem 0;
+      border-radius: 10px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.16);
+      min-width: 220px;
+      padding: 1rem 0;
       opacity: 0;
       visibility: hidden;
-      transform: translateY(15px);
-      transition: all 0.4s ease;
+      transform: translateY(10px);
+      transition: all 0.35s ease;
       pointer-events: none;
     }
 
-    .dropdown-menu.open {
+    .dropdown.open {
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
       pointer-events: auto;
     }
 
-    .dropdown-item {
+    .dropdown a {
       display: block;
-      padding: 1rem 2.2rem;
-      color: var(--gris-fonce);
+      padding: 0.95rem 1.8rem;
+      color: var(--gray);
       text-decoration: none;
-      font-weight: 500;
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       transition: all 0.25s;
     }
 
-    .dropdown-item:hover {
-      background: var(--gris-clair);
+    .dropdown a:hover {
       color: var(--accent);
+      background: var(--lightgray);
+    }
+
+    main {
+      padding-top: 54px;
+      min-height: 100vh;
     }
 
     .hero {
-      height: 100vh;
-      min-height: 820px;
-      background: linear-gradient(rgba(10,10,10,0.72), rgba(10,10,10,0.88)),
+      height: calc(100vh - 54px);
+      min-height: 680px;
+      background: linear-gradient(rgba(10,10,10,0.74), rgba(10,10,10,0.90)),
                   url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=95') center/cover no-repeat fixed;
       display: flex;
       flex-direction: column;
@@ -139,17 +142,18 @@
       align-items: center;
       text-align: center;
       color: white;
-      padding-top: 80px;
+      padding: 0 6%;
     }
 
     .hero-logo {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(6.5rem, 19vw, 15rem);
+      font-size: clamp(4.8rem, 16vw, 11rem);
       font-weight: 700;
       font-style: italic;
-      letter-spacing: -2px;
-      margin-bottom: 1.5rem;
-      text-shadow: 0 8px 40px rgba(0,0,0,0.8);
+      letter-spacing: -1.5px;
+      line-height: 0.9;
+      margin-bottom: 1.2rem;
+      text-shadow: 0 6px 32px rgba(0,0,0,0.85);
     }
     .hero-logo span {
       font-style: normal;
@@ -157,156 +161,160 @@
     }
 
     .hero-subtitle {
-      font-size: clamp(1.9rem, 7.5vw, 3.2rem);
+      font-size: clamp(1.35rem, 5.5vw, 2.1rem);
       font-weight: 300;
-      max-width: 90%;
-      margin-bottom: 5rem;
-      opacity: 0.95;
+      max-width: 92%;
+      margin-bottom: 3.8rem;
+      opacity: 0.93;
     }
 
-    .hero-cta {
+    .cta {
       background: var(--accent);
       color: white;
-      padding: 1.7rem 5.5rem;
-      border-radius: 14px;
-      text-decoration: none;
-      font-size: 1.6rem;
+      padding: 1.1rem 3.8rem;
+      border-radius: 10px;
+      font-size: 1.28rem;
       font-weight: 600;
-      transition: all 0.5s ease;
-      box-shadow: 0 14px 50px rgba(122,92,63,0.5);
+      text-decoration: none;
+      transition: all 0.45s ease;
+      box-shadow: 0 10px 38px rgba(122,92,63,0.42);
     }
 
-    .hero-cta:hover {
+    .cta:hover {
       background: var(--accent-light);
-      transform: translateY(-12px);
-      box-shadow: 0 32px 90px rgba(160,126,96,0.65);
+      transform: translateY(-6px);
+      box-shadow: 0 22px 68px rgba(160,126,96,0.58);
     }
 
-    .gallery-section {
-      padding: 10rem 5%;
-      max-width: 1440px;
-      margin: 0 auto;
+    .gallery {
+      padding: 6rem 5% 8rem;
     }
 
-    .gallery-grid {
+    .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.6rem;
     }
 
-    .gallery-card {
+    .photo {
       overflow: hidden;
-      border-radius: 18px;
-      box-shadow: 0 14px 50px rgba(0,0,0,0.1);
-      transition: all 0.6s ease;
+      border-radius: 14px;
+      box-shadow: 0 10px 34px rgba(0,0,0,0.08);
+      transition: all 0.5s ease;
     }
 
-    .gallery-card:hover {
-      transform: translateY(-20px);
-      box-shadow: 0 30px 90px rgba(0,0,0,0.2);
+    .photo:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 24px 70px rgba(0,0,0,0.18);
     }
 
-    .gallery-card img {
+    .photo img {
       width: 100%;
-      height: 380px;
+      height: 340px;
       object-fit: cover;
-      transition: transform 1.2s ease;
+      display: block;
+      transition: transform 1s ease;
     }
 
-    .gallery-card:hover img {
-      transform: scale(1.18);
+    .photo:hover img {
+      transform: scale(1.14);
     }
 
     footer {
       background: var(--noir);
-      color: #ccc;
+      color: #bbb;
       text-align: center;
-      padding: 6rem 5% 4rem;
-      font-size: 1.05rem;
+      padding: 4rem 5% 3rem;
+      font-size: 0.95rem;
     }
 
-    @media (max-width: 768px) {
-      .menu-btn { font-size: 1.4rem; }
-      .hero-logo { font-size: 8rem; }
-      .hero-subtitle { font-size: 2.2rem; }
-      .hero-cta { padding: 1.4rem 4.5rem; font-size: 1.4rem; }
+    @media (max-width: 480px) {
+      .hero-logo { font-size: 5.8rem; }
+      .hero-subtitle { font-size: 1.6rem; }
+      .cta { padding: 1rem 3rem; font-size: 1.15rem; }
+      .menu-text { font-size: 1.3rem; }
     }
   </style>
 </head>
 <body>
 
 <header>
-  <nav class="navbar">
-    <div class="logo-small">NAËL <span>CARRELAGE</span></div>
+  <div class="nav-container">
+    <div class="logo-mini">NAËL <span>CARRELAGE</span></div>
+    <button class="menu-text" id="menuBtn">MENU</button>
+  </div>
 
-    <button class="menu-btn" id="menuToggle">MENU</button>
-
-    <div class="dropdown-menu" id="dropdown">
-      <a href="catalogue.html" class="dropdown-item">Catalogue</a>
-      <a href="realisations.html" class="dropdown-item">Réalisations</a>
-      <a href="a-propos.html" class="dropdown-item">À propos</a>
-      <a href="contact.html" class="dropdown-item">Contact</a>
-    </div>
-  </nav>
+  <div class="dropdown" id="dropdownMenu">
+    <a href="catalogue.html">Catalogue</a>
+    <a href="realisations.html">Réalisations</a>
+    <a href="a-propos.html">À propos</a>
+    <a href="contact.html">Contact</a>
+  </div>
 </header>
 
-<section class="hero">
-  <div>
-    <h1 class="hero-logo">NAËL<span>CARRELAGE</span></h1>
-    <p class="hero-subtitle">Le sol qui raconte votre histoire – Nîmes & Gard</p>
-    <a href="contact.html" class="hero-cta">Devis gratuit</a>
-  </div>
-</section>
+<main>
+  <section class="hero">
+    <div>
+      <h1 class="hero-logo">NAËL<span>CARRELAGE</span></h1>
+      <p class="hero-subtitle">Le sol qui raconte votre histoire – Nîmes & Gard</p>
+      <a href="contact.html" class="cta">Devis gratuit</a>
+    </div>
+  </section>
 
-<section class="gallery-section">
-  <div class="gallery-grid">
-    <!-- 20 photos pures, sans texte, sans prix, juste du beau visuel -->
-    <div class="gallery-card"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=95" alt="carrelage 1"></div>
-    <div class="gallery-card"><img src="https://images.unsplash.com/photo-1581235720704-06d1018152dc?w=900&q=95" alt="carrelage 2"></div>
-    <div class="gallery-card"><img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=900&q=95" alt="carrelage 3"></div>
-    <div class="gallery-card"><img src="https://images.unsplash.com/photo-1618221195710-dd2dabb60b29?w=900&q=95" alt="carrelage 4"></div>
-    <div class="gallery-card"><img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&q=95" alt="carrelage 5"></div>
-    <div class="gallery-card"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=95" alt="carrelage 6"></div>
-    <div class="gallery-card"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=95" alt="carrelage 7"></div>
-    <div class="gallery-card"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=95" alt="carrelage 8"></div>
-    <div class="gallery-card"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=95" alt="carrelage 9"></div>
-    <div class="gallery-card"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=95" alt="carrelage 10"></div>
-    <div class="gallery-card"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=95" alt="carrelage 11"></div>
-    <div class="gallery-card"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=95" alt="carrelage 12"></div>
-    <div class="gallery-card"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=95" alt="carrelage 13"></div>
-    <div class="gallery-card"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=95" alt="carrelage 14"></div>
-    <div class="gallery-card"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=95" alt="carrelage 15"></div>
-    <div class="gallery-card"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=95" alt="carrelage 16"></div>
-    <div class="gallery-card"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=95" alt="carrelage 17"></div>
-    <div class="gallery-card"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=95" alt="carrelage 18"></div>
-    <div class="gallery-card"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=95" alt="carrelage 19"></div>
-    <div class="gallery-card"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=95" alt="carrelage 20"></div>
-  </div>
-</section>
+  <section class="gallery">
+    <div class="grid">
+      <div class="photo"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=95" alt=""></div>
+      <div class="photo"><img src="https://images.unsplash.com/photo-1581235720704-06d1018152dc?w=900&q=95" alt=""></div>
+      <div class="photo"><img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=900&q=95" alt=""></div>
+      <div class="photo"><img src="https://images.unsplash.com/photo-1618221195710-dd2dabb60b29?w=900&q=95" alt=""></div>
+      <div class="photo"><img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&q=95" alt=""></div>
+      <div class="photo"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=95" alt=""></div>
+      <div class="photo"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=95" alt=""></div>
+      <div class="photo"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=95" alt=""></div>
+      <div class="photo"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=95" alt=""></div>
+      <div class="photo"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=95" alt=""></div>
+      <div class="photo"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=95" alt=""></div>
+      <div class="photo"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=95" alt=""></div>
+      <div class="photo"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=95" alt=""></div>
+      <div class="photo"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=95" alt=""></div>
+      <div class="photo"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=95" alt=""></div>
+      <div class="photo"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=95" alt=""></div>
+      <div class="photo"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=95" alt=""></div>
+      <div class="photo"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=95" alt=""></div>
+      <div class="photo"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=95" alt=""></div>
+      <div class="photo"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=95" alt=""></div>
+    </div>
+  </section>
+</main>
 
 <footer>
-  <p>© 2026 NAËL CARRELAGE – Nîmes – SIRET 511 527 566 00034</p>
+  <p>© 2026 NAËL CARRELAGE – Nîmes</p>
 </footer>
 
 <script>
-  const menuToggle = document.getElementById('menuToggle');
-  const dropdown = document.getElementById('dropdown');
+  const menuBtn = document.getElementById('menuBtn');
+  const dropdown = document.getElementById('dropdownMenu');
 
-  menuToggle.addEventListener('click', () => {
+  menuBtn.addEventListener('click', () => {
     dropdown.classList.toggle('open');
-    menuToggle.classList.toggle('open');
+    menuBtn.classList.toggle('open');
   });
 
   document.addEventListener('click', e => {
-    if (!menuToggle.contains(e.target) && !dropdown.contains(e.target)) {
+    if (!menuBtn.contains(e.target) && !dropdown.contains(e.target)) {
       dropdown.classList.remove('open');
-      menuToggle.classList.remove('open');
+      menuBtn.classList.remove('open');
     }
   });
 
   window.addEventListener('scroll', () => {
-    document.querySelector('header').classList.toggle('scrolled', window.scrollY > 100);
+    document.querySelector('header').classList.toggle('scrolled', window.scrollY > 60);
   });
+
+  // Bloque le zoom double-tap sur mobile
+  document.addEventListener('touchstart', e => {
+    if (e.touches.length > 1) e.preventDefault();
+  }, { passive: false });
 </script>
 
 </body>
