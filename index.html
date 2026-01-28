@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Carrelage City – Marseille & Occitanie | Carrelages d’exception</title>
-  <meta name="description" content="Spécialiste carrelage premium : grands formats, imitation marbre, pierre naturelle, béton ciré. Pose professionnelle à Marseille et Occitanie. Devis gratuit."/>
+  <title>NAËL Revêtements Murs et Sols – Nîmes | Carrelage & Revêtements Premium</title>
+  <meta name="description" content="NAËL Revêtements Murs et Sols – Spécialiste carrelage, sols et murs à Nîmes. Grands formats, imitation pierre, béton, marbre. Devis gratuit, pose professionnelle. 06 52 15 84 84"/>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,17 +52,16 @@
 
     .logo {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2.4rem;
+      font-size: 2.3rem;
       font-weight: 700;
       color: var(--noir);
-      letter-spacing: 0.8px;
+      letter-spacing: 0.6px;
     }
     .logo span { color: var(--accent); }
 
-    /* Le menu burger stylé qui ouvre le dropdown */
     .menu-toggle {
       display: none;
-      font-size: 2rem;
+      font-size: 2.2rem;
       background: none;
       border: none;
       cursor: pointer;
@@ -76,23 +75,22 @@
     .nav-trigger {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.7rem;
       background: none;
       border: none;
-      font-size: 1.15rem;
+      font-size: 1.18rem;
       font-weight: 600;
       color: var(--gris-fonce);
       cursor: pointer;
       transition: color 0.3s;
     }
 
-    .nav-trigger:hover,
-    .nav-trigger:focus { color: var(--accent); }
+    .nav-trigger:hover { color: var(--accent); }
 
     .nav-trigger::after {
       content: '▼';
-      font-size: 0.7rem;
-      opacity: 0.6;
+      font-size: 0.75rem;
+      opacity: 0.65;
       transition: all 0.3s;
     }
 
@@ -103,16 +101,15 @@
       top: 100%;
       right: 0;
       background: white;
-      border-radius: 10px;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-      min-width: 260px;
-      padding: 1.2rem 0;
+      border-radius: 12px;
+      box-shadow: 0 14px 45px rgba(0,0,0,0.16);
+      min-width: 280px;
+      padding: 1.4rem 0;
       opacity: 0;
       visibility: hidden;
-      transform: translateY(12px);
-      transition: all 0.35s ease;
+      transform: translateY(15px);
+      transition: all 0.4s ease;
       pointer-events: none;
-      overflow: hidden;
     }
 
     .dropdown.open {
@@ -124,7 +121,7 @@
 
     .dropdown a {
       display: block;
-      padding: 1rem 2rem;
+      padding: 1.1rem 2.2rem;
       color: var(--gris-fonce);
       text-decoration: none;
       font-weight: 500;
@@ -136,11 +133,10 @@
       color: var(--accent-dark);
     }
 
-    /* Hero & autres styles (comme avant, juste un refresh rapide) */
     .hero {
       height: 100vh;
       min-height: 740px;
-      background: linear-gradient(rgba(17,17,17,0.65), rgba(17,17,17,0.82)),
+      background: linear-gradient(rgba(17,17,17,0.68), rgba(17,17,17,0.84)),
                   url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=90') center/cover no-repeat;
       display: flex;
       align-items: center;
@@ -149,58 +145,86 @@
       color: white;
     }
 
-    .hero-content { max-width: 84%; padding: 0 2rem; }
+    .hero-content { max-width: 82%; padding: 0 2rem; }
 
     h1 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3.8rem, 12vw, 7.2rem);
+      font-size: clamp(3.8rem, 12vw, 7.4rem);
       margin-bottom: 1.6rem;
     }
 
-    .subtitle { font-size: clamp(1.3rem, 5vw, 1.9rem); margin-bottom: 3rem; font-weight: 300; }
+    .subtitle { font-size: clamp(1.35rem, 5.5vw, 1.95rem); margin-bottom: 3.2rem; font-weight: 300; }
 
     .btn-primary {
       background: var(--accent);
       color: white;
-      padding: 1.3rem 3.2rem;
+      padding: 1.4rem 3.4rem;
       border-radius: 8px;
       text-decoration: none;
       font-weight: 600;
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       transition: all 0.4s;
     }
     .btn-primary:hover {
       background: var(--accent-light);
       transform: translateY(-6px);
-      box-shadow: 0 16px 45px rgba(140,107,79,0.4);
+      box-shadow: 0 18px 50px rgba(140,107,79,0.4);
     }
 
     section { padding: 8rem 6%; }
-    h2 { font-family: 'Cormorant Garamond', serif; font-size: 3.4rem; text-align: center; margin-bottom: 4.5rem; }
+    h2 { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; text-align: center; margin-bottom: 4.5rem; }
 
     .grid-gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 2.4rem;
+      gap: 2.5rem;
     }
 
-    .card-pro { /* même style que avant, un peu plus grand */ 
+    .card-pro {
       overflow: hidden;
       border-radius: 14px;
       background: white;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+      box-shadow: 0 12px 42px rgba(0,0,0,0.08);
       transition: all 0.5s;
     }
-    .card-pro:hover { transform: translateY(-18px); box-shadow: 0 28px 70px rgba(0,0,0,0.18); }
-    .card-pro img { width: 100%; height: 360px; object-fit: cover; transition: transform 0.9s; }
-    .card-pro:hover img { transform: scale(1.2); }
-    .card-info { padding: 2rem; text-align: center; }
-    .price-tag { color: var(--accent); font-size: 1.7rem; font-weight: 700; margin: 1.2rem 0; }
+    .card-pro:hover { transform: translateY(-20px); box-shadow: 0 30px 75px rgba(0,0,0,0.18); }
+    .card-pro img { width: 100%; height: 370px; object-fit: cover; transition: transform 0.9s; }
+    .card-pro:hover img { transform: scale(1.22); }
+    .card-info { padding: 2.2rem; text-align: center; }
+    .price-tag { color: var(--accent); font-size: 1.75rem; font-weight: 700; margin: 1.2rem 0; }
+
+    .contact-block {
+      background: var(--gris-clair);
+      padding: 5rem 6%;
+      border-radius: 16px;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .big-phone {
+      font-size: 3.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 2rem 0;
+      letter-spacing: 2px;
+      display: block;
+      text-decoration: none;
+    }
+
+    .big-phone:hover { color: var(--accent-dark); }
+
+    footer {
+      background: var(--noir);
+      color: #ccc;
+      text-align: center;
+      padding: 5rem 6% 3rem;
+      font-size: 0.98rem;
+    }
 
     @media (max-width: 768px) {
       .menu-toggle { display: block; }
-      .nav-menu { position: relative; }
-      .nav-trigger { font-size: 1.1rem; }
+      .nav-trigger { font-size: 1.15rem; }
     }
   </style>
 </head>
@@ -208,7 +232,7 @@
 
 <header>
   <nav class="navbar">
-    <div class="logo">Carrelage<span>City</span></div>
+    <div class="logo">NAËL<span> Revêtements</span></div>
 
     <div class="nav-menu">
       <button class="nav-trigger" id="menuBtn">Menu</button>
@@ -225,30 +249,36 @@
 
 <section class="hero">
   <div class="hero-content">
-    <h1>Carrelage City</h1>
-    <p class="subtitle">Sols & murs qui claquent – Prix qui respirent – Pose qui tient</p>
-    <a href="contact.html" class="btn-primary">Devis gratuit en 48h</a>
+    <h1>NAËL Revêtements Murs et Sols</h1>
+    <p class="subtitle">Carrelage premium, sols & murs d’exception – Nîmes & Gard</p>
+    <a href="contact.html" class="btn-primary">Devis gratuit</a>
   </div>
 </section>
 
-<section>
-  <h2>Quelques pièces qui font parler</h2>
-  <div class="grid-gallery">
-    <!-- 6 cartes comme avant, tu peux changer les images/src -->
-    <div class="card-pro">
-      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=85" alt="Béton ciré luxe">
-      <div class="card-info">
-        <h3>Béton Ciré Gris Profond 120×120</h3>
-        <div class="price-tag">36,90 € / m²</div>
-        <p>Mat anti-traces – rectifié premium</p>
-      </div>
-    </div>
-    <!-- ... ajoute les 5 autres comme tu veux -->
-  </div>
+<section class="contact-block">
+  <h2>Contactez Naël</h2>
+  
+  <a href="tel:0652158484" class="big-phone">06 52 15 84 84</a>
+  
+  <p style="font-size:1.4rem; margin:1.8rem 0;">
+    NAËL Revêtements Murs et Sols<br>
+    20, avenue Fanfonne Guillierme<br>
+    30000 Nîmes
+  </p>
+  
+  <p style="font-size:1.25rem; margin:1.5rem 0;">
+    Email : <a href="mailto:nael.entreprise@gmail.com" style="color:var(--accent);">nael.entreprise@gmail.com</a><br>
+    SIRET : 511 527 566 00034
+  </p>
+  
+  <p style="font-size:1.3rem; margin-top:3rem;">
+    Showroom sur rendez-vous – Devis pose + fourniture sous 48h – Zone Nîmes & Gard
+  </p>
 </section>
 
 <footer>
-  <p>© 2026 Carrelage City – Marseille – 07 80 60 13 22</p>
+  <p>© 2026 NAËL Revêtements Murs et Sols – Nîmes – SIRET 511 527 566 00034</p>
+  <p style="margin-top:1.5rem; opacity:0.75;">Spécialiste carrelage & revêtements – Qualité premium, service direct</p>
 </footer>
 
 <script>
@@ -260,7 +290,6 @@
     menuBtn.classList.toggle('open');
   });
 
-  // Ferme le menu si on clique ailleurs
   document.addEventListener('click', e => {
     if (!menuBtn.contains(e.target) && !dropdown.contains(e.target)) {
       dropdown.classList.remove('open');
@@ -268,7 +297,6 @@
     }
   });
 
-  // Scroll header
   window.addEventListener('scroll', () => {
     document.querySelector('header').classList.toggle('scrolled', window.scrollY > 80);
   });
