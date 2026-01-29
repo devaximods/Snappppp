@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>Réalisations – NAËL CARRELAGE | Nîmes</title>
+  <meta name="description" content="Réalisations NAËL CARRELAGE – Avant/après piscines, escaliers, salles de bain, salons, terrasses – Nîmes & Gard."/>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #fcfcfc;
+      --text: #1a1a1a;
+      --accent: #7a5c3f;
+      --accent-soft: #a07e60;
+      --gray: #555;
+      --lightgray: #e8e8e8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 54px;
+      background: rgba(252,252,252,0.96);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(122,92,63,0.08);
+      z-index: 9999;
+    }
+
+    .nav-container {
+      height: 100%;
+      padding: 0 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-mini {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      color: var(--text);
+    }
+    .logo-mini span { color: var(--accent); }
+
+    .menu-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      color: var(--text);
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .menu-text:hover { color: var(--accent); }
+
+    .dropdown {
+      position: absolute;
+      top: 54px;
+      right: 5%;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.16);
+      min-width: 220px;
+      padding: 1rem 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.35s ease;
+      pointer-events: none;
+    }
+
+    .dropdown.open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .dropdown a {
+      display: block;
+      padding: 0.95rem 1.8rem;
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 1.05rem;
+      transition: all 0.25s;
+    }
+
+    .dropdown a:hover {
+      color: var(--accent);
+      background: var(--lightgray);
+    }
+
+    main {
+      padding-top: 54px;
+    }
+
+    .realisations-hero {
+      height: 32vh;
+      min-height: 240px;
+      background: linear-gradient(rgba(10,10,10,0.72), rgba(10,10,10,0.88)),
+                  url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=95') center/cover no-repeat fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding: 0 5%;
+    }
+
+    .realisations-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 9vw, 4.8rem);
+      font-weight: 700;
+      letter-spacing: -0.6px;
+      line-height: 1;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.7);
+    }
+    .realisations-title span {
+      color: var(--accent);
+    }
+
+    .realisations-section {
+      padding: 4rem 5% 6rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      text-align: center;
+      margin: 0 0 2.8rem;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.6rem;
+      margin-bottom: 5rem;
+    }
+
+    .real-card {
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      transition: all 0.45s ease;
+      background: white;
+      position: relative;
+    }
+
+    .real-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.16);
+    }
+
+    .real-card .before-after {
+      position: relative;
+      height: 280px;
+    }
+
+    .real-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: opacity 0.8s ease;
+    }
+
+    .real-card .after {
+      opacity: 0;
+    }
+
+    .real-card:hover .before {
+      opacity: 0;
+    }
+
+    .real-card:hover .after {
+      opacity: 1;
+    }
+
+    .real-label {
+      padding: 1.4rem;
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    footer {
+      background: var(--noir);
+      color: #bbb;
+      text-align: center;
+      padding: 3rem 5% 2rem;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 480px) {
+      .realisations-hero { height: 28vh; min-height: 200px; }
+      .realisations-title { font-size: 3.2rem; }
+      .section-title { font-size: 2rem; }
+      .grid-4 { gap: 1.3rem; }
+      .real-card .before-after { height: 240px; }
+      .real-label { font-size: 1.1rem; padding: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav-container">
+    <div class="logo-mini">NAËL <span>CARRELAGE</span></div>
+    <button class="menu-text" id="menuBtn">MENU</button>
+  </div>
+
+  <div class="dropdown" id="dropdownMenu">
+    <a href="catalogue.html">Catalogue</a>
+    <a href="realisations.html">Réalisations</a>
+    <a href="a-propos.html">À propos</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</header>
+
+<main>
+  <section class="realisations-hero">
+    <h1 class="realisations-title">RÉALISATIONS</h1>
+  </section>
+
+  <section class="realisations-section">
+    <h2 class="section-title">Piscines</h2>
+    <div class="grid-4">
+      <div class="real-card">
+        <div class="before-after">
+          <img class="before" src="https://images.unsplash.com/photo-1570549717485-8e6e8e8e8e8e?w=800&q=90" alt="Avant">
+          <img class="after" src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=90" alt="Après">
+        </div>
+        <div class="real-label">Piscine bord infini</div>
+      </div>
+      <div class="real-card">
+        <div class="before-after">
+          <img class="before" src="https://images.unsplash.com/photo-1560272564-c83b7282d68e?w=800&q=90" alt="Avant">
+          <img class="after" src="https://images.unsplash.com/photo-1576013552188-2e5e8e8e8e8e?w=800&q=90" alt="Après">
+        </div>
+        <div class="real-label">Bassin mosaïque bleu nuit</div>
+      </div>
+      <!-- Ajoute 2 autres pour faire 4 -->
+    </div>
+
+    <h2 class="section-title">Escaliers</h2>
+    <div class="grid-4">
+      <div class="real-card">
+        <div class="before-after">
+          <img class="before" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=90" alt="Avant">
+          <img class="after" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=90" alt="Après">
+        </div>
+        <div class="real-label">Escalier suspendu bois</div>
+      </div>
+      <!-- etc... -->
+    </div>
+
+    <h2 class="section-title">Salles de bain</h2>
+    <div class="grid-4">
+      <!-- 4 blocs -->
+    </div>
+
+    <h2 class="section-title">Salons & Séjours</h2>
+    <div class="grid-4">
+      <!-- 4 blocs -->
+    </div>
+
+    <h2 class="section-title">Extérieurs & Terrasses</h2>
+    <div class="grid-4">
+      <!-- 4 blocs -->
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 NAËL CARRELAGE – Nîmes</p>
+</footer>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const dropdown = document.getElementById('dropdownMenu');
+
+  menuBtn.addEventListener('click', () => {
+    dropdown.classList.toggle('open');
+    menuBtn.classList.toggle('open');
+  });
+
+  document.addEventListener('click', e => {
+    if (!menuBtn.contains(e.target) && !dropdown.contains(e.target)) {
+      dropdown.classList.remove('open');
+      menuBtn.classList.remove('open');
+    }
+  });
+
+  window.addEventListener('scroll', () => {
+    document.querySelector('header').classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  document.addEventListener('touchstart', e => {
+    if (e.touches.length > 1) e.preventDefault();
+  }, { passive: false });
+</script>
+
+</body>
+</html>
