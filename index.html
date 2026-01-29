@@ -195,14 +195,14 @@
       overflow: hidden;
       border-radius: 12px;
       box-shadow: 0 8px 28px rgba(0,0,0,0.07);
+      transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.9s ease-out;
+      transform: scale(0.95);
     }
 
     .photo.visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: scale(1);
     }
 
     .photo img {
@@ -210,7 +210,7 @@
       height: 300px;
       object-fit: cover;
       display: block;
-      transition: transform 1s ease;
+      transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     .photo:hover img {
@@ -262,7 +262,7 @@
 
   <section class="gallery">
     <div class="grid">
-      <!-- 20 photos avec effet fade-in au scroll -->
+      <!-- 20 photos avec effet parallax + reveal au scroll -->
       <div class="photo"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=95" alt=""></div>
       <div class="photo"><img src="https://images.unsplash.com/photo-1581235720704-06d1018152dc?w=900&q=95" alt=""></div>
       <div class="photo"><img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=900&q=95" alt=""></div>
@@ -292,22 +292,35 @@
 </footer>
 
 <script>
-  // Effet fade-in au scroll (scroll reveal simple sans librairie)
+  // Effet parallax léger + reveal au scroll
   const photos = document.querySelectorAll('.photo');
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        observer.unobserve(entry.target); // une fois visible, on arrête d'observer
+        // observer.unobserve(entry.target); // décommente si tu veux que ça ne se joue qu'une fois
       }
     });
   }, {
-    threshold: 0.1, // déclenche quand 10% de la photo est visible
-    rootMargin: '0px 0px -100px 0px' // déclenche un peu avant que ça arrive en bas
+    threshold: 0.15,
+    rootMargin: '0px 0px -80px 0px'
   });
 
   photos.forEach(photo => observer.observe(photo));
+
+  // Parallax léger au scroll (optionnel mais stylé)
+  window.addEventListener('scroll', () => {
+    photos.forEach(photo => {
+      const rect = photo.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        const yPos = (window.scrollY - rect.top) * 0.08; // vitesse du parallax
+        photo.style.backgroundPositionY = `${yPos}px`;
+      }
+    });
+
+    document.querySelector('header').classList.toggle('scrolled', window.scrollY > 60);
+  });
 
   // Menu
   const menuBtn = document.getElementById('menuBtn');
@@ -323,10 +336,6 @@
       dropdown.classList.remove('open');
       menuBtn.classList.remove('open');
     }
-  });
-
-  window.addEventListener('scroll', () => {
-    document.querySelector('header').classList.toggle('scrolled', window.scrollY > 60);
   });
 
   document.addEventListener('touchstart', e => {
